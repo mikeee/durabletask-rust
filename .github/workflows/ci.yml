@@ -51,14 +51,14 @@ jobs:
         with:
           components: rustfmt, clippy
 
+      - name: Cargo test
+        run: cargo test -- --ignored
+
       - name: Cargo fmt
         run: cargo fmt -- --check
 
       - name: Cargo clippy
         run: cargo clippy -- -D warnings
-
-      - name: Cargo test
-        run: cargo test -- --ignored
 
       - name: Cargo doc
         run: cargo doc
