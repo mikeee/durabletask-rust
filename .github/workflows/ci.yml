@@ -40,7 +40,7 @@ jobs:
           components: rustfmt, clippy
 
       - name: Cargo fmt
-        run: cargo fmt --check
+        run: cargo fmt -- --check
 
       - name: Cargo clippy
         run: cargo clippy --all-targets
