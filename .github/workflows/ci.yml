@@ -52,7 +52,7 @@ jobs:
           components: rustfmt, clippy
 
       - name: Cargo test
-        run: cargo test -- --ignored
+        run: cargo test -- --include-ignored
 
       - name: Cargo fmt
         run: cargo fmt -- --check
