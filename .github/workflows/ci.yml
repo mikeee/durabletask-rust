@@ -43,7 +43,7 @@ jobs:
         run: cargo fmt -- --check
 
       - name: Cargo clippy
-        run: cargo clippy --all-targets
+        run: cargo clippy -- -D warnings
 
       - name: Cargo test
         run: cargo test -- --ignored
