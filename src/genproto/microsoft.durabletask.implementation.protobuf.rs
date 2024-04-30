@@ -43,9 +43,7 @@ pub struct TaskFailureDetails {
     #[prost(message, optional, tag = "3")]
     pub stack_trace: ::core::option::Option<::prost::alloc::string::String>,
     #[prost(message, optional, boxed, tag = "4")]
-    pub inner_failure: ::core::option::Option<
-        ::prost::alloc::boxed::Box<TaskFailureDetails>,
-    >,
+    pub inner_failure: ::core::option::Option<::prost::alloc::boxed::Box<TaskFailureDetails>>,
     #[prost(bool, tag = "5")]
     pub is_non_retriable: bool,
 }
@@ -371,9 +369,8 @@ pub struct OrchestratorAction {
         oneof = "orchestrator_action::OrchestratorActionType",
         tags = "2, 3, 4, 5, 6, 7"
     )]
-    pub orchestrator_action_type: ::core::option::Option<
-        orchestrator_action::OrchestratorActionType,
-    >,
+    pub orchestrator_action_type:
+        ::core::option::Option<orchestrator_action::OrchestratorActionType>,
 }
 /// Nested message and enum types in `OrchestratorAction`.
 pub mod orchestrator_action {
@@ -432,9 +429,7 @@ pub struct CreateInstanceRequest {
     #[prost(message, optional, tag = "5")]
     pub scheduled_start_timestamp: ::core::option::Option<::prost_types::Timestamp>,
     #[prost(message, optional, tag = "6")]
-    pub orchestration_id_reuse_policy: ::core::option::Option<
-        OrchestrationIdReusePolicy,
-    >,
+    pub orchestration_id_reuse_policy: ::core::option::Option<OrchestrationIdReusePolicy>,
 }
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
@@ -816,9 +811,7 @@ pub struct OperationAction {
     #[prost(int32, tag = "1")]
     pub id: i32,
     #[prost(oneof = "operation_action::OperationActionType", tags = "2, 3")]
-    pub operation_action_type: ::core::option::Option<
-        operation_action::OperationActionType,
-    >,
+    pub operation_action_type: ::core::option::Option<operation_action::OperationActionType>,
 }
 /// Nested message and enum types in `OperationAction`.
 pub mod operation_action {
@@ -905,9 +898,7 @@ impl OrchestrationStatus {
         match self {
             OrchestrationStatus::Running => "ORCHESTRATION_STATUS_RUNNING",
             OrchestrationStatus::Completed => "ORCHESTRATION_STATUS_COMPLETED",
-            OrchestrationStatus::ContinuedAsNew => {
-                "ORCHESTRATION_STATUS_CONTINUED_AS_NEW"
-            }
+            OrchestrationStatus::ContinuedAsNew => "ORCHESTRATION_STATUS_CONTINUED_AS_NEW",
             OrchestrationStatus::Failed => "ORCHESTRATION_STATUS_FAILED",
             OrchestrationStatus::Canceled => "ORCHESTRATION_STATUS_CANCELED",
             OrchestrationStatus::Terminated => "ORCHESTRATION_STATUS_TERMINATED",
@@ -962,8 +953,8 @@ impl CreateOrchestrationAction {
 /// Generated client implementations.
 pub mod task_hub_sidecar_service_client {
     #![allow(unused_variables, dead_code, missing_docs, clippy::let_unit_value)]
-    use tonic::codegen::*;
     use tonic::codegen::http::Uri;
+    use tonic::codegen::*;
     #[derive(Debug, Clone)]
     pub struct TaskHubSidecarServiceClient<T> {
         inner: tonic::client::Grpc<T>,
@@ -1007,9 +998,8 @@ pub mod task_hub_sidecar_service_client {
                     <T as tonic::client::GrpcService<tonic::body::BoxBody>>::ResponseBody,
                 >,
             >,
-            <T as tonic::codegen::Service<
-                http::Request<tonic::body::BoxBody>,
-            >>::Error: Into<StdError> + Send + Sync,
+            <T as tonic::codegen::Service<http::Request<tonic::body::BoxBody>>>::Error:
+                Into<StdError> + Send + Sync,
         {
             TaskHubSidecarServiceClient::new(InterceptedService::new(inner, interceptor))
         }
@@ -1049,275 +1039,203 @@ pub mod task_hub_sidecar_service_client {
             &mut self,
             request: impl tonic::IntoRequest<()>,
         ) -> std::result::Result<tonic::Response<()>, tonic::Status> {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
+            self.inner.ready().await.map_err(|e| {
+                tonic::Status::new(
+                    tonic::Code::Unknown,
+                    format!("Service was not ready: {}", e.into()),
+                )
+            })?;
             let codec = tonic::codec::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static(
                 "/microsoft.durabletask.implementation.protobuf.TaskHubSidecarService/Hello",
             );
             let mut req = request.into_request();
-            req.extensions_mut()
-                .insert(
-                    GrpcMethod::new(
-                        "microsoft.durabletask.implementation.protobuf.TaskHubSidecarService",
-                        "Hello",
-                    ),
-                );
+            req.extensions_mut().insert(GrpcMethod::new(
+                "microsoft.durabletask.implementation.protobuf.TaskHubSidecarService",
+                "Hello",
+            ));
             self.inner.unary(req, path, codec).await
         }
         /// Starts a new orchestration instance.
         pub async fn start_instance(
             &mut self,
             request: impl tonic::IntoRequest<super::CreateInstanceRequest>,
-        ) -> std::result::Result<
-            tonic::Response<super::CreateInstanceResponse>,
-            tonic::Status,
-        > {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
+        ) -> std::result::Result<tonic::Response<super::CreateInstanceResponse>, tonic::Status>
+        {
+            self.inner.ready().await.map_err(|e| {
+                tonic::Status::new(
+                    tonic::Code::Unknown,
+                    format!("Service was not ready: {}", e.into()),
+                )
+            })?;
             let codec = tonic::codec::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static(
                 "/microsoft.durabletask.implementation.protobuf.TaskHubSidecarService/StartInstance",
             );
             let mut req = request.into_request();
-            req.extensions_mut()
-                .insert(
-                    GrpcMethod::new(
-                        "microsoft.durabletask.implementation.protobuf.TaskHubSidecarService",
-                        "StartInstance",
-                    ),
-                );
+            req.extensions_mut().insert(GrpcMethod::new(
+                "microsoft.durabletask.implementation.protobuf.TaskHubSidecarService",
+                "StartInstance",
+            ));
             self.inner.unary(req, path, codec).await
         }
         /// Gets the status of an existing orchestration instance.
         pub async fn get_instance(
             &mut self,
             request: impl tonic::IntoRequest<super::GetInstanceRequest>,
-        ) -> std::result::Result<
-            tonic::Response<super::GetInstanceResponse>,
-            tonic::Status,
-        > {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
+        ) -> std::result::Result<tonic::Response<super::GetInstanceResponse>, tonic::Status>
+        {
+            self.inner.ready().await.map_err(|e| {
+                tonic::Status::new(
+                    tonic::Code::Unknown,
+                    format!("Service was not ready: {}", e.into()),
+                )
+            })?;
             let codec = tonic::codec::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static(
                 "/microsoft.durabletask.implementation.protobuf.TaskHubSidecarService/GetInstance",
             );
             let mut req = request.into_request();
-            req.extensions_mut()
-                .insert(
-                    GrpcMethod::new(
-                        "microsoft.durabletask.implementation.protobuf.TaskHubSidecarService",
-                        "GetInstance",
-                    ),
-                );
+            req.extensions_mut().insert(GrpcMethod::new(
+                "microsoft.durabletask.implementation.protobuf.TaskHubSidecarService",
+                "GetInstance",
+            ));
             self.inner.unary(req, path, codec).await
         }
         /// Rewinds an orchestration instance to last known good state and replays from there.
         pub async fn rewind_instance(
             &mut self,
             request: impl tonic::IntoRequest<super::RewindInstanceRequest>,
-        ) -> std::result::Result<
-            tonic::Response<super::RewindInstanceResponse>,
-            tonic::Status,
-        > {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
+        ) -> std::result::Result<tonic::Response<super::RewindInstanceResponse>, tonic::Status>
+        {
+            self.inner.ready().await.map_err(|e| {
+                tonic::Status::new(
+                    tonic::Code::Unknown,
+                    format!("Service was not ready: {}", e.into()),
+                )
+            })?;
             let codec = tonic::codec::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static(
                 "/microsoft.durabletask.implementation.protobuf.TaskHubSidecarService/RewindInstance",
             );
             let mut req = request.into_request();
-            req.extensions_mut()
-                .insert(
-                    GrpcMethod::new(
-                        "microsoft.durabletask.implementation.protobuf.TaskHubSidecarService",
-                        "RewindInstance",
-                    ),
-                );
+            req.extensions_mut().insert(GrpcMethod::new(
+                "microsoft.durabletask.implementation.protobuf.TaskHubSidecarService",
+                "RewindInstance",
+            ));
             self.inner.unary(req, path, codec).await
         }
         /// Waits for an orchestration instance to reach a running or completion state.
         pub async fn wait_for_instance_start(
             &mut self,
             request: impl tonic::IntoRequest<super::GetInstanceRequest>,
-        ) -> std::result::Result<
-            tonic::Response<super::GetInstanceResponse>,
-            tonic::Status,
-        > {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
+        ) -> std::result::Result<tonic::Response<super::GetInstanceResponse>, tonic::Status>
+        {
+            self.inner.ready().await.map_err(|e| {
+                tonic::Status::new(
+                    tonic::Code::Unknown,
+                    format!("Service was not ready: {}", e.into()),
+                )
+            })?;
             let codec = tonic::codec::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static(
                 "/microsoft.durabletask.implementation.protobuf.TaskHubSidecarService/WaitForInstanceStart",
             );
             let mut req = request.into_request();
-            req.extensions_mut()
-                .insert(
-                    GrpcMethod::new(
-                        "microsoft.durabletask.implementation.protobuf.TaskHubSidecarService",
-                        "WaitForInstanceStart",
-                    ),
-                );
+            req.extensions_mut().insert(GrpcMethod::new(
+                "microsoft.durabletask.implementation.protobuf.TaskHubSidecarService",
+                "WaitForInstanceStart",
+            ));
             self.inner.unary(req, path, codec).await
         }
         /// Waits for an orchestration instance to reach a completion state (completed, failed, terminated, etc.).
         pub async fn wait_for_instance_completion(
             &mut self,
             request: impl tonic::IntoRequest<super::GetInstanceRequest>,
-        ) -> std::result::Result<
-            tonic::Response<super::GetInstanceResponse>,
-            tonic::Status,
-        > {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
+        ) -> std::result::Result<tonic::Response<super::GetInstanceResponse>, tonic::Status>
+        {
+            self.inner.ready().await.map_err(|e| {
+                tonic::Status::new(
+                    tonic::Code::Unknown,
+                    format!("Service was not ready: {}", e.into()),
+                )
+            })?;
             let codec = tonic::codec::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static(
                 "/microsoft.durabletask.implementation.protobuf.TaskHubSidecarService/WaitForInstanceCompletion",
             );
             let mut req = request.into_request();
-            req.extensions_mut()
-                .insert(
-                    GrpcMethod::new(
-                        "microsoft.durabletask.implementation.protobuf.TaskHubSidecarService",
-                        "WaitForInstanceCompletion",
-                    ),
-                );
+            req.extensions_mut().insert(GrpcMethod::new(
+                "microsoft.durabletask.implementation.protobuf.TaskHubSidecarService",
+                "WaitForInstanceCompletion",
+            ));
             self.inner.unary(req, path, codec).await
         }
         /// Raises an event to a running orchestration instance.
         pub async fn raise_event(
             &mut self,
             request: impl tonic::IntoRequest<super::RaiseEventRequest>,
-        ) -> std::result::Result<
-            tonic::Response<super::RaiseEventResponse>,
-            tonic::Status,
-        > {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
+        ) -> std::result::Result<tonic::Response<super::RaiseEventResponse>, tonic::Status>
+        {
+            self.inner.ready().await.map_err(|e| {
+                tonic::Status::new(
+                    tonic::Code::Unknown,
+                    format!("Service was not ready: {}", e.into()),
+                )
+            })?;
             let codec = tonic::codec::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static(
                 "/microsoft.durabletask.implementation.protobuf.TaskHubSidecarService/RaiseEvent",
             );
             let mut req = request.into_request();
-            req.extensions_mut()
-                .insert(
-                    GrpcMethod::new(
-                        "microsoft.durabletask.implementation.protobuf.TaskHubSidecarService",
-                        "RaiseEvent",
-                    ),
-                );
+            req.extensions_mut().insert(GrpcMethod::new(
+                "microsoft.durabletask.implementation.protobuf.TaskHubSidecarService",
+                "RaiseEvent",
+            ));
             self.inner.unary(req, path, codec).await
         }
         /// Terminates a running orchestration instance.
         pub async fn terminate_instance(
             &mut self,
             request: impl tonic::IntoRequest<super::TerminateRequest>,
-        ) -> std::result::Result<
-            tonic::Response<super::TerminateResponse>,
-            tonic::Status,
-        > {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
+        ) -> std::result::Result<tonic::Response<super::TerminateResponse>, tonic::Status> {
+            self.inner.ready().await.map_err(|e| {
+                tonic::Status::new(
+                    tonic::Code::Unknown,
+                    format!("Service was not ready: {}", e.into()),
+                )
+            })?;
             let codec = tonic::codec::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static(
                 "/microsoft.durabletask.implementation.protobuf.TaskHubSidecarService/TerminateInstance",
             );
             let mut req = request.into_request();
-            req.extensions_mut()
-                .insert(
-                    GrpcMethod::new(
-                        "microsoft.durabletask.implementation.protobuf.TaskHubSidecarService",
-                        "TerminateInstance",
-                    ),
-                );
+            req.extensions_mut().insert(GrpcMethod::new(
+                "microsoft.durabletask.implementation.protobuf.TaskHubSidecarService",
+                "TerminateInstance",
+            ));
             self.inner.unary(req, path, codec).await
         }
         /// Suspends a running orchestration instance.
         pub async fn suspend_instance(
             &mut self,
             request: impl tonic::IntoRequest<super::SuspendRequest>,
-        ) -> std::result::Result<
-            tonic::Response<super::SuspendResponse>,
-            tonic::Status,
-        > {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
+        ) -> std::result::Result<tonic::Response<super::SuspendResponse>, tonic::Status> {
+            self.inner.ready().await.map_err(|e| {
+                tonic::Status::new(
+                    tonic::Code::Unknown,
+                    format!("Service was not ready: {}", e.into()),
+                )
+            })?;
             let codec = tonic::codec::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static(
                 "/microsoft.durabletask.implementation.protobuf.TaskHubSidecarService/SuspendInstance",
             );
             let mut req = request.into_request();
-            req.extensions_mut()
-                .insert(
-                    GrpcMethod::new(
-                        "microsoft.durabletask.implementation.protobuf.TaskHubSidecarService",
-                        "SuspendInstance",
-                    ),
-                );
+            req.extensions_mut().insert(GrpcMethod::new(
+                "microsoft.durabletask.implementation.protobuf.TaskHubSidecarService",
+                "SuspendInstance",
+            ));
             self.inner.unary(req, path, codec).await
         }
         /// Resumes a suspended orchestration instance.
@@ -1325,87 +1243,65 @@ pub mod task_hub_sidecar_service_client {
             &mut self,
             request: impl tonic::IntoRequest<super::ResumeRequest>,
         ) -> std::result::Result<tonic::Response<super::ResumeResponse>, tonic::Status> {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
+            self.inner.ready().await.map_err(|e| {
+                tonic::Status::new(
+                    tonic::Code::Unknown,
+                    format!("Service was not ready: {}", e.into()),
+                )
+            })?;
             let codec = tonic::codec::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static(
                 "/microsoft.durabletask.implementation.protobuf.TaskHubSidecarService/ResumeInstance",
             );
             let mut req = request.into_request();
-            req.extensions_mut()
-                .insert(
-                    GrpcMethod::new(
-                        "microsoft.durabletask.implementation.protobuf.TaskHubSidecarService",
-                        "ResumeInstance",
-                    ),
-                );
+            req.extensions_mut().insert(GrpcMethod::new(
+                "microsoft.durabletask.implementation.protobuf.TaskHubSidecarService",
+                "ResumeInstance",
+            ));
             self.inner.unary(req, path, codec).await
         }
         pub async fn query_instances(
             &mut self,
             request: impl tonic::IntoRequest<super::QueryInstancesRequest>,
-        ) -> std::result::Result<
-            tonic::Response<super::QueryInstancesResponse>,
-            tonic::Status,
-        > {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
+        ) -> std::result::Result<tonic::Response<super::QueryInstancesResponse>, tonic::Status>
+        {
+            self.inner.ready().await.map_err(|e| {
+                tonic::Status::new(
+                    tonic::Code::Unknown,
+                    format!("Service was not ready: {}", e.into()),
+                )
+            })?;
             let codec = tonic::codec::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static(
                 "/microsoft.durabletask.implementation.protobuf.TaskHubSidecarService/QueryInstances",
             );
             let mut req = request.into_request();
-            req.extensions_mut()
-                .insert(
-                    GrpcMethod::new(
-                        "microsoft.durabletask.implementation.protobuf.TaskHubSidecarService",
-                        "QueryInstances",
-                    ),
-                );
+            req.extensions_mut().insert(GrpcMethod::new(
+                "microsoft.durabletask.implementation.protobuf.TaskHubSidecarService",
+                "QueryInstances",
+            ));
             self.inner.unary(req, path, codec).await
         }
         pub async fn purge_instances(
             &mut self,
             request: impl tonic::IntoRequest<super::PurgeInstancesRequest>,
-        ) -> std::result::Result<
-            tonic::Response<super::PurgeInstancesResponse>,
-            tonic::Status,
-        > {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
+        ) -> std::result::Result<tonic::Response<super::PurgeInstancesResponse>, tonic::Status>
+        {
+            self.inner.ready().await.map_err(|e| {
+                tonic::Status::new(
+                    tonic::Code::Unknown,
+                    format!("Service was not ready: {}", e.into()),
+                )
+            })?;
             let codec = tonic::codec::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static(
                 "/microsoft.durabletask.implementation.protobuf.TaskHubSidecarService/PurgeInstances",
             );
             let mut req = request.into_request();
-            req.extensions_mut()
-                .insert(
-                    GrpcMethod::new(
-                        "microsoft.durabletask.implementation.protobuf.TaskHubSidecarService",
-                        "PurgeInstances",
-                    ),
-                );
+            req.extensions_mut().insert(GrpcMethod::new(
+                "microsoft.durabletask.implementation.protobuf.TaskHubSidecarService",
+                "PurgeInstances",
+            ));
             self.inner.unary(req, path, codec).await
         }
         pub async fn get_work_items(
@@ -1415,303 +1311,224 @@ pub mod task_hub_sidecar_service_client {
             tonic::Response<tonic::codec::Streaming<super::WorkItem>>,
             tonic::Status,
         > {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
+            self.inner.ready().await.map_err(|e| {
+                tonic::Status::new(
+                    tonic::Code::Unknown,
+                    format!("Service was not ready: {}", e.into()),
+                )
+            })?;
             let codec = tonic::codec::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static(
                 "/microsoft.durabletask.implementation.protobuf.TaskHubSidecarService/GetWorkItems",
             );
             let mut req = request.into_request();
-            req.extensions_mut()
-                .insert(
-                    GrpcMethod::new(
-                        "microsoft.durabletask.implementation.protobuf.TaskHubSidecarService",
-                        "GetWorkItems",
-                    ),
-                );
+            req.extensions_mut().insert(GrpcMethod::new(
+                "microsoft.durabletask.implementation.protobuf.TaskHubSidecarService",
+                "GetWorkItems",
+            ));
             self.inner.server_streaming(req, path, codec).await
         }
         pub async fn complete_activity_task(
             &mut self,
             request: impl tonic::IntoRequest<super::ActivityResponse>,
-        ) -> std::result::Result<
-            tonic::Response<super::CompleteTaskResponse>,
-            tonic::Status,
-        > {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
+        ) -> std::result::Result<tonic::Response<super::CompleteTaskResponse>, tonic::Status>
+        {
+            self.inner.ready().await.map_err(|e| {
+                tonic::Status::new(
+                    tonic::Code::Unknown,
+                    format!("Service was not ready: {}", e.into()),
+                )
+            })?;
             let codec = tonic::codec::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static(
                 "/microsoft.durabletask.implementation.protobuf.TaskHubSidecarService/CompleteActivityTask",
             );
             let mut req = request.into_request();
-            req.extensions_mut()
-                .insert(
-                    GrpcMethod::new(
-                        "microsoft.durabletask.implementation.protobuf.TaskHubSidecarService",
-                        "CompleteActivityTask",
-                    ),
-                );
+            req.extensions_mut().insert(GrpcMethod::new(
+                "microsoft.durabletask.implementation.protobuf.TaskHubSidecarService",
+                "CompleteActivityTask",
+            ));
             self.inner.unary(req, path, codec).await
         }
         pub async fn complete_orchestrator_task(
             &mut self,
             request: impl tonic::IntoRequest<super::OrchestratorResponse>,
-        ) -> std::result::Result<
-            tonic::Response<super::CompleteTaskResponse>,
-            tonic::Status,
-        > {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
+        ) -> std::result::Result<tonic::Response<super::CompleteTaskResponse>, tonic::Status>
+        {
+            self.inner.ready().await.map_err(|e| {
+                tonic::Status::new(
+                    tonic::Code::Unknown,
+                    format!("Service was not ready: {}", e.into()),
+                )
+            })?;
             let codec = tonic::codec::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static(
                 "/microsoft.durabletask.implementation.protobuf.TaskHubSidecarService/CompleteOrchestratorTask",
             );
             let mut req = request.into_request();
-            req.extensions_mut()
-                .insert(
-                    GrpcMethod::new(
-                        "microsoft.durabletask.implementation.protobuf.TaskHubSidecarService",
-                        "CompleteOrchestratorTask",
-                    ),
-                );
+            req.extensions_mut().insert(GrpcMethod::new(
+                "microsoft.durabletask.implementation.protobuf.TaskHubSidecarService",
+                "CompleteOrchestratorTask",
+            ));
             self.inner.unary(req, path, codec).await
         }
         pub async fn complete_entity_task(
             &mut self,
             request: impl tonic::IntoRequest<super::EntityBatchResult>,
-        ) -> std::result::Result<
-            tonic::Response<super::CompleteTaskResponse>,
-            tonic::Status,
-        > {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
+        ) -> std::result::Result<tonic::Response<super::CompleteTaskResponse>, tonic::Status>
+        {
+            self.inner.ready().await.map_err(|e| {
+                tonic::Status::new(
+                    tonic::Code::Unknown,
+                    format!("Service was not ready: {}", e.into()),
+                )
+            })?;
             let codec = tonic::codec::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static(
                 "/microsoft.durabletask.implementation.protobuf.TaskHubSidecarService/CompleteEntityTask",
             );
             let mut req = request.into_request();
-            req.extensions_mut()
-                .insert(
-                    GrpcMethod::new(
-                        "microsoft.durabletask.implementation.protobuf.TaskHubSidecarService",
-                        "CompleteEntityTask",
-                    ),
-                );
+            req.extensions_mut().insert(GrpcMethod::new(
+                "microsoft.durabletask.implementation.protobuf.TaskHubSidecarService",
+                "CompleteEntityTask",
+            ));
             self.inner.unary(req, path, codec).await
         }
         /// Deletes and Creates the necessary resources for the orchestration service and the instance store
         pub async fn create_task_hub(
             &mut self,
             request: impl tonic::IntoRequest<super::CreateTaskHubRequest>,
-        ) -> std::result::Result<
-            tonic::Response<super::CreateTaskHubResponse>,
-            tonic::Status,
-        > {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
+        ) -> std::result::Result<tonic::Response<super::CreateTaskHubResponse>, tonic::Status>
+        {
+            self.inner.ready().await.map_err(|e| {
+                tonic::Status::new(
+                    tonic::Code::Unknown,
+                    format!("Service was not ready: {}", e.into()),
+                )
+            })?;
             let codec = tonic::codec::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static(
                 "/microsoft.durabletask.implementation.protobuf.TaskHubSidecarService/CreateTaskHub",
             );
             let mut req = request.into_request();
-            req.extensions_mut()
-                .insert(
-                    GrpcMethod::new(
-                        "microsoft.durabletask.implementation.protobuf.TaskHubSidecarService",
-                        "CreateTaskHub",
-                    ),
-                );
+            req.extensions_mut().insert(GrpcMethod::new(
+                "microsoft.durabletask.implementation.protobuf.TaskHubSidecarService",
+                "CreateTaskHub",
+            ));
             self.inner.unary(req, path, codec).await
         }
         /// Deletes the resources for the orchestration service and optionally the instance store
         pub async fn delete_task_hub(
             &mut self,
             request: impl tonic::IntoRequest<super::DeleteTaskHubRequest>,
-        ) -> std::result::Result<
-            tonic::Response<super::DeleteTaskHubResponse>,
-            tonic::Status,
-        > {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
+        ) -> std::result::Result<tonic::Response<super::DeleteTaskHubResponse>, tonic::Status>
+        {
+            self.inner.ready().await.map_err(|e| {
+                tonic::Status::new(
+                    tonic::Code::Unknown,
+                    format!("Service was not ready: {}", e.into()),
+                )
+            })?;
             let codec = tonic::codec::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static(
                 "/microsoft.durabletask.implementation.protobuf.TaskHubSidecarService/DeleteTaskHub",
             );
             let mut req = request.into_request();
-            req.extensions_mut()
-                .insert(
-                    GrpcMethod::new(
-                        "microsoft.durabletask.implementation.protobuf.TaskHubSidecarService",
-                        "DeleteTaskHub",
-                    ),
-                );
+            req.extensions_mut().insert(GrpcMethod::new(
+                "microsoft.durabletask.implementation.protobuf.TaskHubSidecarService",
+                "DeleteTaskHub",
+            ));
             self.inner.unary(req, path, codec).await
         }
         /// sends a signal to an entity
         pub async fn signal_entity(
             &mut self,
             request: impl tonic::IntoRequest<super::SignalEntityRequest>,
-        ) -> std::result::Result<
-            tonic::Response<super::SignalEntityResponse>,
-            tonic::Status,
-        > {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
+        ) -> std::result::Result<tonic::Response<super::SignalEntityResponse>, tonic::Status>
+        {
+            self.inner.ready().await.map_err(|e| {
+                tonic::Status::new(
+                    tonic::Code::Unknown,
+                    format!("Service was not ready: {}", e.into()),
+                )
+            })?;
             let codec = tonic::codec::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static(
                 "/microsoft.durabletask.implementation.protobuf.TaskHubSidecarService/SignalEntity",
             );
             let mut req = request.into_request();
-            req.extensions_mut()
-                .insert(
-                    GrpcMethod::new(
-                        "microsoft.durabletask.implementation.protobuf.TaskHubSidecarService",
-                        "SignalEntity",
-                    ),
-                );
+            req.extensions_mut().insert(GrpcMethod::new(
+                "microsoft.durabletask.implementation.protobuf.TaskHubSidecarService",
+                "SignalEntity",
+            ));
             self.inner.unary(req, path, codec).await
         }
         /// get information about a specific entity
         pub async fn get_entity(
             &mut self,
             request: impl tonic::IntoRequest<super::GetEntityRequest>,
-        ) -> std::result::Result<
-            tonic::Response<super::GetEntityResponse>,
-            tonic::Status,
-        > {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
+        ) -> std::result::Result<tonic::Response<super::GetEntityResponse>, tonic::Status> {
+            self.inner.ready().await.map_err(|e| {
+                tonic::Status::new(
+                    tonic::Code::Unknown,
+                    format!("Service was not ready: {}", e.into()),
+                )
+            })?;
             let codec = tonic::codec::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static(
                 "/microsoft.durabletask.implementation.protobuf.TaskHubSidecarService/GetEntity",
             );
             let mut req = request.into_request();
-            req.extensions_mut()
-                .insert(
-                    GrpcMethod::new(
-                        "microsoft.durabletask.implementation.protobuf.TaskHubSidecarService",
-                        "GetEntity",
-                    ),
-                );
+            req.extensions_mut().insert(GrpcMethod::new(
+                "microsoft.durabletask.implementation.protobuf.TaskHubSidecarService",
+                "GetEntity",
+            ));
             self.inner.unary(req, path, codec).await
         }
         /// query entities
         pub async fn query_entities(
             &mut self,
             request: impl tonic::IntoRequest<super::QueryEntitiesRequest>,
-        ) -> std::result::Result<
-            tonic::Response<super::QueryEntitiesResponse>,
-            tonic::Status,
-        > {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
+        ) -> std::result::Result<tonic::Response<super::QueryEntitiesResponse>, tonic::Status>
+        {
+            self.inner.ready().await.map_err(|e| {
+                tonic::Status::new(
+                    tonic::Code::Unknown,
+                    format!("Service was not ready: {}", e.into()),
+                )
+            })?;
             let codec = tonic::codec::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static(
                 "/microsoft.durabletask.implementation.protobuf.TaskHubSidecarService/QueryEntities",
             );
             let mut req = request.into_request();
-            req.extensions_mut()
-                .insert(
-                    GrpcMethod::new(
-                        "microsoft.durabletask.implementation.protobuf.TaskHubSidecarService",
-                        "QueryEntities",
-                    ),
-                );
+            req.extensions_mut().insert(GrpcMethod::new(
+                "microsoft.durabletask.implementation.protobuf.TaskHubSidecarService",
+                "QueryEntities",
+            ));
             self.inner.unary(req, path, codec).await
         }
         /// clean entity storage
         pub async fn clean_entity_storage(
             &mut self,
             request: impl tonic::IntoRequest<super::CleanEntityStorageRequest>,
-        ) -> std::result::Result<
-            tonic::Response<super::CleanEntityStorageResponse>,
-            tonic::Status,
-        > {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
+        ) -> std::result::Result<tonic::Response<super::CleanEntityStorageResponse>, tonic::Status>
+        {
+            self.inner.ready().await.map_err(|e| {
+                tonic::Status::new(
+                    tonic::Code::Unknown,
+                    format!("Service was not ready: {}", e.into()),
+                )
+            })?;
             let codec = tonic::codec::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static(
                 "/microsoft.durabletask.implementation.protobuf.TaskHubSidecarService/CleanEntityStorage",
             );
             let mut req = request.into_request();
-            req.extensions_mut()
-                .insert(
-                    GrpcMethod::new(
-                        "microsoft.durabletask.implementation.protobuf.TaskHubSidecarService",
-                        "CleanEntityStorage",
-                    ),
-                );
+            req.extensions_mut().insert(GrpcMethod::new(
+                "microsoft.durabletask.implementation.protobuf.TaskHubSidecarService",
+                "CleanEntityStorage",
+            ));
             self.inner.unary(req, path, codec).await
         }
     }
@@ -1732,58 +1549,37 @@ pub mod task_hub_sidecar_service_server {
         async fn start_instance(
             &self,
             request: tonic::Request<super::CreateInstanceRequest>,
-        ) -> std::result::Result<
-            tonic::Response<super::CreateInstanceResponse>,
-            tonic::Status,
-        >;
+        ) -> std::result::Result<tonic::Response<super::CreateInstanceResponse>, tonic::Status>;
         /// Gets the status of an existing orchestration instance.
         async fn get_instance(
             &self,
             request: tonic::Request<super::GetInstanceRequest>,
-        ) -> std::result::Result<
-            tonic::Response<super::GetInstanceResponse>,
-            tonic::Status,
-        >;
+        ) -> std::result::Result<tonic::Response<super::GetInstanceResponse>, tonic::Status>;
         /// Rewinds an orchestration instance to last known good state and replays from there.
         async fn rewind_instance(
             &self,
             request: tonic::Request<super::RewindInstanceRequest>,
-        ) -> std::result::Result<
-            tonic::Response<super::RewindInstanceResponse>,
-            tonic::Status,
-        >;
+        ) -> std::result::Result<tonic::Response<super::RewindInstanceResponse>, tonic::Status>;
         /// Waits for an orchestration instance to reach a running or completion state.
         async fn wait_for_instance_start(
             &self,
             request: tonic::Request<super::GetInstanceRequest>,
-        ) -> std::result::Result<
-            tonic::Response<super::GetInstanceResponse>,
-            tonic::Status,
-        >;
+        ) -> std::result::Result<tonic::Response<super::GetInstanceResponse>, tonic::Status>;
         /// Waits for an orchestration instance to reach a completion state (completed, failed, terminated, etc.).
         async fn wait_for_instance_completion(
             &self,
             request: tonic::Request<super::GetInstanceRequest>,
-        ) -> std::result::Result<
-            tonic::Response<super::GetInstanceResponse>,
-            tonic::Status,
-        >;
+        ) -> std::result::Result<tonic::Response<super::GetInstanceResponse>, tonic::Status>;
         /// Raises an event to a running orchestration instance.
         async fn raise_event(
             &self,
             request: tonic::Request<super::RaiseEventRequest>,
-        ) -> std::result::Result<
-            tonic::Response<super::RaiseEventResponse>,
-            tonic::Status,
-        >;
+        ) -> std::result::Result<tonic::Response<super::RaiseEventResponse>, tonic::Status>;
         /// Terminates a running orchestration instance.
         async fn terminate_instance(
             &self,
             request: tonic::Request<super::TerminateRequest>,
-        ) -> std::result::Result<
-            tonic::Response<super::TerminateResponse>,
-            tonic::Status,
-        >;
+        ) -> std::result::Result<tonic::Response<super::TerminateResponse>, tonic::Status>;
         /// Suspends a running orchestration instance.
         async fn suspend_instance(
             &self,
@@ -1797,99 +1593,62 @@ pub mod task_hub_sidecar_service_server {
         async fn query_instances(
             &self,
             request: tonic::Request<super::QueryInstancesRequest>,
-        ) -> std::result::Result<
-            tonic::Response<super::QueryInstancesResponse>,
-            tonic::Status,
-        >;
+        ) -> std::result::Result<tonic::Response<super::QueryInstancesResponse>, tonic::Status>;
         async fn purge_instances(
             &self,
             request: tonic::Request<super::PurgeInstancesRequest>,
-        ) -> std::result::Result<
-            tonic::Response<super::PurgeInstancesResponse>,
-            tonic::Status,
-        >;
+        ) -> std::result::Result<tonic::Response<super::PurgeInstancesResponse>, tonic::Status>;
         /// Server streaming response type for the GetWorkItems method.
         type GetWorkItemsStream: tonic::codegen::tokio_stream::Stream<
                 Item = std::result::Result<super::WorkItem, tonic::Status>,
-            >
-            + Send
+            > + Send
             + 'static;
         async fn get_work_items(
             &self,
             request: tonic::Request<super::GetWorkItemsRequest>,
-        ) -> std::result::Result<
-            tonic::Response<Self::GetWorkItemsStream>,
-            tonic::Status,
-        >;
+        ) -> std::result::Result<tonic::Response<Self::GetWorkItemsStream>, tonic::Status>;
         async fn complete_activity_task(
             &self,
             request: tonic::Request<super::ActivityResponse>,
-        ) -> std::result::Result<
-            tonic::Response<super::CompleteTaskResponse>,
-            tonic::Status,
-        >;
+        ) -> std::result::Result<tonic::Response<super::CompleteTaskResponse>, tonic::Status>;
         async fn complete_orchestrator_task(
             &self,
             request: tonic::Request<super::OrchestratorResponse>,
-        ) -> std::result::Result<
-            tonic::Response<super::CompleteTaskResponse>,
-            tonic::Status,
-        >;
+        ) -> std::result::Result<tonic::Response<super::CompleteTaskResponse>, tonic::Status>;
         async fn complete_entity_task(
             &self,
             request: tonic::Request<super::EntityBatchResult>,
-        ) -> std::result::Result<
-            tonic::Response<super::CompleteTaskResponse>,
-            tonic::Status,
-        >;
+        ) -> std::result::Result<tonic::Response<super::CompleteTaskResponse>, tonic::Status>;
         /// Deletes and Creates the necessary resources for the orchestration service and the instance store
         async fn create_task_hub(
             &self,
             request: tonic::Request<super::CreateTaskHubRequest>,
-        ) -> std::result::Result<
-            tonic::Response<super::CreateTaskHubResponse>,
-            tonic::Status,
-        >;
+        ) -> std::result::Result<tonic::Response<super::CreateTaskHubResponse>, tonic::Status>;
         /// Deletes the resources for the orchestration service and optionally the instance store
         async fn delete_task_hub(
             &self,
             request: tonic::Request<super::DeleteTaskHubRequest>,
-        ) -> std::result::Result<
-            tonic::Response<super::DeleteTaskHubResponse>,
-            tonic::Status,
-        >;
+        ) -> std::result::Result<tonic::Response<super::DeleteTaskHubResponse>, tonic::Status>;
         /// sends a signal to an entity
         async fn signal_entity(
             &self,
             request: tonic::Request<super::SignalEntityRequest>,
-        ) -> std::result::Result<
-            tonic::Response<super::SignalEntityResponse>,
-            tonic::Status,
-        >;
+        ) -> std::result::Result<tonic::Response<super::SignalEntityResponse>, tonic::Status>;
         /// get information about a specific entity
         async fn get_entity(
             &self,
             request: tonic::Request<super::GetEntityRequest>,
-        ) -> std::result::Result<
-            tonic::Response<super::GetEntityResponse>,
-            tonic::Status,
-        >;
+        ) -> std::result::Result<tonic::Response<super::GetEntityResponse>, tonic::Status>;
         /// query entities
         async fn query_entities(
             &self,
             request: tonic::Request<super::QueryEntitiesRequest>,
-        ) -> std::result::Result<
-            tonic::Response<super::QueryEntitiesResponse>,
-            tonic::Status,
-        >;
+        ) -> std::result::Result<tonic::Response<super::QueryEntitiesResponse>, tonic::Status>;
         /// clean entity storage
         async fn clean_entity_storage(
             &self,
             request: tonic::Request<super::CleanEntityStorageRequest>,
-        ) -> std::result::Result<
-            tonic::Response<super::CleanEntityStorageResponse>,
-            tonic::Status,
-        >;
+        ) -> std::result::Result<tonic::Response<super::CleanEntityStorageResponse>, tonic::Status>;
     }
     #[derive(Debug)]
     pub struct TaskHubSidecarServiceServer<T: TaskHubSidecarService> {
@@ -1914,10 +1673,7 @@ pub mod task_hub_sidecar_service_server {
                 max_encoding_message_size: None,
             }
         }
-        pub fn with_interceptor<F>(
-            inner: T,
-            interceptor: F,
-        ) -> InterceptedService<Self, F>
+        pub fn with_interceptor<F>(inner: T, interceptor: F) -> InterceptedService<Self, F>
         where
             F: tonic::service::Interceptor,
         {
@@ -1952,8 +1708,7 @@ pub mod task_hub_sidecar_service_server {
             self
         }
     }
-    impl<T, B> tonic::codegen::Service<http::Request<B>>
-    for TaskHubSidecarServiceServer<T>
+    impl<T, B> tonic::codegen::Service<http::Request<B>> for TaskHubSidecarServiceServer<T>
     where
         T: TaskHubSidecarService,
         B: Body + Send + 'static,
@@ -3092,8 +2847,8 @@ pub mod task_hub_sidecar_service_server {
             write!(f, "{:?}", self.0)
         }
     }
-    impl<T: TaskHubSidecarService> tonic::server::NamedService
-    for TaskHubSidecarServiceServer<T> {
-        const NAME: &'static str = "microsoft.durabletask.implementation.protobuf.TaskHubSidecarService";
+    impl<T: TaskHubSidecarService> tonic::server::NamedService for TaskHubSidecarServiceServer<T> {
+        const NAME: &'static str =
+            "microsoft.durabletask.implementation.protobuf.TaskHubSidecarService";
     }
 }
