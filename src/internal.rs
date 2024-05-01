@@ -1,6 +1,14 @@
-use std::{any::type_name, fmt::Display, time::SystemTime};
-
 use gethostname::gethostname;
+use opentelemetry::{
+    global::{self, BoxedSpan},
+    trace::{
+        Span, SpanContext, SpanId, SpanKind, TraceContextExt, TraceFlags, TraceId, TraceState,
+        Tracer,
+    },
+    Context, KeyValue,
+};
+
+use std::{any::type_name, borrow::BorrowMut, fmt::Display, str::FromStr, time::SystemTime};
 use uuid::Uuid;
 
 use crate::durabletask_pb::{
@@ -469,6 +477,236 @@ pub(crate) fn get_action_type_name(a: &OrchestratorAction) -> String {
         };
         action_type.to_string()
     }
+}
+
+pub(crate) fn start_new_create_orchestration_span(
+    ctx: &Context,
+    name: &'static str,
+    version: &'static str,
+    instance_id: &'static str,
+) -> BoxedSpan {
+    let attributes = vec![
+        KeyValue::new("durabletask.type", "orchestration"),
+        KeyValue::new("durabletask.task.name", name),
+        KeyValue::new("durabletask.task.instance_id", instance_id),
+    ];
+    start_new_span(
+        ctx.clone(),
+        "create_orchestration",
+        name,
+        version,
+        attributes,
+        SpanKind::Client,
+        SystemTime::now(),
+    )
+}
+
+pub(crate) fn start_new_run_orchestration_span(
+    ctx: Context,
+    es: &'static ExecutionStartedEvent,
+    started_time: SystemTime,
+) -> BoxedSpan {
+    let name = &es.name;
+    let instance_id = es.orchestration_instance.clone().unwrap().instance_id;
+    let version: &str = es.version.as_ref().unwrap();
+    let attributes = vec![
+        KeyValue::new("durabletask.type", "orchestration"),
+        KeyValue::new("durabletask.task.name", name.clone()),
+        KeyValue::new("durabletask.task.instance_id", instance_id),
+    ];
+    start_new_span(
+        ctx,
+        "orchestration",
+        name,
+        version,
+        attributes,
+        SpanKind::Server,
+        started_time,
+    )
+}
+
+pub(crate) fn start_new_activity_span(
+    ctx: Context,
+    name: &'static str,
+    version: &'static str,
+    instance_id: &'static str,
+    task_id: i32,
+) -> BoxedSpan {
+    let attributes = vec![
+        KeyValue::new("durabletask.type", "activity"),
+        KeyValue::new("durabletask.task.name", name),
+        KeyValue::new("durabletask.task.task_id", task_id.to_string()),
+        KeyValue::new("durabletask.task.instance_id", instance_id),
+    ];
+    start_new_span(
+        ctx,
+        "activity",
+        name,
+        version,
+        attributes,
+        SpanKind::Server,
+        SystemTime::now(),
+    )
+}
+
+pub(crate) fn start_and_end_new_timer_span(
+    ctx: Context,
+    tf: &TimerFiredEvent,
+    created_time: SystemTime,
+    instance_id: &'static str,
+) -> Result<(), ()> {
+    let attributes = vec![
+        KeyValue::new("durabletask.type", "timer"),
+        KeyValue::new("durabletask.fire_at", tf.fire_at.as_ref().unwrap().seconds),
+        KeyValue::new("durabletask.task.task_id", tf.timer_id.to_string()),
+        KeyValue::new("durabletask.task.instance_id", instance_id),
+    ];
+
+    let mut span = start_new_span(
+        ctx,
+        "timer",
+        "",
+        "",
+        attributes,
+        SpanKind::Internal,
+        created_time,
+    );
+    span.end();
+    Ok(())
+}
+
+pub(crate) fn start_new_span(
+    ctx: Context,
+    task_type: &str,
+    task_name: &str,
+    task_version: &'static str,
+    attributes: Vec<KeyValue>,
+    kind: SpanKind,
+    timestamp: SystemTime,
+) -> BoxedSpan {
+    let span_name = if !task_version.is_empty() {
+        format!("{}||{}||{}", task_type, task_name, task_version)
+    } else if !task_name.is_empty() {
+        format!("{}||{}", task_type, task_name)
+    } else {
+        task_type.to_string()
+    };
+
+    let attributes = match task_version.is_empty() {
+        true => attributes,
+        false => {
+            let mut attributes = attributes;
+            attributes.push(KeyValue::new("durabletask.task.version", task_version));
+            attributes
+        }
+    };
+    let tracer = global::tracer("durabletask");
+
+    let span_builder = tracer
+        .span_builder(span_name)
+        .with_kind(kind)
+        .with_start_time(timestamp)
+        .with_attributes(attributes);
+
+    span_builder.start_with_context(&tracer, &ctx)
+}
+
+pub(crate) fn unsafe_set_span_context(span: BoxedSpan, span_context: SpanContext) -> bool {
+    if !span.is_recording() {
+        return false;
+    }
+
+    *span.span_context().borrow_mut() = &span_context;
+    true
+}
+
+fn context_from_trace_context(ctx: &Context, tc: &TraceContext) -> Result<Context, ()> {
+    if tc.trace_state.is_none() {
+        return Ok(ctx.clone());
+    }
+
+    let span_context = span_context_from_trace_context(tc)?;
+    Ok(ctx.with_remote_span_context(span_context))
+}
+
+pub(crate) fn span_context_from_trace_context(tc: &TraceContext) -> Result<SpanContext, ()> {
+    let trace_parent = &tc.trace_parent;
+    let parts: Vec<_> = trace_parent.split('-').collect();
+    if parts.len() != 4 {
+        // backwards compatibility with older versions of the protobuf
+        let trace_id = TraceId::from_hex(&tc.trace_parent).map_err(|_| ())?;
+        #[allow(deprecated)]
+        let span_id = SpanId::from_hex(&tc.span_id).map_err(|_| ())?;
+        let trace_flags: TraceFlags =
+            TraceFlags::new(u8::from_str_radix(parts.get(3).unwrap(), 16).map_err(|_| ())?);
+        let span_context_config =
+            SpanContext::new(trace_id, span_id, trace_flags, true, TraceState::default());
+        return Ok(span_context_config);
+    }
+
+    let trace_id = TraceId::from_hex(parts[1]).map_err(|_| ())?;
+    let span_id = SpanId::from_hex(parts[2]).map_err(|_| ())?;
+    let trace_flags: TraceFlags =
+        TraceFlags::new(u8::from_str_radix(parts[3], 16).map_err(|_| ())?);
+
+    let span_context_config = match &tc.trace_state {
+        Some(trace_state) => SpanContext::new(
+            trace_id,
+            span_id,
+            trace_flags,
+            true,
+            TraceState::from_str(trace_state).unwrap(),
+        ),
+        None => SpanContext::new(trace_id, span_id, trace_flags, true, TraceState::default()),
+    };
+
+    Ok(span_context_config)
+}
+
+pub(crate) fn trace_context_from_span(span: Option<BoxedSpan>) -> Option<TraceContext> {
+    if span.is_none() || !span.as_ref().unwrap().span_context().is_sampled() {
+        return None;
+    }
+
+    let span_context = span.as_ref().unwrap().span_context();
+    let trace_parent = format!(
+        "00-{}-{}-{}",
+        span_context.trace_id(),
+        span_context.span_id(),
+        span_context.trace_flags().to_u8(),
+    );
+
+    let trace_state: Option<String> = if !span_context.trace_state().header().is_empty() {
+        // TODO: refactor this disgusting block into a match
+        Some(span_context.trace_state().header())
+    } else {
+        None
+    };
+    let tc = TraceContext {
+        trace_parent,
+        trace_state,
+        ..Default::default()
+    };
+
+    Some(tc)
+}
+
+pub(crate) fn change_span_id(span: BoxedSpan, new_span_id: SpanId) {
+    let modified_span_context = span.span_context().borrow_mut().clone();
+    *modified_span_context.span_id().borrow_mut() = new_span_id;
+    unsafe_set_span_context(span, modified_span_context);
+}
+
+pub(crate) fn cancel_span(span: BoxedSpan) {
+    if span.span_context().is_sampled() {
+        let modified_span_context = span.span_context().borrow_mut().clone();
+        *modified_span_context.trace_flags().borrow_mut() = TraceFlags::default();
+        unsafe_set_span_context(span, modified_span_context);
+    }
+}
+
+pub(crate) fn noop_span() -> BoxedSpan {
+    global::tracer("durabletask").start("noop")
 }
 
 /// Return the function name as a String
