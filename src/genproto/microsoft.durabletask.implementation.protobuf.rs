@@ -10,12 +10,12 @@ pub struct OrchestrationInstance {
 }
 impl ::prost::Name for OrchestrationInstance {
     const NAME: &'static str = "OrchestrationInstance";
-    const PACKAGE: &'static str = "microsoft.durabletask.implementation.protobuf";
+    const PACKAGE: &'static str = "";
     fn full_name() -> ::prost::alloc::string::String {
-        "microsoft.durabletask.implementation.protobuf.OrchestrationInstance".into()
+        "OrchestrationInstance".into()
     }
     fn type_url() -> ::prost::alloc::string::String {
-        "/microsoft.durabletask.implementation.protobuf.OrchestrationInstance".into()
+        "/OrchestrationInstance".into()
     }
 }
 #[derive(serde::Serialize, serde::Deserialize)]
@@ -35,12 +35,12 @@ pub struct ActivityRequest {
 }
 impl ::prost::Name for ActivityRequest {
     const NAME: &'static str = "ActivityRequest";
-    const PACKAGE: &'static str = "microsoft.durabletask.implementation.protobuf";
+    const PACKAGE: &'static str = "";
     fn full_name() -> ::prost::alloc::string::String {
-        "microsoft.durabletask.implementation.protobuf.ActivityRequest".into()
+        "ActivityRequest".into()
     }
     fn type_url() -> ::prost::alloc::string::String {
-        "/microsoft.durabletask.implementation.protobuf.ActivityRequest".into()
+        "/ActivityRequest".into()
     }
 }
 #[derive(serde::Serialize, serde::Deserialize)]
@@ -58,12 +58,12 @@ pub struct ActivityResponse {
 }
 impl ::prost::Name for ActivityResponse {
     const NAME: &'static str = "ActivityResponse";
-    const PACKAGE: &'static str = "microsoft.durabletask.implementation.protobuf";
+    const PACKAGE: &'static str = "";
     fn full_name() -> ::prost::alloc::string::String {
-        "microsoft.durabletask.implementation.protobuf.ActivityResponse".into()
+        "ActivityResponse".into()
     }
     fn type_url() -> ::prost::alloc::string::String {
-        "/microsoft.durabletask.implementation.protobuf.ActivityResponse".into()
+        "/ActivityResponse".into()
     }
 }
 #[derive(serde::Serialize, serde::Deserialize)]
@@ -77,18 +77,20 @@ pub struct TaskFailureDetails {
     #[prost(message, optional, tag = "3")]
     pub stack_trace: ::core::option::Option<::prost::alloc::string::String>,
     #[prost(message, optional, boxed, tag = "4")]
-    pub inner_failure: ::core::option::Option<::prost::alloc::boxed::Box<TaskFailureDetails>>,
+    pub inner_failure: ::core::option::Option<
+        ::prost::alloc::boxed::Box<TaskFailureDetails>,
+    >,
     #[prost(bool, tag = "5")]
     pub is_non_retriable: bool,
 }
 impl ::prost::Name for TaskFailureDetails {
     const NAME: &'static str = "TaskFailureDetails";
-    const PACKAGE: &'static str = "microsoft.durabletask.implementation.protobuf";
+    const PACKAGE: &'static str = "";
     fn full_name() -> ::prost::alloc::string::String {
-        "microsoft.durabletask.implementation.protobuf.TaskFailureDetails".into()
+        "TaskFailureDetails".into()
     }
     fn type_url() -> ::prost::alloc::string::String {
-        "/microsoft.durabletask.implementation.protobuf.TaskFailureDetails".into()
+        "/TaskFailureDetails".into()
     }
 }
 #[derive(serde::Serialize, serde::Deserialize)]
@@ -106,12 +108,12 @@ pub struct ParentInstanceInfo {
 }
 impl ::prost::Name for ParentInstanceInfo {
     const NAME: &'static str = "ParentInstanceInfo";
-    const PACKAGE: &'static str = "microsoft.durabletask.implementation.protobuf";
+    const PACKAGE: &'static str = "";
     fn full_name() -> ::prost::alloc::string::String {
-        "microsoft.durabletask.implementation.protobuf.ParentInstanceInfo".into()
+        "ParentInstanceInfo".into()
     }
     fn type_url() -> ::prost::alloc::string::String {
-        "/microsoft.durabletask.implementation.protobuf.ParentInstanceInfo".into()
+        "/ParentInstanceInfo".into()
     }
 }
 #[derive(serde::Serialize, serde::Deserialize)]
@@ -128,12 +130,12 @@ pub struct TraceContext {
 }
 impl ::prost::Name for TraceContext {
     const NAME: &'static str = "TraceContext";
-    const PACKAGE: &'static str = "microsoft.durabletask.implementation.protobuf";
+    const PACKAGE: &'static str = "";
     fn full_name() -> ::prost::alloc::string::String {
-        "microsoft.durabletask.implementation.protobuf.TraceContext".into()
+        "TraceContext".into()
     }
     fn type_url() -> ::prost::alloc::string::String {
-        "/microsoft.durabletask.implementation.protobuf.TraceContext".into()
+        "/TraceContext".into()
     }
 }
 #[derive(serde::Serialize, serde::Deserialize)]
@@ -159,12 +161,12 @@ pub struct ExecutionStartedEvent {
 }
 impl ::prost::Name for ExecutionStartedEvent {
     const NAME: &'static str = "ExecutionStartedEvent";
-    const PACKAGE: &'static str = "microsoft.durabletask.implementation.protobuf";
+    const PACKAGE: &'static str = "";
     fn full_name() -> ::prost::alloc::string::String {
-        "microsoft.durabletask.implementation.protobuf.ExecutionStartedEvent".into()
+        "ExecutionStartedEvent".into()
     }
     fn type_url() -> ::prost::alloc::string::String {
-        "/microsoft.durabletask.implementation.protobuf.ExecutionStartedEvent".into()
+        "/ExecutionStartedEvent".into()
     }
 }
 #[derive(serde::Serialize, serde::Deserialize)]
@@ -180,12 +182,12 @@ pub struct ExecutionCompletedEvent {
 }
 impl ::prost::Name for ExecutionCompletedEvent {
     const NAME: &'static str = "ExecutionCompletedEvent";
-    const PACKAGE: &'static str = "microsoft.durabletask.implementation.protobuf";
+    const PACKAGE: &'static str = "";
     fn full_name() -> ::prost::alloc::string::String {
-        "microsoft.durabletask.implementation.protobuf.ExecutionCompletedEvent".into()
+        "ExecutionCompletedEvent".into()
     }
     fn type_url() -> ::prost::alloc::string::String {
-        "/microsoft.durabletask.implementation.protobuf.ExecutionCompletedEvent".into()
+        "/ExecutionCompletedEvent".into()
     }
 }
 #[derive(serde::Serialize, serde::Deserialize)]
@@ -199,12 +201,12 @@ pub struct ExecutionTerminatedEvent {
 }
 impl ::prost::Name for ExecutionTerminatedEvent {
     const NAME: &'static str = "ExecutionTerminatedEvent";
-    const PACKAGE: &'static str = "microsoft.durabletask.implementation.protobuf";
+    const PACKAGE: &'static str = "";
     fn full_name() -> ::prost::alloc::string::String {
-        "microsoft.durabletask.implementation.protobuf.ExecutionTerminatedEvent".into()
+        "ExecutionTerminatedEvent".into()
     }
     fn type_url() -> ::prost::alloc::string::String {
-        "/microsoft.durabletask.implementation.protobuf.ExecutionTerminatedEvent".into()
+        "/ExecutionTerminatedEvent".into()
     }
 }
 #[derive(serde::Serialize, serde::Deserialize)]
@@ -222,12 +224,12 @@ pub struct TaskScheduledEvent {
 }
 impl ::prost::Name for TaskScheduledEvent {
     const NAME: &'static str = "TaskScheduledEvent";
-    const PACKAGE: &'static str = "microsoft.durabletask.implementation.protobuf";
+    const PACKAGE: &'static str = "";
     fn full_name() -> ::prost::alloc::string::String {
-        "microsoft.durabletask.implementation.protobuf.TaskScheduledEvent".into()
+        "TaskScheduledEvent".into()
     }
     fn type_url() -> ::prost::alloc::string::String {
-        "/microsoft.durabletask.implementation.protobuf.TaskScheduledEvent".into()
+        "/TaskScheduledEvent".into()
     }
 }
 #[derive(serde::Serialize, serde::Deserialize)]
@@ -241,12 +243,12 @@ pub struct TaskCompletedEvent {
 }
 impl ::prost::Name for TaskCompletedEvent {
     const NAME: &'static str = "TaskCompletedEvent";
-    const PACKAGE: &'static str = "microsoft.durabletask.implementation.protobuf";
+    const PACKAGE: &'static str = "";
     fn full_name() -> ::prost::alloc::string::String {
-        "microsoft.durabletask.implementation.protobuf.TaskCompletedEvent".into()
+        "TaskCompletedEvent".into()
     }
     fn type_url() -> ::prost::alloc::string::String {
-        "/microsoft.durabletask.implementation.protobuf.TaskCompletedEvent".into()
+        "/TaskCompletedEvent".into()
     }
 }
 #[derive(serde::Serialize, serde::Deserialize)]
@@ -260,12 +262,12 @@ pub struct TaskFailedEvent {
 }
 impl ::prost::Name for TaskFailedEvent {
     const NAME: &'static str = "TaskFailedEvent";
-    const PACKAGE: &'static str = "microsoft.durabletask.implementation.protobuf";
+    const PACKAGE: &'static str = "";
     fn full_name() -> ::prost::alloc::string::String {
-        "microsoft.durabletask.implementation.protobuf.TaskFailedEvent".into()
+        "TaskFailedEvent".into()
     }
     fn type_url() -> ::prost::alloc::string::String {
-        "/microsoft.durabletask.implementation.protobuf.TaskFailedEvent".into()
+        "/TaskFailedEvent".into()
     }
 }
 #[derive(serde::Serialize, serde::Deserialize)]
@@ -285,12 +287,12 @@ pub struct SubOrchestrationInstanceCreatedEvent {
 }
 impl ::prost::Name for SubOrchestrationInstanceCreatedEvent {
     const NAME: &'static str = "SubOrchestrationInstanceCreatedEvent";
-    const PACKAGE: &'static str = "microsoft.durabletask.implementation.protobuf";
+    const PACKAGE: &'static str = "";
     fn full_name() -> ::prost::alloc::string::String {
-        "microsoft.durabletask.implementation.protobuf.SubOrchestrationInstanceCreatedEvent".into()
+        "SubOrchestrationInstanceCreatedEvent".into()
     }
     fn type_url() -> ::prost::alloc::string::String {
-        "/microsoft.durabletask.implementation.protobuf.SubOrchestrationInstanceCreatedEvent".into()
+        "/SubOrchestrationInstanceCreatedEvent".into()
     }
 }
 #[derive(serde::Serialize, serde::Deserialize)]
@@ -304,14 +306,12 @@ pub struct SubOrchestrationInstanceCompletedEvent {
 }
 impl ::prost::Name for SubOrchestrationInstanceCompletedEvent {
     const NAME: &'static str = "SubOrchestrationInstanceCompletedEvent";
-    const PACKAGE: &'static str = "microsoft.durabletask.implementation.protobuf";
+    const PACKAGE: &'static str = "";
     fn full_name() -> ::prost::alloc::string::String {
-        "microsoft.durabletask.implementation.protobuf.SubOrchestrationInstanceCompletedEvent"
-            .into()
+        "SubOrchestrationInstanceCompletedEvent".into()
     }
     fn type_url() -> ::prost::alloc::string::String {
-        "/microsoft.durabletask.implementation.protobuf.SubOrchestrationInstanceCompletedEvent"
-            .into()
+        "/SubOrchestrationInstanceCompletedEvent".into()
     }
 }
 #[derive(serde::Serialize, serde::Deserialize)]
@@ -325,12 +325,12 @@ pub struct SubOrchestrationInstanceFailedEvent {
 }
 impl ::prost::Name for SubOrchestrationInstanceFailedEvent {
     const NAME: &'static str = "SubOrchestrationInstanceFailedEvent";
-    const PACKAGE: &'static str = "microsoft.durabletask.implementation.protobuf";
+    const PACKAGE: &'static str = "";
     fn full_name() -> ::prost::alloc::string::String {
-        "microsoft.durabletask.implementation.protobuf.SubOrchestrationInstanceFailedEvent".into()
+        "SubOrchestrationInstanceFailedEvent".into()
     }
     fn type_url() -> ::prost::alloc::string::String {
-        "/microsoft.durabletask.implementation.protobuf.SubOrchestrationInstanceFailedEvent".into()
+        "/SubOrchestrationInstanceFailedEvent".into()
     }
 }
 #[derive(serde::Serialize, serde::Deserialize)]
@@ -342,12 +342,12 @@ pub struct TimerCreatedEvent {
 }
 impl ::prost::Name for TimerCreatedEvent {
     const NAME: &'static str = "TimerCreatedEvent";
-    const PACKAGE: &'static str = "microsoft.durabletask.implementation.protobuf";
+    const PACKAGE: &'static str = "";
     fn full_name() -> ::prost::alloc::string::String {
-        "microsoft.durabletask.implementation.protobuf.TimerCreatedEvent".into()
+        "TimerCreatedEvent".into()
     }
     fn type_url() -> ::prost::alloc::string::String {
-        "/microsoft.durabletask.implementation.protobuf.TimerCreatedEvent".into()
+        "/TimerCreatedEvent".into()
     }
 }
 #[derive(serde::Serialize, serde::Deserialize)]
@@ -361,12 +361,12 @@ pub struct TimerFiredEvent {
 }
 impl ::prost::Name for TimerFiredEvent {
     const NAME: &'static str = "TimerFiredEvent";
-    const PACKAGE: &'static str = "microsoft.durabletask.implementation.protobuf";
+    const PACKAGE: &'static str = "";
     fn full_name() -> ::prost::alloc::string::String {
-        "microsoft.durabletask.implementation.protobuf.TimerFiredEvent".into()
+        "TimerFiredEvent".into()
     }
     fn type_url() -> ::prost::alloc::string::String {
-        "/microsoft.durabletask.implementation.protobuf.TimerFiredEvent".into()
+        "/TimerFiredEvent".into()
     }
 }
 /// No payload data
@@ -376,12 +376,12 @@ impl ::prost::Name for TimerFiredEvent {
 pub struct OrchestratorStartedEvent {}
 impl ::prost::Name for OrchestratorStartedEvent {
     const NAME: &'static str = "OrchestratorStartedEvent";
-    const PACKAGE: &'static str = "microsoft.durabletask.implementation.protobuf";
+    const PACKAGE: &'static str = "";
     fn full_name() -> ::prost::alloc::string::String {
-        "microsoft.durabletask.implementation.protobuf.OrchestratorStartedEvent".into()
+        "OrchestratorStartedEvent".into()
     }
     fn type_url() -> ::prost::alloc::string::String {
-        "/microsoft.durabletask.implementation.protobuf.OrchestratorStartedEvent".into()
+        "/OrchestratorStartedEvent".into()
     }
 }
 /// No payload data
@@ -391,12 +391,12 @@ impl ::prost::Name for OrchestratorStartedEvent {
 pub struct OrchestratorCompletedEvent {}
 impl ::prost::Name for OrchestratorCompletedEvent {
     const NAME: &'static str = "OrchestratorCompletedEvent";
-    const PACKAGE: &'static str = "microsoft.durabletask.implementation.protobuf";
+    const PACKAGE: &'static str = "";
     fn full_name() -> ::prost::alloc::string::String {
-        "microsoft.durabletask.implementation.protobuf.OrchestratorCompletedEvent".into()
+        "OrchestratorCompletedEvent".into()
     }
     fn type_url() -> ::prost::alloc::string::String {
-        "/microsoft.durabletask.implementation.protobuf.OrchestratorCompletedEvent".into()
+        "/OrchestratorCompletedEvent".into()
     }
 }
 #[derive(serde::Serialize, serde::Deserialize)]
@@ -412,12 +412,12 @@ pub struct EventSentEvent {
 }
 impl ::prost::Name for EventSentEvent {
     const NAME: &'static str = "EventSentEvent";
-    const PACKAGE: &'static str = "microsoft.durabletask.implementation.protobuf";
+    const PACKAGE: &'static str = "";
     fn full_name() -> ::prost::alloc::string::String {
-        "microsoft.durabletask.implementation.protobuf.EventSentEvent".into()
+        "EventSentEvent".into()
     }
     fn type_url() -> ::prost::alloc::string::String {
-        "/microsoft.durabletask.implementation.protobuf.EventSentEvent".into()
+        "/EventSentEvent".into()
     }
 }
 #[derive(serde::Serialize, serde::Deserialize)]
@@ -431,12 +431,12 @@ pub struct EventRaisedEvent {
 }
 impl ::prost::Name for EventRaisedEvent {
     const NAME: &'static str = "EventRaisedEvent";
-    const PACKAGE: &'static str = "microsoft.durabletask.implementation.protobuf";
+    const PACKAGE: &'static str = "";
     fn full_name() -> ::prost::alloc::string::String {
-        "microsoft.durabletask.implementation.protobuf.EventRaisedEvent".into()
+        "EventRaisedEvent".into()
     }
     fn type_url() -> ::prost::alloc::string::String {
-        "/microsoft.durabletask.implementation.protobuf.EventRaisedEvent".into()
+        "/EventRaisedEvent".into()
     }
 }
 #[derive(serde::Serialize, serde::Deserialize)]
@@ -448,12 +448,12 @@ pub struct GenericEvent {
 }
 impl ::prost::Name for GenericEvent {
     const NAME: &'static str = "GenericEvent";
-    const PACKAGE: &'static str = "microsoft.durabletask.implementation.protobuf";
+    const PACKAGE: &'static str = "";
     fn full_name() -> ::prost::alloc::string::String {
-        "microsoft.durabletask.implementation.protobuf.GenericEvent".into()
+        "GenericEvent".into()
     }
     fn type_url() -> ::prost::alloc::string::String {
-        "/microsoft.durabletask.implementation.protobuf.GenericEvent".into()
+        "/GenericEvent".into()
     }
 }
 #[derive(serde::Serialize, serde::Deserialize)]
@@ -465,12 +465,12 @@ pub struct HistoryStateEvent {
 }
 impl ::prost::Name for HistoryStateEvent {
     const NAME: &'static str = "HistoryStateEvent";
-    const PACKAGE: &'static str = "microsoft.durabletask.implementation.protobuf";
+    const PACKAGE: &'static str = "";
     fn full_name() -> ::prost::alloc::string::String {
-        "microsoft.durabletask.implementation.protobuf.HistoryStateEvent".into()
+        "HistoryStateEvent".into()
     }
     fn type_url() -> ::prost::alloc::string::String {
-        "/microsoft.durabletask.implementation.protobuf.HistoryStateEvent".into()
+        "/HistoryStateEvent".into()
     }
 }
 #[derive(serde::Serialize, serde::Deserialize)]
@@ -482,12 +482,12 @@ pub struct ContinueAsNewEvent {
 }
 impl ::prost::Name for ContinueAsNewEvent {
     const NAME: &'static str = "ContinueAsNewEvent";
-    const PACKAGE: &'static str = "microsoft.durabletask.implementation.protobuf";
+    const PACKAGE: &'static str = "";
     fn full_name() -> ::prost::alloc::string::String {
-        "microsoft.durabletask.implementation.protobuf.ContinueAsNewEvent".into()
+        "ContinueAsNewEvent".into()
     }
     fn type_url() -> ::prost::alloc::string::String {
-        "/microsoft.durabletask.implementation.protobuf.ContinueAsNewEvent".into()
+        "/ContinueAsNewEvent".into()
     }
 }
 #[derive(serde::Serialize, serde::Deserialize)]
@@ -499,12 +499,12 @@ pub struct ExecutionSuspendedEvent {
 }
 impl ::prost::Name for ExecutionSuspendedEvent {
     const NAME: &'static str = "ExecutionSuspendedEvent";
-    const PACKAGE: &'static str = "microsoft.durabletask.implementation.protobuf";
+    const PACKAGE: &'static str = "";
     fn full_name() -> ::prost::alloc::string::String {
-        "microsoft.durabletask.implementation.protobuf.ExecutionSuspendedEvent".into()
+        "ExecutionSuspendedEvent".into()
     }
     fn type_url() -> ::prost::alloc::string::String {
-        "/microsoft.durabletask.implementation.protobuf.ExecutionSuspendedEvent".into()
+        "/ExecutionSuspendedEvent".into()
     }
 }
 #[derive(serde::Serialize, serde::Deserialize)]
@@ -516,12 +516,12 @@ pub struct ExecutionResumedEvent {
 }
 impl ::prost::Name for ExecutionResumedEvent {
     const NAME: &'static str = "ExecutionResumedEvent";
-    const PACKAGE: &'static str = "microsoft.durabletask.implementation.protobuf";
+    const PACKAGE: &'static str = "";
     fn full_name() -> ::prost::alloc::string::String {
-        "microsoft.durabletask.implementation.protobuf.ExecutionResumedEvent".into()
+        "ExecutionResumedEvent".into()
     }
     fn type_url() -> ::prost::alloc::string::String {
-        "/microsoft.durabletask.implementation.protobuf.ExecutionResumedEvent".into()
+        "/ExecutionResumedEvent".into()
     }
 }
 #[derive(serde::Serialize, serde::Deserialize)]
@@ -588,12 +588,12 @@ pub mod history_event {
 }
 impl ::prost::Name for HistoryEvent {
     const NAME: &'static str = "HistoryEvent";
-    const PACKAGE: &'static str = "microsoft.durabletask.implementation.protobuf";
+    const PACKAGE: &'static str = "";
     fn full_name() -> ::prost::alloc::string::String {
-        "microsoft.durabletask.implementation.protobuf.HistoryEvent".into()
+        "HistoryEvent".into()
     }
     fn type_url() -> ::prost::alloc::string::String {
-        "/microsoft.durabletask.implementation.protobuf.HistoryEvent".into()
+        "/HistoryEvent".into()
     }
 }
 #[derive(serde::Serialize, serde::Deserialize)]
@@ -609,12 +609,12 @@ pub struct ScheduleTaskAction {
 }
 impl ::prost::Name for ScheduleTaskAction {
     const NAME: &'static str = "ScheduleTaskAction";
-    const PACKAGE: &'static str = "microsoft.durabletask.implementation.protobuf";
+    const PACKAGE: &'static str = "";
     fn full_name() -> ::prost::alloc::string::String {
-        "microsoft.durabletask.implementation.protobuf.ScheduleTaskAction".into()
+        "ScheduleTaskAction".into()
     }
     fn type_url() -> ::prost::alloc::string::String {
-        "/microsoft.durabletask.implementation.protobuf.ScheduleTaskAction".into()
+        "/ScheduleTaskAction".into()
     }
 }
 #[derive(serde::Serialize, serde::Deserialize)]
@@ -632,12 +632,12 @@ pub struct CreateSubOrchestrationAction {
 }
 impl ::prost::Name for CreateSubOrchestrationAction {
     const NAME: &'static str = "CreateSubOrchestrationAction";
-    const PACKAGE: &'static str = "microsoft.durabletask.implementation.protobuf";
+    const PACKAGE: &'static str = "";
     fn full_name() -> ::prost::alloc::string::String {
-        "microsoft.durabletask.implementation.protobuf.CreateSubOrchestrationAction".into()
+        "CreateSubOrchestrationAction".into()
     }
     fn type_url() -> ::prost::alloc::string::String {
-        "/microsoft.durabletask.implementation.protobuf.CreateSubOrchestrationAction".into()
+        "/CreateSubOrchestrationAction".into()
     }
 }
 #[derive(serde::Serialize, serde::Deserialize)]
@@ -649,12 +649,12 @@ pub struct CreateTimerAction {
 }
 impl ::prost::Name for CreateTimerAction {
     const NAME: &'static str = "CreateTimerAction";
-    const PACKAGE: &'static str = "microsoft.durabletask.implementation.protobuf";
+    const PACKAGE: &'static str = "";
     fn full_name() -> ::prost::alloc::string::String {
-        "microsoft.durabletask.implementation.protobuf.CreateTimerAction".into()
+        "CreateTimerAction".into()
     }
     fn type_url() -> ::prost::alloc::string::String {
-        "/microsoft.durabletask.implementation.protobuf.CreateTimerAction".into()
+        "/CreateTimerAction".into()
     }
 }
 #[derive(serde::Serialize, serde::Deserialize)]
@@ -670,12 +670,12 @@ pub struct SendEventAction {
 }
 impl ::prost::Name for SendEventAction {
     const NAME: &'static str = "SendEventAction";
-    const PACKAGE: &'static str = "microsoft.durabletask.implementation.protobuf";
+    const PACKAGE: &'static str = "";
     fn full_name() -> ::prost::alloc::string::String {
-        "microsoft.durabletask.implementation.protobuf.SendEventAction".into()
+        "SendEventAction".into()
     }
     fn type_url() -> ::prost::alloc::string::String {
-        "/microsoft.durabletask.implementation.protobuf.SendEventAction".into()
+        "/SendEventAction".into()
     }
 }
 #[derive(serde::Serialize, serde::Deserialize)]
@@ -697,12 +697,12 @@ pub struct CompleteOrchestrationAction {
 }
 impl ::prost::Name for CompleteOrchestrationAction {
     const NAME: &'static str = "CompleteOrchestrationAction";
-    const PACKAGE: &'static str = "microsoft.durabletask.implementation.protobuf";
+    const PACKAGE: &'static str = "";
     fn full_name() -> ::prost::alloc::string::String {
-        "microsoft.durabletask.implementation.protobuf.CompleteOrchestrationAction".into()
+        "CompleteOrchestrationAction".into()
     }
     fn type_url() -> ::prost::alloc::string::String {
-        "/microsoft.durabletask.implementation.protobuf.CompleteOrchestrationAction".into()
+        "/CompleteOrchestrationAction".into()
     }
 }
 #[derive(serde::Serialize, serde::Deserialize)]
@@ -718,12 +718,12 @@ pub struct TerminateOrchestrationAction {
 }
 impl ::prost::Name for TerminateOrchestrationAction {
     const NAME: &'static str = "TerminateOrchestrationAction";
-    const PACKAGE: &'static str = "microsoft.durabletask.implementation.protobuf";
+    const PACKAGE: &'static str = "";
     fn full_name() -> ::prost::alloc::string::String {
-        "microsoft.durabletask.implementation.protobuf.TerminateOrchestrationAction".into()
+        "TerminateOrchestrationAction".into()
     }
     fn type_url() -> ::prost::alloc::string::String {
-        "/microsoft.durabletask.implementation.protobuf.TerminateOrchestrationAction".into()
+        "/TerminateOrchestrationAction".into()
     }
 }
 #[derive(serde::Serialize, serde::Deserialize)]
@@ -736,8 +736,9 @@ pub struct OrchestratorAction {
         oneof = "orchestrator_action::OrchestratorActionType",
         tags = "2, 3, 4, 5, 6, 7"
     )]
-    pub orchestrator_action_type:
-        ::core::option::Option<orchestrator_action::OrchestratorActionType>,
+    pub orchestrator_action_type: ::core::option::Option<
+        orchestrator_action::OrchestratorActionType,
+    >,
 }
 /// Nested message and enum types in `OrchestratorAction`.
 pub mod orchestrator_action {
@@ -761,12 +762,12 @@ pub mod orchestrator_action {
 }
 impl ::prost::Name for OrchestratorAction {
     const NAME: &'static str = "OrchestratorAction";
-    const PACKAGE: &'static str = "microsoft.durabletask.implementation.protobuf";
+    const PACKAGE: &'static str = "";
     fn full_name() -> ::prost::alloc::string::String {
-        "microsoft.durabletask.implementation.protobuf.OrchestratorAction".into()
+        "OrchestratorAction".into()
     }
     fn type_url() -> ::prost::alloc::string::String {
-        "/microsoft.durabletask.implementation.protobuf.OrchestratorAction".into()
+        "/OrchestratorAction".into()
     }
 }
 #[derive(serde::Serialize, serde::Deserialize)]
@@ -786,12 +787,12 @@ pub struct OrchestratorRequest {
 }
 impl ::prost::Name for OrchestratorRequest {
     const NAME: &'static str = "OrchestratorRequest";
-    const PACKAGE: &'static str = "microsoft.durabletask.implementation.protobuf";
+    const PACKAGE: &'static str = "";
     fn full_name() -> ::prost::alloc::string::String {
-        "microsoft.durabletask.implementation.protobuf.OrchestratorRequest".into()
+        "OrchestratorRequest".into()
     }
     fn type_url() -> ::prost::alloc::string::String {
-        "/microsoft.durabletask.implementation.protobuf.OrchestratorRequest".into()
+        "/OrchestratorRequest".into()
     }
 }
 #[derive(serde::Serialize, serde::Deserialize)]
@@ -807,12 +808,12 @@ pub struct OrchestratorResponse {
 }
 impl ::prost::Name for OrchestratorResponse {
     const NAME: &'static str = "OrchestratorResponse";
-    const PACKAGE: &'static str = "microsoft.durabletask.implementation.protobuf";
+    const PACKAGE: &'static str = "";
     fn full_name() -> ::prost::alloc::string::String {
-        "microsoft.durabletask.implementation.protobuf.OrchestratorResponse".into()
+        "OrchestratorResponse".into()
     }
     fn type_url() -> ::prost::alloc::string::String {
-        "/microsoft.durabletask.implementation.protobuf.OrchestratorResponse".into()
+        "/OrchestratorResponse".into()
     }
 }
 #[derive(serde::Serialize, serde::Deserialize)]
@@ -830,16 +831,18 @@ pub struct CreateInstanceRequest {
     #[prost(message, optional, tag = "5")]
     pub scheduled_start_timestamp: ::core::option::Option<::prost_wkt_types::Timestamp>,
     #[prost(message, optional, tag = "6")]
-    pub orchestration_id_reuse_policy: ::core::option::Option<OrchestrationIdReusePolicy>,
+    pub orchestration_id_reuse_policy: ::core::option::Option<
+        OrchestrationIdReusePolicy,
+    >,
 }
 impl ::prost::Name for CreateInstanceRequest {
     const NAME: &'static str = "CreateInstanceRequest";
-    const PACKAGE: &'static str = "microsoft.durabletask.implementation.protobuf";
+    const PACKAGE: &'static str = "";
     fn full_name() -> ::prost::alloc::string::String {
-        "microsoft.durabletask.implementation.protobuf.CreateInstanceRequest".into()
+        "CreateInstanceRequest".into()
     }
     fn type_url() -> ::prost::alloc::string::String {
-        "/microsoft.durabletask.implementation.protobuf.CreateInstanceRequest".into()
+        "/CreateInstanceRequest".into()
     }
 }
 #[derive(serde::Serialize, serde::Deserialize)]
@@ -853,12 +856,12 @@ pub struct OrchestrationIdReusePolicy {
 }
 impl ::prost::Name for OrchestrationIdReusePolicy {
     const NAME: &'static str = "OrchestrationIdReusePolicy";
-    const PACKAGE: &'static str = "microsoft.durabletask.implementation.protobuf";
+    const PACKAGE: &'static str = "";
     fn full_name() -> ::prost::alloc::string::String {
-        "microsoft.durabletask.implementation.protobuf.OrchestrationIdReusePolicy".into()
+        "OrchestrationIdReusePolicy".into()
     }
     fn type_url() -> ::prost::alloc::string::String {
-        "/microsoft.durabletask.implementation.protobuf.OrchestrationIdReusePolicy".into()
+        "/OrchestrationIdReusePolicy".into()
     }
 }
 #[derive(serde::Serialize, serde::Deserialize)]
@@ -870,12 +873,12 @@ pub struct CreateInstanceResponse {
 }
 impl ::prost::Name for CreateInstanceResponse {
     const NAME: &'static str = "CreateInstanceResponse";
-    const PACKAGE: &'static str = "microsoft.durabletask.implementation.protobuf";
+    const PACKAGE: &'static str = "";
     fn full_name() -> ::prost::alloc::string::String {
-        "microsoft.durabletask.implementation.protobuf.CreateInstanceResponse".into()
+        "CreateInstanceResponse".into()
     }
     fn type_url() -> ::prost::alloc::string::String {
-        "/microsoft.durabletask.implementation.protobuf.CreateInstanceResponse".into()
+        "/CreateInstanceResponse".into()
     }
 }
 #[derive(serde::Serialize, serde::Deserialize)]
@@ -889,12 +892,12 @@ pub struct GetInstanceRequest {
 }
 impl ::prost::Name for GetInstanceRequest {
     const NAME: &'static str = "GetInstanceRequest";
-    const PACKAGE: &'static str = "microsoft.durabletask.implementation.protobuf";
+    const PACKAGE: &'static str = "";
     fn full_name() -> ::prost::alloc::string::String {
-        "microsoft.durabletask.implementation.protobuf.GetInstanceRequest".into()
+        "GetInstanceRequest".into()
     }
     fn type_url() -> ::prost::alloc::string::String {
-        "/microsoft.durabletask.implementation.protobuf.GetInstanceRequest".into()
+        "/GetInstanceRequest".into()
     }
 }
 #[derive(serde::Serialize, serde::Deserialize)]
@@ -908,12 +911,12 @@ pub struct GetInstanceResponse {
 }
 impl ::prost::Name for GetInstanceResponse {
     const NAME: &'static str = "GetInstanceResponse";
-    const PACKAGE: &'static str = "microsoft.durabletask.implementation.protobuf";
+    const PACKAGE: &'static str = "";
     fn full_name() -> ::prost::alloc::string::String {
-        "microsoft.durabletask.implementation.protobuf.GetInstanceResponse".into()
+        "GetInstanceResponse".into()
     }
     fn type_url() -> ::prost::alloc::string::String {
-        "/microsoft.durabletask.implementation.protobuf.GetInstanceResponse".into()
+        "/GetInstanceResponse".into()
     }
 }
 #[derive(serde::Serialize, serde::Deserialize)]
@@ -927,12 +930,12 @@ pub struct RewindInstanceRequest {
 }
 impl ::prost::Name for RewindInstanceRequest {
     const NAME: &'static str = "RewindInstanceRequest";
-    const PACKAGE: &'static str = "microsoft.durabletask.implementation.protobuf";
+    const PACKAGE: &'static str = "";
     fn full_name() -> ::prost::alloc::string::String {
-        "microsoft.durabletask.implementation.protobuf.RewindInstanceRequest".into()
+        "RewindInstanceRequest".into()
     }
     fn type_url() -> ::prost::alloc::string::String {
-        "/microsoft.durabletask.implementation.protobuf.RewindInstanceRequest".into()
+        "/RewindInstanceRequest".into()
     }
 }
 /// Empty for now. Using explicit type incase we want to add content later.
@@ -942,12 +945,12 @@ impl ::prost::Name for RewindInstanceRequest {
 pub struct RewindInstanceResponse {}
 impl ::prost::Name for RewindInstanceResponse {
     const NAME: &'static str = "RewindInstanceResponse";
-    const PACKAGE: &'static str = "microsoft.durabletask.implementation.protobuf";
+    const PACKAGE: &'static str = "";
     fn full_name() -> ::prost::alloc::string::String {
-        "microsoft.durabletask.implementation.protobuf.RewindInstanceResponse".into()
+        "RewindInstanceResponse".into()
     }
     fn type_url() -> ::prost::alloc::string::String {
-        "/microsoft.durabletask.implementation.protobuf.RewindInstanceResponse".into()
+        "/RewindInstanceResponse".into()
     }
 }
 #[derive(serde::Serialize, serde::Deserialize)]
@@ -979,12 +982,12 @@ pub struct OrchestrationState {
 }
 impl ::prost::Name for OrchestrationState {
     const NAME: &'static str = "OrchestrationState";
-    const PACKAGE: &'static str = "microsoft.durabletask.implementation.protobuf";
+    const PACKAGE: &'static str = "";
     fn full_name() -> ::prost::alloc::string::String {
-        "microsoft.durabletask.implementation.protobuf.OrchestrationState".into()
+        "OrchestrationState".into()
     }
     fn type_url() -> ::prost::alloc::string::String {
-        "/microsoft.durabletask.implementation.protobuf.OrchestrationState".into()
+        "/OrchestrationState".into()
     }
 }
 #[derive(serde::Serialize, serde::Deserialize)]
@@ -1000,12 +1003,12 @@ pub struct RaiseEventRequest {
 }
 impl ::prost::Name for RaiseEventRequest {
     const NAME: &'static str = "RaiseEventRequest";
-    const PACKAGE: &'static str = "microsoft.durabletask.implementation.protobuf";
+    const PACKAGE: &'static str = "";
     fn full_name() -> ::prost::alloc::string::String {
-        "microsoft.durabletask.implementation.protobuf.RaiseEventRequest".into()
+        "RaiseEventRequest".into()
     }
     fn type_url() -> ::prost::alloc::string::String {
-        "/microsoft.durabletask.implementation.protobuf.RaiseEventRequest".into()
+        "/RaiseEventRequest".into()
     }
 }
 /// No payload
@@ -1015,12 +1018,12 @@ impl ::prost::Name for RaiseEventRequest {
 pub struct RaiseEventResponse {}
 impl ::prost::Name for RaiseEventResponse {
     const NAME: &'static str = "RaiseEventResponse";
-    const PACKAGE: &'static str = "microsoft.durabletask.implementation.protobuf";
+    const PACKAGE: &'static str = "";
     fn full_name() -> ::prost::alloc::string::String {
-        "microsoft.durabletask.implementation.protobuf.RaiseEventResponse".into()
+        "RaiseEventResponse".into()
     }
     fn type_url() -> ::prost::alloc::string::String {
-        "/microsoft.durabletask.implementation.protobuf.RaiseEventResponse".into()
+        "/RaiseEventResponse".into()
     }
 }
 #[derive(serde::Serialize, serde::Deserialize)]
@@ -1036,12 +1039,12 @@ pub struct TerminateRequest {
 }
 impl ::prost::Name for TerminateRequest {
     const NAME: &'static str = "TerminateRequest";
-    const PACKAGE: &'static str = "microsoft.durabletask.implementation.protobuf";
+    const PACKAGE: &'static str = "";
     fn full_name() -> ::prost::alloc::string::String {
-        "microsoft.durabletask.implementation.protobuf.TerminateRequest".into()
+        "TerminateRequest".into()
     }
     fn type_url() -> ::prost::alloc::string::String {
-        "/microsoft.durabletask.implementation.protobuf.TerminateRequest".into()
+        "/TerminateRequest".into()
     }
 }
 /// No payload
@@ -1051,12 +1054,12 @@ impl ::prost::Name for TerminateRequest {
 pub struct TerminateResponse {}
 impl ::prost::Name for TerminateResponse {
     const NAME: &'static str = "TerminateResponse";
-    const PACKAGE: &'static str = "microsoft.durabletask.implementation.protobuf";
+    const PACKAGE: &'static str = "";
     fn full_name() -> ::prost::alloc::string::String {
-        "microsoft.durabletask.implementation.protobuf.TerminateResponse".into()
+        "TerminateResponse".into()
     }
     fn type_url() -> ::prost::alloc::string::String {
-        "/microsoft.durabletask.implementation.protobuf.TerminateResponse".into()
+        "/TerminateResponse".into()
     }
 }
 #[derive(serde::Serialize, serde::Deserialize)]
@@ -1070,12 +1073,12 @@ pub struct SuspendRequest {
 }
 impl ::prost::Name for SuspendRequest {
     const NAME: &'static str = "SuspendRequest";
-    const PACKAGE: &'static str = "microsoft.durabletask.implementation.protobuf";
+    const PACKAGE: &'static str = "";
     fn full_name() -> ::prost::alloc::string::String {
-        "microsoft.durabletask.implementation.protobuf.SuspendRequest".into()
+        "SuspendRequest".into()
     }
     fn type_url() -> ::prost::alloc::string::String {
-        "/microsoft.durabletask.implementation.protobuf.SuspendRequest".into()
+        "/SuspendRequest".into()
     }
 }
 /// No payload
@@ -1085,12 +1088,12 @@ impl ::prost::Name for SuspendRequest {
 pub struct SuspendResponse {}
 impl ::prost::Name for SuspendResponse {
     const NAME: &'static str = "SuspendResponse";
-    const PACKAGE: &'static str = "microsoft.durabletask.implementation.protobuf";
+    const PACKAGE: &'static str = "";
     fn full_name() -> ::prost::alloc::string::String {
-        "microsoft.durabletask.implementation.protobuf.SuspendResponse".into()
+        "SuspendResponse".into()
     }
     fn type_url() -> ::prost::alloc::string::String {
-        "/microsoft.durabletask.implementation.protobuf.SuspendResponse".into()
+        "/SuspendResponse".into()
     }
 }
 #[derive(serde::Serialize, serde::Deserialize)]
@@ -1104,12 +1107,12 @@ pub struct ResumeRequest {
 }
 impl ::prost::Name for ResumeRequest {
     const NAME: &'static str = "ResumeRequest";
-    const PACKAGE: &'static str = "microsoft.durabletask.implementation.protobuf";
+    const PACKAGE: &'static str = "";
     fn full_name() -> ::prost::alloc::string::String {
-        "microsoft.durabletask.implementation.protobuf.ResumeRequest".into()
+        "ResumeRequest".into()
     }
     fn type_url() -> ::prost::alloc::string::String {
-        "/microsoft.durabletask.implementation.protobuf.ResumeRequest".into()
+        "/ResumeRequest".into()
     }
 }
 /// No payload
@@ -1119,12 +1122,12 @@ impl ::prost::Name for ResumeRequest {
 pub struct ResumeResponse {}
 impl ::prost::Name for ResumeResponse {
     const NAME: &'static str = "ResumeResponse";
-    const PACKAGE: &'static str = "microsoft.durabletask.implementation.protobuf";
+    const PACKAGE: &'static str = "";
     fn full_name() -> ::prost::alloc::string::String {
-        "microsoft.durabletask.implementation.protobuf.ResumeResponse".into()
+        "ResumeResponse".into()
     }
     fn type_url() -> ::prost::alloc::string::String {
-        "/microsoft.durabletask.implementation.protobuf.ResumeResponse".into()
+        "/ResumeResponse".into()
     }
 }
 #[derive(serde::Serialize, serde::Deserialize)]
@@ -1136,12 +1139,12 @@ pub struct QueryInstancesRequest {
 }
 impl ::prost::Name for QueryInstancesRequest {
     const NAME: &'static str = "QueryInstancesRequest";
-    const PACKAGE: &'static str = "microsoft.durabletask.implementation.protobuf";
+    const PACKAGE: &'static str = "";
     fn full_name() -> ::prost::alloc::string::String {
-        "microsoft.durabletask.implementation.protobuf.QueryInstancesRequest".into()
+        "QueryInstancesRequest".into()
     }
     fn type_url() -> ::prost::alloc::string::String {
-        "/microsoft.durabletask.implementation.protobuf.QueryInstancesRequest".into()
+        "/QueryInstancesRequest".into()
     }
 }
 #[derive(serde::Serialize, serde::Deserialize)]
@@ -1167,12 +1170,12 @@ pub struct InstanceQuery {
 }
 impl ::prost::Name for InstanceQuery {
     const NAME: &'static str = "InstanceQuery";
-    const PACKAGE: &'static str = "microsoft.durabletask.implementation.protobuf";
+    const PACKAGE: &'static str = "";
     fn full_name() -> ::prost::alloc::string::String {
-        "microsoft.durabletask.implementation.protobuf.InstanceQuery".into()
+        "InstanceQuery".into()
     }
     fn type_url() -> ::prost::alloc::string::String {
-        "/microsoft.durabletask.implementation.protobuf.InstanceQuery".into()
+        "/InstanceQuery".into()
     }
 }
 #[derive(serde::Serialize, serde::Deserialize)]
@@ -1186,12 +1189,12 @@ pub struct QueryInstancesResponse {
 }
 impl ::prost::Name for QueryInstancesResponse {
     const NAME: &'static str = "QueryInstancesResponse";
-    const PACKAGE: &'static str = "microsoft.durabletask.implementation.protobuf";
+    const PACKAGE: &'static str = "";
     fn full_name() -> ::prost::alloc::string::String {
-        "microsoft.durabletask.implementation.protobuf.QueryInstancesResponse".into()
+        "QueryInstancesResponse".into()
     }
     fn type_url() -> ::prost::alloc::string::String {
-        "/microsoft.durabletask.implementation.protobuf.QueryInstancesResponse".into()
+        "/QueryInstancesResponse".into()
     }
 }
 #[derive(serde::Serialize, serde::Deserialize)]
@@ -1217,12 +1220,12 @@ pub mod purge_instances_request {
 }
 impl ::prost::Name for PurgeInstancesRequest {
     const NAME: &'static str = "PurgeInstancesRequest";
-    const PACKAGE: &'static str = "microsoft.durabletask.implementation.protobuf";
+    const PACKAGE: &'static str = "";
     fn full_name() -> ::prost::alloc::string::String {
-        "microsoft.durabletask.implementation.protobuf.PurgeInstancesRequest".into()
+        "PurgeInstancesRequest".into()
     }
     fn type_url() -> ::prost::alloc::string::String {
-        "/microsoft.durabletask.implementation.protobuf.PurgeInstancesRequest".into()
+        "/PurgeInstancesRequest".into()
     }
 }
 #[derive(serde::Serialize, serde::Deserialize)]
@@ -1238,12 +1241,12 @@ pub struct PurgeInstanceFilter {
 }
 impl ::prost::Name for PurgeInstanceFilter {
     const NAME: &'static str = "PurgeInstanceFilter";
-    const PACKAGE: &'static str = "microsoft.durabletask.implementation.protobuf";
+    const PACKAGE: &'static str = "";
     fn full_name() -> ::prost::alloc::string::String {
-        "microsoft.durabletask.implementation.protobuf.PurgeInstanceFilter".into()
+        "PurgeInstanceFilter".into()
     }
     fn type_url() -> ::prost::alloc::string::String {
-        "/microsoft.durabletask.implementation.protobuf.PurgeInstanceFilter".into()
+        "/PurgeInstanceFilter".into()
     }
 }
 #[derive(serde::Serialize, serde::Deserialize)]
@@ -1255,12 +1258,12 @@ pub struct PurgeInstancesResponse {
 }
 impl ::prost::Name for PurgeInstancesResponse {
     const NAME: &'static str = "PurgeInstancesResponse";
-    const PACKAGE: &'static str = "microsoft.durabletask.implementation.protobuf";
+    const PACKAGE: &'static str = "";
     fn full_name() -> ::prost::alloc::string::String {
-        "microsoft.durabletask.implementation.protobuf.PurgeInstancesResponse".into()
+        "PurgeInstancesResponse".into()
     }
     fn type_url() -> ::prost::alloc::string::String {
-        "/microsoft.durabletask.implementation.protobuf.PurgeInstancesResponse".into()
+        "/PurgeInstancesResponse".into()
     }
 }
 #[derive(serde::Serialize, serde::Deserialize)]
@@ -1272,12 +1275,12 @@ pub struct CreateTaskHubRequest {
 }
 impl ::prost::Name for CreateTaskHubRequest {
     const NAME: &'static str = "CreateTaskHubRequest";
-    const PACKAGE: &'static str = "microsoft.durabletask.implementation.protobuf";
+    const PACKAGE: &'static str = "";
     fn full_name() -> ::prost::alloc::string::String {
-        "microsoft.durabletask.implementation.protobuf.CreateTaskHubRequest".into()
+        "CreateTaskHubRequest".into()
     }
     fn type_url() -> ::prost::alloc::string::String {
-        "/microsoft.durabletask.implementation.protobuf.CreateTaskHubRequest".into()
+        "/CreateTaskHubRequest".into()
     }
 }
 /// no playload
@@ -1287,12 +1290,12 @@ impl ::prost::Name for CreateTaskHubRequest {
 pub struct CreateTaskHubResponse {}
 impl ::prost::Name for CreateTaskHubResponse {
     const NAME: &'static str = "CreateTaskHubResponse";
-    const PACKAGE: &'static str = "microsoft.durabletask.implementation.protobuf";
+    const PACKAGE: &'static str = "";
     fn full_name() -> ::prost::alloc::string::String {
-        "microsoft.durabletask.implementation.protobuf.CreateTaskHubResponse".into()
+        "CreateTaskHubResponse".into()
     }
     fn type_url() -> ::prost::alloc::string::String {
-        "/microsoft.durabletask.implementation.protobuf.CreateTaskHubResponse".into()
+        "/CreateTaskHubResponse".into()
     }
 }
 /// no playload
@@ -1302,12 +1305,12 @@ impl ::prost::Name for CreateTaskHubResponse {
 pub struct DeleteTaskHubRequest {}
 impl ::prost::Name for DeleteTaskHubRequest {
     const NAME: &'static str = "DeleteTaskHubRequest";
-    const PACKAGE: &'static str = "microsoft.durabletask.implementation.protobuf";
+    const PACKAGE: &'static str = "";
     fn full_name() -> ::prost::alloc::string::String {
-        "microsoft.durabletask.implementation.protobuf.DeleteTaskHubRequest".into()
+        "DeleteTaskHubRequest".into()
     }
     fn type_url() -> ::prost::alloc::string::String {
-        "/microsoft.durabletask.implementation.protobuf.DeleteTaskHubRequest".into()
+        "/DeleteTaskHubRequest".into()
     }
 }
 /// no playload
@@ -1317,12 +1320,12 @@ impl ::prost::Name for DeleteTaskHubRequest {
 pub struct DeleteTaskHubResponse {}
 impl ::prost::Name for DeleteTaskHubResponse {
     const NAME: &'static str = "DeleteTaskHubResponse";
-    const PACKAGE: &'static str = "microsoft.durabletask.implementation.protobuf";
+    const PACKAGE: &'static str = "";
     fn full_name() -> ::prost::alloc::string::String {
-        "microsoft.durabletask.implementation.protobuf.DeleteTaskHubResponse".into()
+        "DeleteTaskHubResponse".into()
     }
     fn type_url() -> ::prost::alloc::string::String {
-        "/microsoft.durabletask.implementation.protobuf.DeleteTaskHubResponse".into()
+        "/DeleteTaskHubResponse".into()
     }
 }
 #[derive(serde::Serialize, serde::Deserialize)]
@@ -1342,12 +1345,12 @@ pub struct SignalEntityRequest {
 }
 impl ::prost::Name for SignalEntityRequest {
     const NAME: &'static str = "SignalEntityRequest";
-    const PACKAGE: &'static str = "microsoft.durabletask.implementation.protobuf";
+    const PACKAGE: &'static str = "";
     fn full_name() -> ::prost::alloc::string::String {
-        "microsoft.durabletask.implementation.protobuf.SignalEntityRequest".into()
+        "SignalEntityRequest".into()
     }
     fn type_url() -> ::prost::alloc::string::String {
-        "/microsoft.durabletask.implementation.protobuf.SignalEntityRequest".into()
+        "/SignalEntityRequest".into()
     }
 }
 /// no payload
@@ -1357,12 +1360,12 @@ impl ::prost::Name for SignalEntityRequest {
 pub struct SignalEntityResponse {}
 impl ::prost::Name for SignalEntityResponse {
     const NAME: &'static str = "SignalEntityResponse";
-    const PACKAGE: &'static str = "microsoft.durabletask.implementation.protobuf";
+    const PACKAGE: &'static str = "";
     fn full_name() -> ::prost::alloc::string::String {
-        "microsoft.durabletask.implementation.protobuf.SignalEntityResponse".into()
+        "SignalEntityResponse".into()
     }
     fn type_url() -> ::prost::alloc::string::String {
-        "/microsoft.durabletask.implementation.protobuf.SignalEntityResponse".into()
+        "/SignalEntityResponse".into()
     }
 }
 #[derive(serde::Serialize, serde::Deserialize)]
@@ -1376,12 +1379,12 @@ pub struct GetEntityRequest {
 }
 impl ::prost::Name for GetEntityRequest {
     const NAME: &'static str = "GetEntityRequest";
-    const PACKAGE: &'static str = "microsoft.durabletask.implementation.protobuf";
+    const PACKAGE: &'static str = "";
     fn full_name() -> ::prost::alloc::string::String {
-        "microsoft.durabletask.implementation.protobuf.GetEntityRequest".into()
+        "GetEntityRequest".into()
     }
     fn type_url() -> ::prost::alloc::string::String {
-        "/microsoft.durabletask.implementation.protobuf.GetEntityRequest".into()
+        "/GetEntityRequest".into()
     }
 }
 #[derive(serde::Serialize, serde::Deserialize)]
@@ -1395,12 +1398,12 @@ pub struct GetEntityResponse {
 }
 impl ::prost::Name for GetEntityResponse {
     const NAME: &'static str = "GetEntityResponse";
-    const PACKAGE: &'static str = "microsoft.durabletask.implementation.protobuf";
+    const PACKAGE: &'static str = "";
     fn full_name() -> ::prost::alloc::string::String {
-        "microsoft.durabletask.implementation.protobuf.GetEntityResponse".into()
+        "GetEntityResponse".into()
     }
     fn type_url() -> ::prost::alloc::string::String {
-        "/microsoft.durabletask.implementation.protobuf.GetEntityResponse".into()
+        "/GetEntityResponse".into()
     }
 }
 #[derive(serde::Serialize, serde::Deserialize)]
@@ -1424,12 +1427,12 @@ pub struct EntityQuery {
 }
 impl ::prost::Name for EntityQuery {
     const NAME: &'static str = "EntityQuery";
-    const PACKAGE: &'static str = "microsoft.durabletask.implementation.protobuf";
+    const PACKAGE: &'static str = "";
     fn full_name() -> ::prost::alloc::string::String {
-        "microsoft.durabletask.implementation.protobuf.EntityQuery".into()
+        "EntityQuery".into()
     }
     fn type_url() -> ::prost::alloc::string::String {
-        "/microsoft.durabletask.implementation.protobuf.EntityQuery".into()
+        "/EntityQuery".into()
     }
 }
 #[derive(serde::Serialize, serde::Deserialize)]
@@ -1441,12 +1444,12 @@ pub struct QueryEntitiesRequest {
 }
 impl ::prost::Name for QueryEntitiesRequest {
     const NAME: &'static str = "QueryEntitiesRequest";
-    const PACKAGE: &'static str = "microsoft.durabletask.implementation.protobuf";
+    const PACKAGE: &'static str = "";
     fn full_name() -> ::prost::alloc::string::String {
-        "microsoft.durabletask.implementation.protobuf.QueryEntitiesRequest".into()
+        "QueryEntitiesRequest".into()
     }
     fn type_url() -> ::prost::alloc::string::String {
-        "/microsoft.durabletask.implementation.protobuf.QueryEntitiesRequest".into()
+        "/QueryEntitiesRequest".into()
     }
 }
 #[derive(serde::Serialize, serde::Deserialize)]
@@ -1460,12 +1463,12 @@ pub struct QueryEntitiesResponse {
 }
 impl ::prost::Name for QueryEntitiesResponse {
     const NAME: &'static str = "QueryEntitiesResponse";
-    const PACKAGE: &'static str = "microsoft.durabletask.implementation.protobuf";
+    const PACKAGE: &'static str = "";
     fn full_name() -> ::prost::alloc::string::String {
-        "microsoft.durabletask.implementation.protobuf.QueryEntitiesResponse".into()
+        "QueryEntitiesResponse".into()
     }
     fn type_url() -> ::prost::alloc::string::String {
-        "/microsoft.durabletask.implementation.protobuf.QueryEntitiesResponse".into()
+        "/QueryEntitiesResponse".into()
     }
 }
 #[derive(serde::Serialize, serde::Deserialize)]
@@ -1485,12 +1488,12 @@ pub struct EntityMetadata {
 }
 impl ::prost::Name for EntityMetadata {
     const NAME: &'static str = "EntityMetadata";
-    const PACKAGE: &'static str = "microsoft.durabletask.implementation.protobuf";
+    const PACKAGE: &'static str = "";
     fn full_name() -> ::prost::alloc::string::String {
-        "microsoft.durabletask.implementation.protobuf.EntityMetadata".into()
+        "EntityMetadata".into()
     }
     fn type_url() -> ::prost::alloc::string::String {
-        "/microsoft.durabletask.implementation.protobuf.EntityMetadata".into()
+        "/EntityMetadata".into()
     }
 }
 #[derive(serde::Serialize, serde::Deserialize)]
@@ -1506,12 +1509,12 @@ pub struct CleanEntityStorageRequest {
 }
 impl ::prost::Name for CleanEntityStorageRequest {
     const NAME: &'static str = "CleanEntityStorageRequest";
-    const PACKAGE: &'static str = "microsoft.durabletask.implementation.protobuf";
+    const PACKAGE: &'static str = "";
     fn full_name() -> ::prost::alloc::string::String {
-        "microsoft.durabletask.implementation.protobuf.CleanEntityStorageRequest".into()
+        "CleanEntityStorageRequest".into()
     }
     fn type_url() -> ::prost::alloc::string::String {
-        "/microsoft.durabletask.implementation.protobuf.CleanEntityStorageRequest".into()
+        "/CleanEntityStorageRequest".into()
     }
 }
 #[derive(serde::Serialize, serde::Deserialize)]
@@ -1527,12 +1530,12 @@ pub struct CleanEntityStorageResponse {
 }
 impl ::prost::Name for CleanEntityStorageResponse {
     const NAME: &'static str = "CleanEntityStorageResponse";
-    const PACKAGE: &'static str = "microsoft.durabletask.implementation.protobuf";
+    const PACKAGE: &'static str = "";
     fn full_name() -> ::prost::alloc::string::String {
-        "microsoft.durabletask.implementation.protobuf.CleanEntityStorageResponse".into()
+        "CleanEntityStorageResponse".into()
     }
     fn type_url() -> ::prost::alloc::string::String {
-        "/microsoft.durabletask.implementation.protobuf.CleanEntityStorageResponse".into()
+        "/CleanEntityStorageResponse".into()
     }
 }
 #[derive(serde::Serialize, serde::Deserialize)]
@@ -1540,16 +1543,18 @@ impl ::prost::Name for CleanEntityStorageResponse {
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct OrchestratorEntityParameters {
     #[prost(message, optional, tag = "1")]
-    pub entity_message_reorder_window: ::core::option::Option<::prost_wkt_types::Duration>,
+    pub entity_message_reorder_window: ::core::option::Option<
+        ::prost_wkt_types::Duration,
+    >,
 }
 impl ::prost::Name for OrchestratorEntityParameters {
     const NAME: &'static str = "OrchestratorEntityParameters";
-    const PACKAGE: &'static str = "microsoft.durabletask.implementation.protobuf";
+    const PACKAGE: &'static str = "";
     fn full_name() -> ::prost::alloc::string::String {
-        "microsoft.durabletask.implementation.protobuf.OrchestratorEntityParameters".into()
+        "OrchestratorEntityParameters".into()
     }
     fn type_url() -> ::prost::alloc::string::String {
-        "/microsoft.durabletask.implementation.protobuf.OrchestratorEntityParameters".into()
+        "/OrchestratorEntityParameters".into()
     }
 }
 #[derive(serde::Serialize, serde::Deserialize)]
@@ -1565,12 +1570,12 @@ pub struct EntityBatchRequest {
 }
 impl ::prost::Name for EntityBatchRequest {
     const NAME: &'static str = "EntityBatchRequest";
-    const PACKAGE: &'static str = "microsoft.durabletask.implementation.protobuf";
+    const PACKAGE: &'static str = "";
     fn full_name() -> ::prost::alloc::string::String {
-        "microsoft.durabletask.implementation.protobuf.EntityBatchRequest".into()
+        "EntityBatchRequest".into()
     }
     fn type_url() -> ::prost::alloc::string::String {
-        "/microsoft.durabletask.implementation.protobuf.EntityBatchRequest".into()
+        "/EntityBatchRequest".into()
     }
 }
 #[derive(serde::Serialize, serde::Deserialize)]
@@ -1588,12 +1593,12 @@ pub struct EntityBatchResult {
 }
 impl ::prost::Name for EntityBatchResult {
     const NAME: &'static str = "EntityBatchResult";
-    const PACKAGE: &'static str = "microsoft.durabletask.implementation.protobuf";
+    const PACKAGE: &'static str = "";
     fn full_name() -> ::prost::alloc::string::String {
-        "microsoft.durabletask.implementation.protobuf.EntityBatchResult".into()
+        "EntityBatchResult".into()
     }
     fn type_url() -> ::prost::alloc::string::String {
-        "/microsoft.durabletask.implementation.protobuf.EntityBatchResult".into()
+        "/EntityBatchResult".into()
     }
 }
 #[derive(serde::Serialize, serde::Deserialize)]
@@ -1609,12 +1614,12 @@ pub struct OperationRequest {
 }
 impl ::prost::Name for OperationRequest {
     const NAME: &'static str = "OperationRequest";
-    const PACKAGE: &'static str = "microsoft.durabletask.implementation.protobuf";
+    const PACKAGE: &'static str = "";
     fn full_name() -> ::prost::alloc::string::String {
-        "microsoft.durabletask.implementation.protobuf.OperationRequest".into()
+        "OperationRequest".into()
     }
     fn type_url() -> ::prost::alloc::string::String {
-        "/microsoft.durabletask.implementation.protobuf.OperationRequest".into()
+        "/OperationRequest".into()
     }
 }
 #[derive(serde::Serialize, serde::Deserialize)]
@@ -1638,12 +1643,12 @@ pub mod operation_result {
 }
 impl ::prost::Name for OperationResult {
     const NAME: &'static str = "OperationResult";
-    const PACKAGE: &'static str = "microsoft.durabletask.implementation.protobuf";
+    const PACKAGE: &'static str = "";
     fn full_name() -> ::prost::alloc::string::String {
-        "microsoft.durabletask.implementation.protobuf.OperationResult".into()
+        "OperationResult".into()
     }
     fn type_url() -> ::prost::alloc::string::String {
-        "/microsoft.durabletask.implementation.protobuf.OperationResult".into()
+        "/OperationResult".into()
     }
 }
 #[derive(serde::Serialize, serde::Deserialize)]
@@ -1655,12 +1660,12 @@ pub struct OperationResultSuccess {
 }
 impl ::prost::Name for OperationResultSuccess {
     const NAME: &'static str = "OperationResultSuccess";
-    const PACKAGE: &'static str = "microsoft.durabletask.implementation.protobuf";
+    const PACKAGE: &'static str = "";
     fn full_name() -> ::prost::alloc::string::String {
-        "microsoft.durabletask.implementation.protobuf.OperationResultSuccess".into()
+        "OperationResultSuccess".into()
     }
     fn type_url() -> ::prost::alloc::string::String {
-        "/microsoft.durabletask.implementation.protobuf.OperationResultSuccess".into()
+        "/OperationResultSuccess".into()
     }
 }
 #[derive(serde::Serialize, serde::Deserialize)]
@@ -1672,12 +1677,12 @@ pub struct OperationResultFailure {
 }
 impl ::prost::Name for OperationResultFailure {
     const NAME: &'static str = "OperationResultFailure";
-    const PACKAGE: &'static str = "microsoft.durabletask.implementation.protobuf";
+    const PACKAGE: &'static str = "";
     fn full_name() -> ::prost::alloc::string::String {
-        "microsoft.durabletask.implementation.protobuf.OperationResultFailure".into()
+        "OperationResultFailure".into()
     }
     fn type_url() -> ::prost::alloc::string::String {
-        "/microsoft.durabletask.implementation.protobuf.OperationResultFailure".into()
+        "/OperationResultFailure".into()
     }
 }
 #[derive(serde::Serialize, serde::Deserialize)]
@@ -1687,7 +1692,9 @@ pub struct OperationAction {
     #[prost(int32, tag = "1")]
     pub id: i32,
     #[prost(oneof = "operation_action::OperationActionType", tags = "2, 3")]
-    pub operation_action_type: ::core::option::Option<operation_action::OperationActionType>,
+    pub operation_action_type: ::core::option::Option<
+        operation_action::OperationActionType,
+    >,
 }
 /// Nested message and enum types in `OperationAction`.
 pub mod operation_action {
@@ -1703,12 +1710,12 @@ pub mod operation_action {
 }
 impl ::prost::Name for OperationAction {
     const NAME: &'static str = "OperationAction";
-    const PACKAGE: &'static str = "microsoft.durabletask.implementation.protobuf";
+    const PACKAGE: &'static str = "";
     fn full_name() -> ::prost::alloc::string::String {
-        "microsoft.durabletask.implementation.protobuf.OperationAction".into()
+        "OperationAction".into()
     }
     fn type_url() -> ::prost::alloc::string::String {
-        "/microsoft.durabletask.implementation.protobuf.OperationAction".into()
+        "/OperationAction".into()
     }
 }
 #[derive(serde::Serialize, serde::Deserialize)]
@@ -1726,12 +1733,12 @@ pub struct SendSignalAction {
 }
 impl ::prost::Name for SendSignalAction {
     const NAME: &'static str = "SendSignalAction";
-    const PACKAGE: &'static str = "microsoft.durabletask.implementation.protobuf";
+    const PACKAGE: &'static str = "";
     fn full_name() -> ::prost::alloc::string::String {
-        "microsoft.durabletask.implementation.protobuf.SendSignalAction".into()
+        "SendSignalAction".into()
     }
     fn type_url() -> ::prost::alloc::string::String {
-        "/microsoft.durabletask.implementation.protobuf.SendSignalAction".into()
+        "/SendSignalAction".into()
     }
 }
 #[derive(serde::Serialize, serde::Deserialize)]
@@ -1751,12 +1758,12 @@ pub struct StartNewOrchestrationAction {
 }
 impl ::prost::Name for StartNewOrchestrationAction {
     const NAME: &'static str = "StartNewOrchestrationAction";
-    const PACKAGE: &'static str = "microsoft.durabletask.implementation.protobuf";
+    const PACKAGE: &'static str = "";
     fn full_name() -> ::prost::alloc::string::String {
-        "microsoft.durabletask.implementation.protobuf.StartNewOrchestrationAction".into()
+        "StartNewOrchestrationAction".into()
     }
     fn type_url() -> ::prost::alloc::string::String {
-        "/microsoft.durabletask.implementation.protobuf.StartNewOrchestrationAction".into()
+        "/StartNewOrchestrationAction".into()
     }
 }
 /// No parameters currently
@@ -1766,12 +1773,12 @@ impl ::prost::Name for StartNewOrchestrationAction {
 pub struct GetWorkItemsRequest {}
 impl ::prost::Name for GetWorkItemsRequest {
     const NAME: &'static str = "GetWorkItemsRequest";
-    const PACKAGE: &'static str = "microsoft.durabletask.implementation.protobuf";
+    const PACKAGE: &'static str = "";
     fn full_name() -> ::prost::alloc::string::String {
-        "microsoft.durabletask.implementation.protobuf.GetWorkItemsRequest".into()
+        "GetWorkItemsRequest".into()
     }
     fn type_url() -> ::prost::alloc::string::String {
-        "/microsoft.durabletask.implementation.protobuf.GetWorkItemsRequest".into()
+        "/GetWorkItemsRequest".into()
     }
 }
 #[derive(serde::Serialize, serde::Deserialize)]
@@ -1797,12 +1804,12 @@ pub mod work_item {
 }
 impl ::prost::Name for WorkItem {
     const NAME: &'static str = "WorkItem";
-    const PACKAGE: &'static str = "microsoft.durabletask.implementation.protobuf";
+    const PACKAGE: &'static str = "";
     fn full_name() -> ::prost::alloc::string::String {
-        "microsoft.durabletask.implementation.protobuf.WorkItem".into()
+        "WorkItem".into()
     }
     fn type_url() -> ::prost::alloc::string::String {
-        "/microsoft.durabletask.implementation.protobuf.WorkItem".into()
+        "/WorkItem".into()
     }
 }
 /// No payload
@@ -1812,27 +1819,16 @@ impl ::prost::Name for WorkItem {
 pub struct CompleteTaskResponse {}
 impl ::prost::Name for CompleteTaskResponse {
     const NAME: &'static str = "CompleteTaskResponse";
-    const PACKAGE: &'static str = "microsoft.durabletask.implementation.protobuf";
+    const PACKAGE: &'static str = "";
     fn full_name() -> ::prost::alloc::string::String {
-        "microsoft.durabletask.implementation.protobuf.CompleteTaskResponse".into()
+        "CompleteTaskResponse".into()
     }
     fn type_url() -> ::prost::alloc::string::String {
-        "/microsoft.durabletask.implementation.protobuf.CompleteTaskResponse".into()
+        "/CompleteTaskResponse".into()
     }
 }
-#[derive(
-    serde::Serialize,
-    serde::Deserialize,
-    Clone,
-    Copy,
-    Debug,
-    PartialEq,
-    Eq,
-    Hash,
-    PartialOrd,
-    Ord,
-    ::prost::Enumeration,
-)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
 #[repr(i32)]
 pub enum OrchestrationStatus {
     Running = 0,
@@ -1853,7 +1849,9 @@ impl OrchestrationStatus {
         match self {
             OrchestrationStatus::Running => "ORCHESTRATION_STATUS_RUNNING",
             OrchestrationStatus::Completed => "ORCHESTRATION_STATUS_COMPLETED",
-            OrchestrationStatus::ContinuedAsNew => "ORCHESTRATION_STATUS_CONTINUED_AS_NEW",
+            OrchestrationStatus::ContinuedAsNew => {
+                "ORCHESTRATION_STATUS_CONTINUED_AS_NEW"
+            }
             OrchestrationStatus::Failed => "ORCHESTRATION_STATUS_FAILED",
             OrchestrationStatus::Canceled => "ORCHESTRATION_STATUS_CANCELED",
             OrchestrationStatus::Terminated => "ORCHESTRATION_STATUS_TERMINATED",
@@ -1876,19 +1874,8 @@ impl OrchestrationStatus {
         }
     }
 }
-#[derive(
-    serde::Serialize,
-    serde::Deserialize,
-    Clone,
-    Copy,
-    Debug,
-    PartialEq,
-    Eq,
-    Hash,
-    PartialOrd,
-    Ord,
-    ::prost::Enumeration,
-)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
 #[repr(i32)]
 pub enum CreateOrchestrationAction {
     Error = 0,
@@ -1920,8 +1907,8 @@ impl CreateOrchestrationAction {
 /// Generated client implementations.
 pub mod task_hub_sidecar_service_client {
     #![allow(unused_variables, dead_code, missing_docs, clippy::let_unit_value)]
-    use tonic::codegen::http::Uri;
     use tonic::codegen::*;
+    use tonic::codegen::http::Uri;
     #[derive(Debug, Clone)]
     pub struct TaskHubSidecarServiceClient<T> {
         inner: tonic::client::Grpc<T>,
@@ -1965,8 +1952,9 @@ pub mod task_hub_sidecar_service_client {
                     <T as tonic::client::GrpcService<tonic::body::BoxBody>>::ResponseBody,
                 >,
             >,
-            <T as tonic::codegen::Service<http::Request<tonic::body::BoxBody>>>::Error:
-                Into<StdError> + Send + Sync,
+            <T as tonic::codegen::Service<
+                http::Request<tonic::body::BoxBody>,
+            >>::Error: Into<StdError> + Send + Sync,
         {
             TaskHubSidecarServiceClient::new(InterceptedService::new(inner, interceptor))
         }
@@ -2006,203 +1994,234 @@ pub mod task_hub_sidecar_service_client {
             &mut self,
             request: impl tonic::IntoRequest<()>,
         ) -> std::result::Result<tonic::Response<()>, tonic::Status> {
-            self.inner.ready().await.map_err(|e| {
-                tonic::Status::new(
-                    tonic::Code::Unknown,
-                    format!("Service was not ready: {}", e.into()),
-                )
-            })?;
+            self.inner
+                .ready()
+                .await
+                .map_err(|e| {
+                    tonic::Status::new(
+                        tonic::Code::Unknown,
+                        format!("Service was not ready: {}", e.into()),
+                    )
+                })?;
             let codec = tonic::codec::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static(
-                "/microsoft.durabletask.implementation.protobuf.TaskHubSidecarService/Hello",
+                "/TaskHubSidecarService/Hello",
             );
             let mut req = request.into_request();
-            req.extensions_mut().insert(GrpcMethod::new(
-                "microsoft.durabletask.implementation.protobuf.TaskHubSidecarService",
-                "Hello",
-            ));
+            req.extensions_mut()
+                .insert(GrpcMethod::new("TaskHubSidecarService", "Hello"));
             self.inner.unary(req, path, codec).await
         }
         /// Starts a new orchestration instance.
         pub async fn start_instance(
             &mut self,
             request: impl tonic::IntoRequest<super::CreateInstanceRequest>,
-        ) -> std::result::Result<tonic::Response<super::CreateInstanceResponse>, tonic::Status>
-        {
-            self.inner.ready().await.map_err(|e| {
-                tonic::Status::new(
-                    tonic::Code::Unknown,
-                    format!("Service was not ready: {}", e.into()),
-                )
-            })?;
+        ) -> std::result::Result<
+            tonic::Response<super::CreateInstanceResponse>,
+            tonic::Status,
+        > {
+            self.inner
+                .ready()
+                .await
+                .map_err(|e| {
+                    tonic::Status::new(
+                        tonic::Code::Unknown,
+                        format!("Service was not ready: {}", e.into()),
+                    )
+                })?;
             let codec = tonic::codec::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static(
-                "/microsoft.durabletask.implementation.protobuf.TaskHubSidecarService/StartInstance",
+                "/TaskHubSidecarService/StartInstance",
             );
             let mut req = request.into_request();
-            req.extensions_mut().insert(GrpcMethod::new(
-                "microsoft.durabletask.implementation.protobuf.TaskHubSidecarService",
-                "StartInstance",
-            ));
+            req.extensions_mut()
+                .insert(GrpcMethod::new("TaskHubSidecarService", "StartInstance"));
             self.inner.unary(req, path, codec).await
         }
         /// Gets the status of an existing orchestration instance.
         pub async fn get_instance(
             &mut self,
             request: impl tonic::IntoRequest<super::GetInstanceRequest>,
-        ) -> std::result::Result<tonic::Response<super::GetInstanceResponse>, tonic::Status>
-        {
-            self.inner.ready().await.map_err(|e| {
-                tonic::Status::new(
-                    tonic::Code::Unknown,
-                    format!("Service was not ready: {}", e.into()),
-                )
-            })?;
+        ) -> std::result::Result<
+            tonic::Response<super::GetInstanceResponse>,
+            tonic::Status,
+        > {
+            self.inner
+                .ready()
+                .await
+                .map_err(|e| {
+                    tonic::Status::new(
+                        tonic::Code::Unknown,
+                        format!("Service was not ready: {}", e.into()),
+                    )
+                })?;
             let codec = tonic::codec::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static(
-                "/microsoft.durabletask.implementation.protobuf.TaskHubSidecarService/GetInstance",
+                "/TaskHubSidecarService/GetInstance",
             );
             let mut req = request.into_request();
-            req.extensions_mut().insert(GrpcMethod::new(
-                "microsoft.durabletask.implementation.protobuf.TaskHubSidecarService",
-                "GetInstance",
-            ));
+            req.extensions_mut()
+                .insert(GrpcMethod::new("TaskHubSidecarService", "GetInstance"));
             self.inner.unary(req, path, codec).await
         }
         /// Rewinds an orchestration instance to last known good state and replays from there.
         pub async fn rewind_instance(
             &mut self,
             request: impl tonic::IntoRequest<super::RewindInstanceRequest>,
-        ) -> std::result::Result<tonic::Response<super::RewindInstanceResponse>, tonic::Status>
-        {
-            self.inner.ready().await.map_err(|e| {
-                tonic::Status::new(
-                    tonic::Code::Unknown,
-                    format!("Service was not ready: {}", e.into()),
-                )
-            })?;
+        ) -> std::result::Result<
+            tonic::Response<super::RewindInstanceResponse>,
+            tonic::Status,
+        > {
+            self.inner
+                .ready()
+                .await
+                .map_err(|e| {
+                    tonic::Status::new(
+                        tonic::Code::Unknown,
+                        format!("Service was not ready: {}", e.into()),
+                    )
+                })?;
             let codec = tonic::codec::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static(
-                "/microsoft.durabletask.implementation.protobuf.TaskHubSidecarService/RewindInstance",
+                "/TaskHubSidecarService/RewindInstance",
             );
             let mut req = request.into_request();
-            req.extensions_mut().insert(GrpcMethod::new(
-                "microsoft.durabletask.implementation.protobuf.TaskHubSidecarService",
-                "RewindInstance",
-            ));
+            req.extensions_mut()
+                .insert(GrpcMethod::new("TaskHubSidecarService", "RewindInstance"));
             self.inner.unary(req, path, codec).await
         }
         /// Waits for an orchestration instance to reach a running or completion state.
         pub async fn wait_for_instance_start(
             &mut self,
             request: impl tonic::IntoRequest<super::GetInstanceRequest>,
-        ) -> std::result::Result<tonic::Response<super::GetInstanceResponse>, tonic::Status>
-        {
-            self.inner.ready().await.map_err(|e| {
-                tonic::Status::new(
-                    tonic::Code::Unknown,
-                    format!("Service was not ready: {}", e.into()),
-                )
-            })?;
+        ) -> std::result::Result<
+            tonic::Response<super::GetInstanceResponse>,
+            tonic::Status,
+        > {
+            self.inner
+                .ready()
+                .await
+                .map_err(|e| {
+                    tonic::Status::new(
+                        tonic::Code::Unknown,
+                        format!("Service was not ready: {}", e.into()),
+                    )
+                })?;
             let codec = tonic::codec::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static(
-                "/microsoft.durabletask.implementation.protobuf.TaskHubSidecarService/WaitForInstanceStart",
+                "/TaskHubSidecarService/WaitForInstanceStart",
             );
             let mut req = request.into_request();
-            req.extensions_mut().insert(GrpcMethod::new(
-                "microsoft.durabletask.implementation.protobuf.TaskHubSidecarService",
-                "WaitForInstanceStart",
-            ));
+            req.extensions_mut()
+                .insert(
+                    GrpcMethod::new("TaskHubSidecarService", "WaitForInstanceStart"),
+                );
             self.inner.unary(req, path, codec).await
         }
         /// Waits for an orchestration instance to reach a completion state (completed, failed, terminated, etc.).
         pub async fn wait_for_instance_completion(
             &mut self,
             request: impl tonic::IntoRequest<super::GetInstanceRequest>,
-        ) -> std::result::Result<tonic::Response<super::GetInstanceResponse>, tonic::Status>
-        {
-            self.inner.ready().await.map_err(|e| {
-                tonic::Status::new(
-                    tonic::Code::Unknown,
-                    format!("Service was not ready: {}", e.into()),
-                )
-            })?;
+        ) -> std::result::Result<
+            tonic::Response<super::GetInstanceResponse>,
+            tonic::Status,
+        > {
+            self.inner
+                .ready()
+                .await
+                .map_err(|e| {
+                    tonic::Status::new(
+                        tonic::Code::Unknown,
+                        format!("Service was not ready: {}", e.into()),
+                    )
+                })?;
             let codec = tonic::codec::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static(
-                "/microsoft.durabletask.implementation.protobuf.TaskHubSidecarService/WaitForInstanceCompletion",
+                "/TaskHubSidecarService/WaitForInstanceCompletion",
             );
             let mut req = request.into_request();
-            req.extensions_mut().insert(GrpcMethod::new(
-                "microsoft.durabletask.implementation.protobuf.TaskHubSidecarService",
-                "WaitForInstanceCompletion",
-            ));
+            req.extensions_mut()
+                .insert(
+                    GrpcMethod::new("TaskHubSidecarService", "WaitForInstanceCompletion"),
+                );
             self.inner.unary(req, path, codec).await
         }
         /// Raises an event to a running orchestration instance.
         pub async fn raise_event(
             &mut self,
             request: impl tonic::IntoRequest<super::RaiseEventRequest>,
-        ) -> std::result::Result<tonic::Response<super::RaiseEventResponse>, tonic::Status>
-        {
-            self.inner.ready().await.map_err(|e| {
-                tonic::Status::new(
-                    tonic::Code::Unknown,
-                    format!("Service was not ready: {}", e.into()),
-                )
-            })?;
+        ) -> std::result::Result<
+            tonic::Response<super::RaiseEventResponse>,
+            tonic::Status,
+        > {
+            self.inner
+                .ready()
+                .await
+                .map_err(|e| {
+                    tonic::Status::new(
+                        tonic::Code::Unknown,
+                        format!("Service was not ready: {}", e.into()),
+                    )
+                })?;
             let codec = tonic::codec::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static(
-                "/microsoft.durabletask.implementation.protobuf.TaskHubSidecarService/RaiseEvent",
+                "/TaskHubSidecarService/RaiseEvent",
             );
             let mut req = request.into_request();
-            req.extensions_mut().insert(GrpcMethod::new(
-                "microsoft.durabletask.implementation.protobuf.TaskHubSidecarService",
-                "RaiseEvent",
-            ));
+            req.extensions_mut()
+                .insert(GrpcMethod::new("TaskHubSidecarService", "RaiseEvent"));
             self.inner.unary(req, path, codec).await
         }
         /// Terminates a running orchestration instance.
         pub async fn terminate_instance(
             &mut self,
             request: impl tonic::IntoRequest<super::TerminateRequest>,
-        ) -> std::result::Result<tonic::Response<super::TerminateResponse>, tonic::Status> {
-            self.inner.ready().await.map_err(|e| {
-                tonic::Status::new(
-                    tonic::Code::Unknown,
-                    format!("Service was not ready: {}", e.into()),
-                )
-            })?;
+        ) -> std::result::Result<
+            tonic::Response<super::TerminateResponse>,
+            tonic::Status,
+        > {
+            self.inner
+                .ready()
+                .await
+                .map_err(|e| {
+                    tonic::Status::new(
+                        tonic::Code::Unknown,
+                        format!("Service was not ready: {}", e.into()),
+                    )
+                })?;
             let codec = tonic::codec::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static(
-                "/microsoft.durabletask.implementation.protobuf.TaskHubSidecarService/TerminateInstance",
+                "/TaskHubSidecarService/TerminateInstance",
             );
             let mut req = request.into_request();
-            req.extensions_mut().insert(GrpcMethod::new(
-                "microsoft.durabletask.implementation.protobuf.TaskHubSidecarService",
-                "TerminateInstance",
-            ));
+            req.extensions_mut()
+                .insert(GrpcMethod::new("TaskHubSidecarService", "TerminateInstance"));
             self.inner.unary(req, path, codec).await
         }
         /// Suspends a running orchestration instance.
         pub async fn suspend_instance(
             &mut self,
             request: impl tonic::IntoRequest<super::SuspendRequest>,
-        ) -> std::result::Result<tonic::Response<super::SuspendResponse>, tonic::Status> {
-            self.inner.ready().await.map_err(|e| {
-                tonic::Status::new(
-                    tonic::Code::Unknown,
-                    format!("Service was not ready: {}", e.into()),
-                )
-            })?;
+        ) -> std::result::Result<
+            tonic::Response<super::SuspendResponse>,
+            tonic::Status,
+        > {
+            self.inner
+                .ready()
+                .await
+                .map_err(|e| {
+                    tonic::Status::new(
+                        tonic::Code::Unknown,
+                        format!("Service was not ready: {}", e.into()),
+                    )
+                })?;
             let codec = tonic::codec::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static(
-                "/microsoft.durabletask.implementation.protobuf.TaskHubSidecarService/SuspendInstance",
+                "/TaskHubSidecarService/SuspendInstance",
             );
             let mut req = request.into_request();
-            req.extensions_mut().insert(GrpcMethod::new(
-                "microsoft.durabletask.implementation.protobuf.TaskHubSidecarService",
-                "SuspendInstance",
-            ));
+            req.extensions_mut()
+                .insert(GrpcMethod::new("TaskHubSidecarService", "SuspendInstance"));
             self.inner.unary(req, path, codec).await
         }
         /// Resumes a suspended orchestration instance.
@@ -2210,65 +2229,72 @@ pub mod task_hub_sidecar_service_client {
             &mut self,
             request: impl tonic::IntoRequest<super::ResumeRequest>,
         ) -> std::result::Result<tonic::Response<super::ResumeResponse>, tonic::Status> {
-            self.inner.ready().await.map_err(|e| {
-                tonic::Status::new(
-                    tonic::Code::Unknown,
-                    format!("Service was not ready: {}", e.into()),
-                )
-            })?;
+            self.inner
+                .ready()
+                .await
+                .map_err(|e| {
+                    tonic::Status::new(
+                        tonic::Code::Unknown,
+                        format!("Service was not ready: {}", e.into()),
+                    )
+                })?;
             let codec = tonic::codec::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static(
-                "/microsoft.durabletask.implementation.protobuf.TaskHubSidecarService/ResumeInstance",
+                "/TaskHubSidecarService/ResumeInstance",
             );
             let mut req = request.into_request();
-            req.extensions_mut().insert(GrpcMethod::new(
-                "microsoft.durabletask.implementation.protobuf.TaskHubSidecarService",
-                "ResumeInstance",
-            ));
+            req.extensions_mut()
+                .insert(GrpcMethod::new("TaskHubSidecarService", "ResumeInstance"));
             self.inner.unary(req, path, codec).await
         }
         pub async fn query_instances(
             &mut self,
             request: impl tonic::IntoRequest<super::QueryInstancesRequest>,
-        ) -> std::result::Result<tonic::Response<super::QueryInstancesResponse>, tonic::Status>
-        {
-            self.inner.ready().await.map_err(|e| {
-                tonic::Status::new(
-                    tonic::Code::Unknown,
-                    format!("Service was not ready: {}", e.into()),
-                )
-            })?;
+        ) -> std::result::Result<
+            tonic::Response<super::QueryInstancesResponse>,
+            tonic::Status,
+        > {
+            self.inner
+                .ready()
+                .await
+                .map_err(|e| {
+                    tonic::Status::new(
+                        tonic::Code::Unknown,
+                        format!("Service was not ready: {}", e.into()),
+                    )
+                })?;
             let codec = tonic::codec::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static(
-                "/microsoft.durabletask.implementation.protobuf.TaskHubSidecarService/QueryInstances",
+                "/TaskHubSidecarService/QueryInstances",
             );
             let mut req = request.into_request();
-            req.extensions_mut().insert(GrpcMethod::new(
-                "microsoft.durabletask.implementation.protobuf.TaskHubSidecarService",
-                "QueryInstances",
-            ));
+            req.extensions_mut()
+                .insert(GrpcMethod::new("TaskHubSidecarService", "QueryInstances"));
             self.inner.unary(req, path, codec).await
         }
         pub async fn purge_instances(
             &mut self,
             request: impl tonic::IntoRequest<super::PurgeInstancesRequest>,
-        ) -> std::result::Result<tonic::Response<super::PurgeInstancesResponse>, tonic::Status>
-        {
-            self.inner.ready().await.map_err(|e| {
-                tonic::Status::new(
-                    tonic::Code::Unknown,
-                    format!("Service was not ready: {}", e.into()),
-                )
-            })?;
+        ) -> std::result::Result<
+            tonic::Response<super::PurgeInstancesResponse>,
+            tonic::Status,
+        > {
+            self.inner
+                .ready()
+                .await
+                .map_err(|e| {
+                    tonic::Status::new(
+                        tonic::Code::Unknown,
+                        format!("Service was not ready: {}", e.into()),
+                    )
+                })?;
             let codec = tonic::codec::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static(
-                "/microsoft.durabletask.implementation.protobuf.TaskHubSidecarService/PurgeInstances",
+                "/TaskHubSidecarService/PurgeInstances",
             );
             let mut req = request.into_request();
-            req.extensions_mut().insert(GrpcMethod::new(
-                "microsoft.durabletask.implementation.protobuf.TaskHubSidecarService",
-                "PurgeInstances",
-            ));
+            req.extensions_mut()
+                .insert(GrpcMethod::new("TaskHubSidecarService", "PurgeInstances"));
             self.inner.unary(req, path, codec).await
         }
         pub async fn get_work_items(
@@ -2278,224 +2304,257 @@ pub mod task_hub_sidecar_service_client {
             tonic::Response<tonic::codec::Streaming<super::WorkItem>>,
             tonic::Status,
         > {
-            self.inner.ready().await.map_err(|e| {
-                tonic::Status::new(
-                    tonic::Code::Unknown,
-                    format!("Service was not ready: {}", e.into()),
-                )
-            })?;
+            self.inner
+                .ready()
+                .await
+                .map_err(|e| {
+                    tonic::Status::new(
+                        tonic::Code::Unknown,
+                        format!("Service was not ready: {}", e.into()),
+                    )
+                })?;
             let codec = tonic::codec::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static(
-                "/microsoft.durabletask.implementation.protobuf.TaskHubSidecarService/GetWorkItems",
+                "/TaskHubSidecarService/GetWorkItems",
             );
             let mut req = request.into_request();
-            req.extensions_mut().insert(GrpcMethod::new(
-                "microsoft.durabletask.implementation.protobuf.TaskHubSidecarService",
-                "GetWorkItems",
-            ));
+            req.extensions_mut()
+                .insert(GrpcMethod::new("TaskHubSidecarService", "GetWorkItems"));
             self.inner.server_streaming(req, path, codec).await
         }
         pub async fn complete_activity_task(
             &mut self,
             request: impl tonic::IntoRequest<super::ActivityResponse>,
-        ) -> std::result::Result<tonic::Response<super::CompleteTaskResponse>, tonic::Status>
-        {
-            self.inner.ready().await.map_err(|e| {
-                tonic::Status::new(
-                    tonic::Code::Unknown,
-                    format!("Service was not ready: {}", e.into()),
-                )
-            })?;
+        ) -> std::result::Result<
+            tonic::Response<super::CompleteTaskResponse>,
+            tonic::Status,
+        > {
+            self.inner
+                .ready()
+                .await
+                .map_err(|e| {
+                    tonic::Status::new(
+                        tonic::Code::Unknown,
+                        format!("Service was not ready: {}", e.into()),
+                    )
+                })?;
             let codec = tonic::codec::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static(
-                "/microsoft.durabletask.implementation.protobuf.TaskHubSidecarService/CompleteActivityTask",
+                "/TaskHubSidecarService/CompleteActivityTask",
             );
             let mut req = request.into_request();
-            req.extensions_mut().insert(GrpcMethod::new(
-                "microsoft.durabletask.implementation.protobuf.TaskHubSidecarService",
-                "CompleteActivityTask",
-            ));
+            req.extensions_mut()
+                .insert(
+                    GrpcMethod::new("TaskHubSidecarService", "CompleteActivityTask"),
+                );
             self.inner.unary(req, path, codec).await
         }
         pub async fn complete_orchestrator_task(
             &mut self,
             request: impl tonic::IntoRequest<super::OrchestratorResponse>,
-        ) -> std::result::Result<tonic::Response<super::CompleteTaskResponse>, tonic::Status>
-        {
-            self.inner.ready().await.map_err(|e| {
-                tonic::Status::new(
-                    tonic::Code::Unknown,
-                    format!("Service was not ready: {}", e.into()),
-                )
-            })?;
+        ) -> std::result::Result<
+            tonic::Response<super::CompleteTaskResponse>,
+            tonic::Status,
+        > {
+            self.inner
+                .ready()
+                .await
+                .map_err(|e| {
+                    tonic::Status::new(
+                        tonic::Code::Unknown,
+                        format!("Service was not ready: {}", e.into()),
+                    )
+                })?;
             let codec = tonic::codec::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static(
-                "/microsoft.durabletask.implementation.protobuf.TaskHubSidecarService/CompleteOrchestratorTask",
+                "/TaskHubSidecarService/CompleteOrchestratorTask",
             );
             let mut req = request.into_request();
-            req.extensions_mut().insert(GrpcMethod::new(
-                "microsoft.durabletask.implementation.protobuf.TaskHubSidecarService",
-                "CompleteOrchestratorTask",
-            ));
+            req.extensions_mut()
+                .insert(
+                    GrpcMethod::new("TaskHubSidecarService", "CompleteOrchestratorTask"),
+                );
             self.inner.unary(req, path, codec).await
         }
         pub async fn complete_entity_task(
             &mut self,
             request: impl tonic::IntoRequest<super::EntityBatchResult>,
-        ) -> std::result::Result<tonic::Response<super::CompleteTaskResponse>, tonic::Status>
-        {
-            self.inner.ready().await.map_err(|e| {
-                tonic::Status::new(
-                    tonic::Code::Unknown,
-                    format!("Service was not ready: {}", e.into()),
-                )
-            })?;
+        ) -> std::result::Result<
+            tonic::Response<super::CompleteTaskResponse>,
+            tonic::Status,
+        > {
+            self.inner
+                .ready()
+                .await
+                .map_err(|e| {
+                    tonic::Status::new(
+                        tonic::Code::Unknown,
+                        format!("Service was not ready: {}", e.into()),
+                    )
+                })?;
             let codec = tonic::codec::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static(
-                "/microsoft.durabletask.implementation.protobuf.TaskHubSidecarService/CompleteEntityTask",
+                "/TaskHubSidecarService/CompleteEntityTask",
             );
             let mut req = request.into_request();
-            req.extensions_mut().insert(GrpcMethod::new(
-                "microsoft.durabletask.implementation.protobuf.TaskHubSidecarService",
-                "CompleteEntityTask",
-            ));
+            req.extensions_mut()
+                .insert(GrpcMethod::new("TaskHubSidecarService", "CompleteEntityTask"));
             self.inner.unary(req, path, codec).await
         }
         /// Deletes and Creates the necessary resources for the orchestration service and the instance store
         pub async fn create_task_hub(
             &mut self,
             request: impl tonic::IntoRequest<super::CreateTaskHubRequest>,
-        ) -> std::result::Result<tonic::Response<super::CreateTaskHubResponse>, tonic::Status>
-        {
-            self.inner.ready().await.map_err(|e| {
-                tonic::Status::new(
-                    tonic::Code::Unknown,
-                    format!("Service was not ready: {}", e.into()),
-                )
-            })?;
+        ) -> std::result::Result<
+            tonic::Response<super::CreateTaskHubResponse>,
+            tonic::Status,
+        > {
+            self.inner
+                .ready()
+                .await
+                .map_err(|e| {
+                    tonic::Status::new(
+                        tonic::Code::Unknown,
+                        format!("Service was not ready: {}", e.into()),
+                    )
+                })?;
             let codec = tonic::codec::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static(
-                "/microsoft.durabletask.implementation.protobuf.TaskHubSidecarService/CreateTaskHub",
+                "/TaskHubSidecarService/CreateTaskHub",
             );
             let mut req = request.into_request();
-            req.extensions_mut().insert(GrpcMethod::new(
-                "microsoft.durabletask.implementation.protobuf.TaskHubSidecarService",
-                "CreateTaskHub",
-            ));
+            req.extensions_mut()
+                .insert(GrpcMethod::new("TaskHubSidecarService", "CreateTaskHub"));
             self.inner.unary(req, path, codec).await
         }
         /// Deletes the resources for the orchestration service and optionally the instance store
         pub async fn delete_task_hub(
             &mut self,
             request: impl tonic::IntoRequest<super::DeleteTaskHubRequest>,
-        ) -> std::result::Result<tonic::Response<super::DeleteTaskHubResponse>, tonic::Status>
-        {
-            self.inner.ready().await.map_err(|e| {
-                tonic::Status::new(
-                    tonic::Code::Unknown,
-                    format!("Service was not ready: {}", e.into()),
-                )
-            })?;
+        ) -> std::result::Result<
+            tonic::Response<super::DeleteTaskHubResponse>,
+            tonic::Status,
+        > {
+            self.inner
+                .ready()
+                .await
+                .map_err(|e| {
+                    tonic::Status::new(
+                        tonic::Code::Unknown,
+                        format!("Service was not ready: {}", e.into()),
+                    )
+                })?;
             let codec = tonic::codec::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static(
-                "/microsoft.durabletask.implementation.protobuf.TaskHubSidecarService/DeleteTaskHub",
+                "/TaskHubSidecarService/DeleteTaskHub",
             );
             let mut req = request.into_request();
-            req.extensions_mut().insert(GrpcMethod::new(
-                "microsoft.durabletask.implementation.protobuf.TaskHubSidecarService",
-                "DeleteTaskHub",
-            ));
+            req.extensions_mut()
+                .insert(GrpcMethod::new("TaskHubSidecarService", "DeleteTaskHub"));
             self.inner.unary(req, path, codec).await
         }
         /// sends a signal to an entity
         pub async fn signal_entity(
             &mut self,
             request: impl tonic::IntoRequest<super::SignalEntityRequest>,
-        ) -> std::result::Result<tonic::Response<super::SignalEntityResponse>, tonic::Status>
-        {
-            self.inner.ready().await.map_err(|e| {
-                tonic::Status::new(
-                    tonic::Code::Unknown,
-                    format!("Service was not ready: {}", e.into()),
-                )
-            })?;
+        ) -> std::result::Result<
+            tonic::Response<super::SignalEntityResponse>,
+            tonic::Status,
+        > {
+            self.inner
+                .ready()
+                .await
+                .map_err(|e| {
+                    tonic::Status::new(
+                        tonic::Code::Unknown,
+                        format!("Service was not ready: {}", e.into()),
+                    )
+                })?;
             let codec = tonic::codec::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static(
-                "/microsoft.durabletask.implementation.protobuf.TaskHubSidecarService/SignalEntity",
+                "/TaskHubSidecarService/SignalEntity",
             );
             let mut req = request.into_request();
-            req.extensions_mut().insert(GrpcMethod::new(
-                "microsoft.durabletask.implementation.protobuf.TaskHubSidecarService",
-                "SignalEntity",
-            ));
+            req.extensions_mut()
+                .insert(GrpcMethod::new("TaskHubSidecarService", "SignalEntity"));
             self.inner.unary(req, path, codec).await
         }
         /// get information about a specific entity
         pub async fn get_entity(
             &mut self,
             request: impl tonic::IntoRequest<super::GetEntityRequest>,
-        ) -> std::result::Result<tonic::Response<super::GetEntityResponse>, tonic::Status> {
-            self.inner.ready().await.map_err(|e| {
-                tonic::Status::new(
-                    tonic::Code::Unknown,
-                    format!("Service was not ready: {}", e.into()),
-                )
-            })?;
+        ) -> std::result::Result<
+            tonic::Response<super::GetEntityResponse>,
+            tonic::Status,
+        > {
+            self.inner
+                .ready()
+                .await
+                .map_err(|e| {
+                    tonic::Status::new(
+                        tonic::Code::Unknown,
+                        format!("Service was not ready: {}", e.into()),
+                    )
+                })?;
             let codec = tonic::codec::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static(
-                "/microsoft.durabletask.implementation.protobuf.TaskHubSidecarService/GetEntity",
+                "/TaskHubSidecarService/GetEntity",
             );
             let mut req = request.into_request();
-            req.extensions_mut().insert(GrpcMethod::new(
-                "microsoft.durabletask.implementation.protobuf.TaskHubSidecarService",
-                "GetEntity",
-            ));
+            req.extensions_mut()
+                .insert(GrpcMethod::new("TaskHubSidecarService", "GetEntity"));
             self.inner.unary(req, path, codec).await
         }
         /// query entities
         pub async fn query_entities(
             &mut self,
             request: impl tonic::IntoRequest<super::QueryEntitiesRequest>,
-        ) -> std::result::Result<tonic::Response<super::QueryEntitiesResponse>, tonic::Status>
-        {
-            self.inner.ready().await.map_err(|e| {
-                tonic::Status::new(
-                    tonic::Code::Unknown,
-                    format!("Service was not ready: {}", e.into()),
-                )
-            })?;
+        ) -> std::result::Result<
+            tonic::Response<super::QueryEntitiesResponse>,
+            tonic::Status,
+        > {
+            self.inner
+                .ready()
+                .await
+                .map_err(|e| {
+                    tonic::Status::new(
+                        tonic::Code::Unknown,
+                        format!("Service was not ready: {}", e.into()),
+                    )
+                })?;
             let codec = tonic::codec::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static(
-                "/microsoft.durabletask.implementation.protobuf.TaskHubSidecarService/QueryEntities",
+                "/TaskHubSidecarService/QueryEntities",
             );
             let mut req = request.into_request();
-            req.extensions_mut().insert(GrpcMethod::new(
-                "microsoft.durabletask.implementation.protobuf.TaskHubSidecarService",
-                "QueryEntities",
-            ));
+            req.extensions_mut()
+                .insert(GrpcMethod::new("TaskHubSidecarService", "QueryEntities"));
             self.inner.unary(req, path, codec).await
         }
         /// clean entity storage
         pub async fn clean_entity_storage(
             &mut self,
             request: impl tonic::IntoRequest<super::CleanEntityStorageRequest>,
-        ) -> std::result::Result<tonic::Response<super::CleanEntityStorageResponse>, tonic::Status>
-        {
-            self.inner.ready().await.map_err(|e| {
-                tonic::Status::new(
-                    tonic::Code::Unknown,
-                    format!("Service was not ready: {}", e.into()),
-                )
-            })?;
+        ) -> std::result::Result<
+            tonic::Response<super::CleanEntityStorageResponse>,
+            tonic::Status,
+        > {
+            self.inner
+                .ready()
+                .await
+                .map_err(|e| {
+                    tonic::Status::new(
+                        tonic::Code::Unknown,
+                        format!("Service was not ready: {}", e.into()),
+                    )
+                })?;
             let codec = tonic::codec::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static(
-                "/microsoft.durabletask.implementation.protobuf.TaskHubSidecarService/CleanEntityStorage",
+                "/TaskHubSidecarService/CleanEntityStorage",
             );
             let mut req = request.into_request();
-            req.extensions_mut().insert(GrpcMethod::new(
-                "microsoft.durabletask.implementation.protobuf.TaskHubSidecarService",
-                "CleanEntityStorage",
-            ));
+            req.extensions_mut()
+                .insert(GrpcMethod::new("TaskHubSidecarService", "CleanEntityStorage"));
             self.inner.unary(req, path, codec).await
         }
     }
@@ -2516,37 +2575,58 @@ pub mod task_hub_sidecar_service_server {
         async fn start_instance(
             &self,
             request: tonic::Request<super::CreateInstanceRequest>,
-        ) -> std::result::Result<tonic::Response<super::CreateInstanceResponse>, tonic::Status>;
+        ) -> std::result::Result<
+            tonic::Response<super::CreateInstanceResponse>,
+            tonic::Status,
+        >;
         /// Gets the status of an existing orchestration instance.
         async fn get_instance(
             &self,
             request: tonic::Request<super::GetInstanceRequest>,
-        ) -> std::result::Result<tonic::Response<super::GetInstanceResponse>, tonic::Status>;
+        ) -> std::result::Result<
+            tonic::Response<super::GetInstanceResponse>,
+            tonic::Status,
+        >;
         /// Rewinds an orchestration instance to last known good state and replays from there.
         async fn rewind_instance(
             &self,
             request: tonic::Request<super::RewindInstanceRequest>,
-        ) -> std::result::Result<tonic::Response<super::RewindInstanceResponse>, tonic::Status>;
+        ) -> std::result::Result<
+            tonic::Response<super::RewindInstanceResponse>,
+            tonic::Status,
+        >;
         /// Waits for an orchestration instance to reach a running or completion state.
         async fn wait_for_instance_start(
             &self,
             request: tonic::Request<super::GetInstanceRequest>,
-        ) -> std::result::Result<tonic::Response<super::GetInstanceResponse>, tonic::Status>;
+        ) -> std::result::Result<
+            tonic::Response<super::GetInstanceResponse>,
+            tonic::Status,
+        >;
         /// Waits for an orchestration instance to reach a completion state (completed, failed, terminated, etc.).
         async fn wait_for_instance_completion(
             &self,
             request: tonic::Request<super::GetInstanceRequest>,
-        ) -> std::result::Result<tonic::Response<super::GetInstanceResponse>, tonic::Status>;
+        ) -> std::result::Result<
+            tonic::Response<super::GetInstanceResponse>,
+            tonic::Status,
+        >;
         /// Raises an event to a running orchestration instance.
         async fn raise_event(
             &self,
             request: tonic::Request<super::RaiseEventRequest>,
-        ) -> std::result::Result<tonic::Response<super::RaiseEventResponse>, tonic::Status>;
+        ) -> std::result::Result<
+            tonic::Response<super::RaiseEventResponse>,
+            tonic::Status,
+        >;
         /// Terminates a running orchestration instance.
         async fn terminate_instance(
             &self,
             request: tonic::Request<super::TerminateRequest>,
-        ) -> std::result::Result<tonic::Response<super::TerminateResponse>, tonic::Status>;
+        ) -> std::result::Result<
+            tonic::Response<super::TerminateResponse>,
+            tonic::Status,
+        >;
         /// Suspends a running orchestration instance.
         async fn suspend_instance(
             &self,
@@ -2560,62 +2640,99 @@ pub mod task_hub_sidecar_service_server {
         async fn query_instances(
             &self,
             request: tonic::Request<super::QueryInstancesRequest>,
-        ) -> std::result::Result<tonic::Response<super::QueryInstancesResponse>, tonic::Status>;
+        ) -> std::result::Result<
+            tonic::Response<super::QueryInstancesResponse>,
+            tonic::Status,
+        >;
         async fn purge_instances(
             &self,
             request: tonic::Request<super::PurgeInstancesRequest>,
-        ) -> std::result::Result<tonic::Response<super::PurgeInstancesResponse>, tonic::Status>;
+        ) -> std::result::Result<
+            tonic::Response<super::PurgeInstancesResponse>,
+            tonic::Status,
+        >;
         /// Server streaming response type for the GetWorkItems method.
         type GetWorkItemsStream: tonic::codegen::tokio_stream::Stream<
                 Item = std::result::Result<super::WorkItem, tonic::Status>,
-            > + Send
+            >
+            + Send
             + 'static;
         async fn get_work_items(
             &self,
             request: tonic::Request<super::GetWorkItemsRequest>,
-        ) -> std::result::Result<tonic::Response<Self::GetWorkItemsStream>, tonic::Status>;
+        ) -> std::result::Result<
+            tonic::Response<Self::GetWorkItemsStream>,
+            tonic::Status,
+        >;
         async fn complete_activity_task(
             &self,
             request: tonic::Request<super::ActivityResponse>,
-        ) -> std::result::Result<tonic::Response<super::CompleteTaskResponse>, tonic::Status>;
+        ) -> std::result::Result<
+            tonic::Response<super::CompleteTaskResponse>,
+            tonic::Status,
+        >;
         async fn complete_orchestrator_task(
             &self,
             request: tonic::Request<super::OrchestratorResponse>,
-        ) -> std::result::Result<tonic::Response<super::CompleteTaskResponse>, tonic::Status>;
+        ) -> std::result::Result<
+            tonic::Response<super::CompleteTaskResponse>,
+            tonic::Status,
+        >;
         async fn complete_entity_task(
             &self,
             request: tonic::Request<super::EntityBatchResult>,
-        ) -> std::result::Result<tonic::Response<super::CompleteTaskResponse>, tonic::Status>;
+        ) -> std::result::Result<
+            tonic::Response<super::CompleteTaskResponse>,
+            tonic::Status,
+        >;
         /// Deletes and Creates the necessary resources for the orchestration service and the instance store
         async fn create_task_hub(
             &self,
             request: tonic::Request<super::CreateTaskHubRequest>,
-        ) -> std::result::Result<tonic::Response<super::CreateTaskHubResponse>, tonic::Status>;
+        ) -> std::result::Result<
+            tonic::Response<super::CreateTaskHubResponse>,
+            tonic::Status,
+        >;
         /// Deletes the resources for the orchestration service and optionally the instance store
         async fn delete_task_hub(
             &self,
             request: tonic::Request<super::DeleteTaskHubRequest>,
-        ) -> std::result::Result<tonic::Response<super::DeleteTaskHubResponse>, tonic::Status>;
+        ) -> std::result::Result<
+            tonic::Response<super::DeleteTaskHubResponse>,
+            tonic::Status,
+        >;
         /// sends a signal to an entity
         async fn signal_entity(
             &self,
             request: tonic::Request<super::SignalEntityRequest>,
-        ) -> std::result::Result<tonic::Response<super::SignalEntityResponse>, tonic::Status>;
+        ) -> std::result::Result<
+            tonic::Response<super::SignalEntityResponse>,
+            tonic::Status,
+        >;
         /// get information about a specific entity
         async fn get_entity(
             &self,
             request: tonic::Request<super::GetEntityRequest>,
-        ) -> std::result::Result<tonic::Response<super::GetEntityResponse>, tonic::Status>;
+        ) -> std::result::Result<
+            tonic::Response<super::GetEntityResponse>,
+            tonic::Status,
+        >;
         /// query entities
         async fn query_entities(
             &self,
             request: tonic::Request<super::QueryEntitiesRequest>,
-        ) -> std::result::Result<tonic::Response<super::QueryEntitiesResponse>, tonic::Status>;
+        ) -> std::result::Result<
+            tonic::Response<super::QueryEntitiesResponse>,
+            tonic::Status,
+        >;
         /// clean entity storage
         async fn clean_entity_storage(
             &self,
             request: tonic::Request<super::CleanEntityStorageRequest>,
-        ) -> std::result::Result<tonic::Response<super::CleanEntityStorageResponse>, tonic::Status>;
+        ) -> std::result::Result<
+            tonic::Response<super::CleanEntityStorageResponse>,
+            tonic::Status,
+        >;
     }
     #[derive(Debug)]
     pub struct TaskHubSidecarServiceServer<T: TaskHubSidecarService> {
@@ -2640,7 +2757,10 @@ pub mod task_hub_sidecar_service_server {
                 max_encoding_message_size: None,
             }
         }
-        pub fn with_interceptor<F>(inner: T, interceptor: F) -> InterceptedService<Self, F>
+        pub fn with_interceptor<F>(
+            inner: T,
+            interceptor: F,
+        ) -> InterceptedService<Self, F>
         where
             F: tonic::service::Interceptor,
         {
@@ -2675,7 +2795,8 @@ pub mod task_hub_sidecar_service_server {
             self
         }
     }
-    impl<T, B> tonic::codegen::Service<http::Request<B>> for TaskHubSidecarServiceServer<T>
+    impl<T, B> tonic::codegen::Service<http::Request<B>>
+    for TaskHubSidecarServiceServer<T>
     where
         T: TaskHubSidecarService,
         B: Body + Send + 'static,
@@ -2693,7 +2814,7 @@ pub mod task_hub_sidecar_service_server {
         fn call(&mut self, req: http::Request<B>) -> Self::Future {
             let inner = self.inner.clone();
             match req.uri().path() {
-                "/microsoft.durabletask.implementation.protobuf.TaskHubSidecarService/Hello" => {
+                "/TaskHubSidecarService/Hello" => {
                     #[allow(non_camel_case_types)]
                     struct HelloSvc<T: TaskHubSidecarService>(pub Arc<T>);
                     impl<T: TaskHubSidecarService> tonic::server::UnaryService<()>
@@ -2734,7 +2855,7 @@ pub mod task_hub_sidecar_service_server {
                     };
                     Box::pin(fut)
                 }
-                "/microsoft.durabletask.implementation.protobuf.TaskHubSidecarService/StartInstance" => {
+                "/TaskHubSidecarService/StartInstance" => {
                     #[allow(non_camel_case_types)]
                     struct StartInstanceSvc<T: TaskHubSidecarService>(pub Arc<T>);
                     impl<
@@ -2784,7 +2905,7 @@ pub mod task_hub_sidecar_service_server {
                     };
                     Box::pin(fut)
                 }
-                "/microsoft.durabletask.implementation.protobuf.TaskHubSidecarService/GetInstance" => {
+                "/TaskHubSidecarService/GetInstance" => {
                     #[allow(non_camel_case_types)]
                     struct GetInstanceSvc<T: TaskHubSidecarService>(pub Arc<T>);
                     impl<
@@ -2831,7 +2952,7 @@ pub mod task_hub_sidecar_service_server {
                     };
                     Box::pin(fut)
                 }
-                "/microsoft.durabletask.implementation.protobuf.TaskHubSidecarService/RewindInstance" => {
+                "/TaskHubSidecarService/RewindInstance" => {
                     #[allow(non_camel_case_types)]
                     struct RewindInstanceSvc<T: TaskHubSidecarService>(pub Arc<T>);
                     impl<
@@ -2881,7 +3002,7 @@ pub mod task_hub_sidecar_service_server {
                     };
                     Box::pin(fut)
                 }
-                "/microsoft.durabletask.implementation.protobuf.TaskHubSidecarService/WaitForInstanceStart" => {
+                "/TaskHubSidecarService/WaitForInstanceStart" => {
                     #[allow(non_camel_case_types)]
                     struct WaitForInstanceStartSvc<T: TaskHubSidecarService>(pub Arc<T>);
                     impl<
@@ -2931,7 +3052,7 @@ pub mod task_hub_sidecar_service_server {
                     };
                     Box::pin(fut)
                 }
-                "/microsoft.durabletask.implementation.protobuf.TaskHubSidecarService/WaitForInstanceCompletion" => {
+                "/TaskHubSidecarService/WaitForInstanceCompletion" => {
                     #[allow(non_camel_case_types)]
                     struct WaitForInstanceCompletionSvc<T: TaskHubSidecarService>(
                         pub Arc<T>,
@@ -2983,7 +3104,7 @@ pub mod task_hub_sidecar_service_server {
                     };
                     Box::pin(fut)
                 }
-                "/microsoft.durabletask.implementation.protobuf.TaskHubSidecarService/RaiseEvent" => {
+                "/TaskHubSidecarService/RaiseEvent" => {
                     #[allow(non_camel_case_types)]
                     struct RaiseEventSvc<T: TaskHubSidecarService>(pub Arc<T>);
                     impl<
@@ -3030,7 +3151,7 @@ pub mod task_hub_sidecar_service_server {
                     };
                     Box::pin(fut)
                 }
-                "/microsoft.durabletask.implementation.protobuf.TaskHubSidecarService/TerminateInstance" => {
+                "/TaskHubSidecarService/TerminateInstance" => {
                     #[allow(non_camel_case_types)]
                     struct TerminateInstanceSvc<T: TaskHubSidecarService>(pub Arc<T>);
                     impl<
@@ -3080,7 +3201,7 @@ pub mod task_hub_sidecar_service_server {
                     };
                     Box::pin(fut)
                 }
-                "/microsoft.durabletask.implementation.protobuf.TaskHubSidecarService/SuspendInstance" => {
+                "/TaskHubSidecarService/SuspendInstance" => {
                     #[allow(non_camel_case_types)]
                     struct SuspendInstanceSvc<T: TaskHubSidecarService>(pub Arc<T>);
                     impl<
@@ -3130,7 +3251,7 @@ pub mod task_hub_sidecar_service_server {
                     };
                     Box::pin(fut)
                 }
-                "/microsoft.durabletask.implementation.protobuf.TaskHubSidecarService/ResumeInstance" => {
+                "/TaskHubSidecarService/ResumeInstance" => {
                     #[allow(non_camel_case_types)]
                     struct ResumeInstanceSvc<T: TaskHubSidecarService>(pub Arc<T>);
                     impl<
@@ -3180,7 +3301,7 @@ pub mod task_hub_sidecar_service_server {
                     };
                     Box::pin(fut)
                 }
-                "/microsoft.durabletask.implementation.protobuf.TaskHubSidecarService/QueryInstances" => {
+                "/TaskHubSidecarService/QueryInstances" => {
                     #[allow(non_camel_case_types)]
                     struct QueryInstancesSvc<T: TaskHubSidecarService>(pub Arc<T>);
                     impl<
@@ -3230,7 +3351,7 @@ pub mod task_hub_sidecar_service_server {
                     };
                     Box::pin(fut)
                 }
-                "/microsoft.durabletask.implementation.protobuf.TaskHubSidecarService/PurgeInstances" => {
+                "/TaskHubSidecarService/PurgeInstances" => {
                     #[allow(non_camel_case_types)]
                     struct PurgeInstancesSvc<T: TaskHubSidecarService>(pub Arc<T>);
                     impl<
@@ -3280,7 +3401,7 @@ pub mod task_hub_sidecar_service_server {
                     };
                     Box::pin(fut)
                 }
-                "/microsoft.durabletask.implementation.protobuf.TaskHubSidecarService/GetWorkItems" => {
+                "/TaskHubSidecarService/GetWorkItems" => {
                     #[allow(non_camel_case_types)]
                     struct GetWorkItemsSvc<T: TaskHubSidecarService>(pub Arc<T>);
                     impl<
@@ -3331,7 +3452,7 @@ pub mod task_hub_sidecar_service_server {
                     };
                     Box::pin(fut)
                 }
-                "/microsoft.durabletask.implementation.protobuf.TaskHubSidecarService/CompleteActivityTask" => {
+                "/TaskHubSidecarService/CompleteActivityTask" => {
                     #[allow(non_camel_case_types)]
                     struct CompleteActivityTaskSvc<T: TaskHubSidecarService>(pub Arc<T>);
                     impl<
@@ -3381,7 +3502,7 @@ pub mod task_hub_sidecar_service_server {
                     };
                     Box::pin(fut)
                 }
-                "/microsoft.durabletask.implementation.protobuf.TaskHubSidecarService/CompleteOrchestratorTask" => {
+                "/TaskHubSidecarService/CompleteOrchestratorTask" => {
                     #[allow(non_camel_case_types)]
                     struct CompleteOrchestratorTaskSvc<T: TaskHubSidecarService>(
                         pub Arc<T>,
@@ -3433,7 +3554,7 @@ pub mod task_hub_sidecar_service_server {
                     };
                     Box::pin(fut)
                 }
-                "/microsoft.durabletask.implementation.protobuf.TaskHubSidecarService/CompleteEntityTask" => {
+                "/TaskHubSidecarService/CompleteEntityTask" => {
                     #[allow(non_camel_case_types)]
                     struct CompleteEntityTaskSvc<T: TaskHubSidecarService>(pub Arc<T>);
                     impl<
@@ -3483,7 +3604,7 @@ pub mod task_hub_sidecar_service_server {
                     };
                     Box::pin(fut)
                 }
-                "/microsoft.durabletask.implementation.protobuf.TaskHubSidecarService/CreateTaskHub" => {
+                "/TaskHubSidecarService/CreateTaskHub" => {
                     #[allow(non_camel_case_types)]
                     struct CreateTaskHubSvc<T: TaskHubSidecarService>(pub Arc<T>);
                     impl<
@@ -3533,7 +3654,7 @@ pub mod task_hub_sidecar_service_server {
                     };
                     Box::pin(fut)
                 }
-                "/microsoft.durabletask.implementation.protobuf.TaskHubSidecarService/DeleteTaskHub" => {
+                "/TaskHubSidecarService/DeleteTaskHub" => {
                     #[allow(non_camel_case_types)]
                     struct DeleteTaskHubSvc<T: TaskHubSidecarService>(pub Arc<T>);
                     impl<
@@ -3583,7 +3704,7 @@ pub mod task_hub_sidecar_service_server {
                     };
                     Box::pin(fut)
                 }
-                "/microsoft.durabletask.implementation.protobuf.TaskHubSidecarService/SignalEntity" => {
+                "/TaskHubSidecarService/SignalEntity" => {
                     #[allow(non_camel_case_types)]
                     struct SignalEntitySvc<T: TaskHubSidecarService>(pub Arc<T>);
                     impl<
@@ -3630,7 +3751,7 @@ pub mod task_hub_sidecar_service_server {
                     };
                     Box::pin(fut)
                 }
-                "/microsoft.durabletask.implementation.protobuf.TaskHubSidecarService/GetEntity" => {
+                "/TaskHubSidecarService/GetEntity" => {
                     #[allow(non_camel_case_types)]
                     struct GetEntitySvc<T: TaskHubSidecarService>(pub Arc<T>);
                     impl<
@@ -3677,7 +3798,7 @@ pub mod task_hub_sidecar_service_server {
                     };
                     Box::pin(fut)
                 }
-                "/microsoft.durabletask.implementation.protobuf.TaskHubSidecarService/QueryEntities" => {
+                "/TaskHubSidecarService/QueryEntities" => {
                     #[allow(non_camel_case_types)]
                     struct QueryEntitiesSvc<T: TaskHubSidecarService>(pub Arc<T>);
                     impl<
@@ -3727,7 +3848,7 @@ pub mod task_hub_sidecar_service_server {
                     };
                     Box::pin(fut)
                 }
-                "/microsoft.durabletask.implementation.protobuf.TaskHubSidecarService/CleanEntityStorage" => {
+                "/TaskHubSidecarService/CleanEntityStorage" => {
                     #[allow(non_camel_case_types)]
                     struct CleanEntityStorageSvc<T: TaskHubSidecarService>(pub Arc<T>);
                     impl<
@@ -3814,8 +3935,8 @@ pub mod task_hub_sidecar_service_server {
             write!(f, "{:?}", self.0)
         }
     }
-    impl<T: TaskHubSidecarService> tonic::server::NamedService for TaskHubSidecarServiceServer<T> {
-        const NAME: &'static str =
-            "microsoft.durabletask.implementation.protobuf.TaskHubSidecarService";
+    impl<T: TaskHubSidecarService> tonic::server::NamedService
+    for TaskHubSidecarServiceServer<T> {
+        const NAME: &'static str = "TaskHubSidecarService";
     }
 }

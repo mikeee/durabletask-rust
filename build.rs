@@ -1,6 +1,8 @@
 fn main() -> Result<(), Box<dyn std::error::Error>> {
     let mut config = prost_build::Config::new();
-    config.enable_type_names();
+    config
+        .default_package_filename("microsoft.durabletask.implementation.protobuf") // TODO: remove override for non-existent package name
+        .enable_type_names();
 
     tonic_build::configure()
         .build_client(true)
