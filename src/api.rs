@@ -258,7 +258,7 @@ impl OrchestrationMetadata {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use crate::durabletask_pb::OrchestrationStatus;
+    use crate::durabletask_pb::{OrchestrationStatus, TaskFailureDetails};
     use prost_wkt_types::Timestamp;
 
     #[test]
@@ -282,6 +282,36 @@ mod tests {
     }
 
     #[test]
+    fn test_new_orchestration_builder_raw_input() {
+        let instance_id = InstanceID("test-instance".to_string());
+        let raw_input = r#"{"key":"value"}"#.to_string();
+
+        let new_orchestration = NewOrchestration::builder()
+            .instance_id(instance_id)
+            .raw_input(raw_input.clone())
+            .build();
+
+        assert_eq!(new_orchestration.input, Some(raw_input));
+    }
+
+    #[test]
+    fn test_new_orchestration_builder_reuse_policy() {
+        let reuse_policy = OrchestrationIdReusePolicy {
+            action: 0,
+            operation_status: vec![0],
+        };
+
+        let new_orchestration = NewOrchestration::builder()
+            .orchestration_id_reuse_policy(reuse_policy.clone())
+            .build();
+
+        assert_eq!(
+            new_orchestration.orchestration_id_reuse_policy,
+            Some(reuse_policy)
+        );
+    }
+
+    #[test]
     fn test_fetch_orchestration_metadata_builder() {
         let builder = FetchOrchestrationMetadataBuilder::new().fetch_payloads(true);
         assert_eq!(builder.get_inputs_and_outputs, Some(true));
@@ -295,12 +325,29 @@ mod tests {
     }
 
     #[test]
+    fn test_raise_event_builder_raw_data() {
+        let raw_data = r#"{"event":"data"}"#.to_string();
+        let builder = RaiseEventBuilder::new().raw_event_data(raw_data.clone());
+        assert_eq!(builder.input, Some(raw_data));
+    }
+
+    #[test]
     fn test_terminate_builder() {
         let output_data = serde_json::json!({"output": "data"});
         let builder = TerminateBuilder::new()
             .output(&output_data)
             .recursive_terminate(true);
         assert_eq!(builder.output, Some(r#"{"output":"data"}"#.to_string()));
+        assert_eq!(builder.recursive, Some(true));
+    }
+
+    #[test]
+    fn test_terminate_builder_raw_output() {
+        let raw_output = r#"{"output":"data"}"#.to_string();
+        let builder = TerminateBuilder::new()
+            .raw_output(raw_output.clone())
+            .recursive_terminate(true);
+        assert_eq!(builder.output, Some(raw_output));
         assert_eq!(builder.recursive, Some(true));
     }
 
@@ -344,5 +391,40 @@ mod tests {
 
         assert!(!metadata.is_running());
         assert!(metadata.is_complete());
+    }
+
+    #[test]
+    fn test_orchestration_metadata_new() {
+        let instance_id = InstanceID("test".to_string());
+        let name = "test".to_string();
+        let status = OrchestrationStatus::Running;
+        let created_at = Timestamp::default();
+        let last_updated_at = Timestamp::default();
+        let serialized_input = Some("input".to_string());
+        let serialized_output = Some("output".to_string());
+        let serialized_custom_status = Some("custom".to_string());
+        let failure_details = Some(TaskFailureDetails::default());
+
+        let metadata = OrchestrationMetadata::new(
+            instance_id.clone(),
+            name.clone(),
+            status,
+            created_at.clone(),
+            last_updated_at.clone(),
+            serialized_input.clone(),
+            serialized_output.clone(),
+            serialized_custom_status.clone(),
+            failure_details.clone(),
+        );
+
+        assert_eq!(metadata.instance_id, instance_id);
+        assert_eq!(metadata.name, name);
+        assert_eq!(metadata.runtime_status, status);
+        assert_eq!(metadata.created_at, created_at);
+        assert_eq!(metadata.last_updated_at, last_updated_at);
+        assert_eq!(metadata.serialized_input, serialized_input);
+        assert_eq!(metadata.serialized_output, serialized_output);
+        assert_eq!(metadata.serialized_custom_status, serialized_custom_status);
+        assert_eq!(metadata.failure_details, failure_details);
     }
 }
