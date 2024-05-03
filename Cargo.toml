@@ -19,12 +19,12 @@ gethostname = "0.4.3"
 opentelemetry = "0.22.0"
 prost = "0.12.4"
 prost-types = "0.12.4"
+prost-wkt-types = "0.5.1"
+serde = { version = "1.0.199", features = ["derive"] }
+serde_json = "1.0.116"
 tonic = { version = "0.11.0", features = ["tls", "prost", "gzip"] }
 uuid = { version = "1.8.0", features = ["v4", "fast-rng"] }
 
 [build-dependencies]
-prost-build = { version = "0.12.4", optional = true }
-tonic-build = { version = "0.11.0", optional = true }
-
-[features]
-generate = ["dep:tonic-build", "dep:prost-build"]
+prost-build = "0.12.4"
+tonic-build = "0.11.0"

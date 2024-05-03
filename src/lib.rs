@@ -1,3 +1,4 @@
+pub mod api;
 mod internal;
 
 #[path = "genproto/microsoft.durabletask.implementation.protobuf.rs"]
