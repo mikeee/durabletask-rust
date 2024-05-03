@@ -77,7 +77,9 @@ pub struct TaskFailureDetails {
     #[prost(message, optional, tag = "3")]
     pub stack_trace: ::core::option::Option<::prost::alloc::string::String>,
     #[prost(message, optional, boxed, tag = "4")]
-    pub inner_failure: ::core::option::Option<::prost::alloc::boxed::Box<TaskFailureDetails>>,
+    pub inner_failure: ::core::option::Option<
+        ::prost::alloc::boxed::Box<TaskFailureDetails>,
+    >,
     #[prost(bool, tag = "5")]
     pub is_non_retriable: bool,
 }
@@ -734,8 +736,9 @@ pub struct OrchestratorAction {
         oneof = "orchestrator_action::OrchestratorActionType",
         tags = "2, 3, 4, 5, 6, 7"
     )]
-    pub orchestrator_action_type:
-        ::core::option::Option<orchestrator_action::OrchestratorActionType>,
+    pub orchestrator_action_type: ::core::option::Option<
+        orchestrator_action::OrchestratorActionType,
+    >,
 }
 /// Nested message and enum types in `OrchestratorAction`.
 pub mod orchestrator_action {
@@ -828,7 +831,9 @@ pub struct CreateInstanceRequest {
     #[prost(message, optional, tag = "5")]
     pub scheduled_start_timestamp: ::core::option::Option<::prost_wkt_types::Timestamp>,
     #[prost(message, optional, tag = "6")]
-    pub orchestration_id_reuse_policy: ::core::option::Option<OrchestrationIdReusePolicy>,
+    pub orchestration_id_reuse_policy: ::core::option::Option<
+        OrchestrationIdReusePolicy,
+    >,
 }
 impl ::prost::Name for CreateInstanceRequest {
     const NAME: &'static str = "CreateInstanceRequest";
@@ -1538,7 +1543,9 @@ impl ::prost::Name for CleanEntityStorageResponse {
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct OrchestratorEntityParameters {
     #[prost(message, optional, tag = "1")]
-    pub entity_message_reorder_window: ::core::option::Option<::prost_wkt_types::Duration>,
+    pub entity_message_reorder_window: ::core::option::Option<
+        ::prost_wkt_types::Duration,
+    >,
 }
 impl ::prost::Name for OrchestratorEntityParameters {
     const NAME: &'static str = "OrchestratorEntityParameters";
@@ -1685,7 +1692,9 @@ pub struct OperationAction {
     #[prost(int32, tag = "1")]
     pub id: i32,
     #[prost(oneof = "operation_action::OperationActionType", tags = "2, 3")]
-    pub operation_action_type: ::core::option::Option<operation_action::OperationActionType>,
+    pub operation_action_type: ::core::option::Option<
+        operation_action::OperationActionType,
+    >,
 }
 /// Nested message and enum types in `OperationAction`.
 pub mod operation_action {
@@ -1818,19 +1827,8 @@ impl ::prost::Name for CompleteTaskResponse {
         "/CompleteTaskResponse".into()
     }
 }
-#[derive(
-    serde::Serialize,
-    serde::Deserialize,
-    Clone,
-    Copy,
-    Debug,
-    PartialEq,
-    Eq,
-    Hash,
-    PartialOrd,
-    Ord,
-    ::prost::Enumeration,
-)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
 #[repr(i32)]
 pub enum OrchestrationStatus {
     Running = 0,
@@ -1851,7 +1849,9 @@ impl OrchestrationStatus {
         match self {
             OrchestrationStatus::Running => "ORCHESTRATION_STATUS_RUNNING",
             OrchestrationStatus::Completed => "ORCHESTRATION_STATUS_COMPLETED",
-            OrchestrationStatus::ContinuedAsNew => "ORCHESTRATION_STATUS_CONTINUED_AS_NEW",
+            OrchestrationStatus::ContinuedAsNew => {
+                "ORCHESTRATION_STATUS_CONTINUED_AS_NEW"
+            }
             OrchestrationStatus::Failed => "ORCHESTRATION_STATUS_FAILED",
             OrchestrationStatus::Canceled => "ORCHESTRATION_STATUS_CANCELED",
             OrchestrationStatus::Terminated => "ORCHESTRATION_STATUS_TERMINATED",
@@ -1874,19 +1874,8 @@ impl OrchestrationStatus {
         }
     }
 }
-#[derive(
-    serde::Serialize,
-    serde::Deserialize,
-    Clone,
-    Copy,
-    Debug,
-    PartialEq,
-    Eq,
-    Hash,
-    PartialOrd,
-    Ord,
-    ::prost::Enumeration,
-)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
 #[repr(i32)]
 pub enum CreateOrchestrationAction {
     Error = 0,
@@ -1918,8 +1907,8 @@ impl CreateOrchestrationAction {
 /// Generated client implementations.
 pub mod task_hub_sidecar_service_client {
     #![allow(unused_variables, dead_code, missing_docs, clippy::let_unit_value)]
-    use tonic::codegen::http::Uri;
     use tonic::codegen::*;
+    use tonic::codegen::http::Uri;
     #[derive(Debug, Clone)]
     pub struct TaskHubSidecarServiceClient<T> {
         inner: tonic::client::Grpc<T>,
@@ -1963,8 +1952,9 @@ pub mod task_hub_sidecar_service_client {
                     <T as tonic::client::GrpcService<tonic::body::BoxBody>>::ResponseBody,
                 >,
             >,
-            <T as tonic::codegen::Service<http::Request<tonic::body::BoxBody>>>::Error:
-                Into<StdError> + Send + Sync,
+            <T as tonic::codegen::Service<
+                http::Request<tonic::body::BoxBody>,
+            >>::Error: Into<StdError> + Send + Sync,
         {
             TaskHubSidecarServiceClient::new(InterceptedService::new(inner, interceptor))
         }
@@ -2004,14 +1994,19 @@ pub mod task_hub_sidecar_service_client {
             &mut self,
             request: impl tonic::IntoRequest<()>,
         ) -> std::result::Result<tonic::Response<()>, tonic::Status> {
-            self.inner.ready().await.map_err(|e| {
-                tonic::Status::new(
-                    tonic::Code::Unknown,
-                    format!("Service was not ready: {}", e.into()),
-                )
-            })?;
+            self.inner
+                .ready()
+                .await
+                .map_err(|e| {
+                    tonic::Status::new(
+                        tonic::Code::Unknown,
+                        format!("Service was not ready: {}", e.into()),
+                    )
+                })?;
             let codec = tonic::codec::ProstCodec::default();
-            let path = http::uri::PathAndQuery::from_static("/TaskHubSidecarService/Hello");
+            let path = http::uri::PathAndQuery::from_static(
+                "/TaskHubSidecarService/Hello",
+            );
             let mut req = request.into_request();
             req.extensions_mut()
                 .insert(GrpcMethod::new("TaskHubSidecarService", "Hello"));
@@ -2021,16 +2016,23 @@ pub mod task_hub_sidecar_service_client {
         pub async fn start_instance(
             &mut self,
             request: impl tonic::IntoRequest<super::CreateInstanceRequest>,
-        ) -> std::result::Result<tonic::Response<super::CreateInstanceResponse>, tonic::Status>
-        {
-            self.inner.ready().await.map_err(|e| {
-                tonic::Status::new(
-                    tonic::Code::Unknown,
-                    format!("Service was not ready: {}", e.into()),
-                )
-            })?;
+        ) -> std::result::Result<
+            tonic::Response<super::CreateInstanceResponse>,
+            tonic::Status,
+        > {
+            self.inner
+                .ready()
+                .await
+                .map_err(|e| {
+                    tonic::Status::new(
+                        tonic::Code::Unknown,
+                        format!("Service was not ready: {}", e.into()),
+                    )
+                })?;
             let codec = tonic::codec::ProstCodec::default();
-            let path = http::uri::PathAndQuery::from_static("/TaskHubSidecarService/StartInstance");
+            let path = http::uri::PathAndQuery::from_static(
+                "/TaskHubSidecarService/StartInstance",
+            );
             let mut req = request.into_request();
             req.extensions_mut()
                 .insert(GrpcMethod::new("TaskHubSidecarService", "StartInstance"));
@@ -2040,16 +2042,23 @@ pub mod task_hub_sidecar_service_client {
         pub async fn get_instance(
             &mut self,
             request: impl tonic::IntoRequest<super::GetInstanceRequest>,
-        ) -> std::result::Result<tonic::Response<super::GetInstanceResponse>, tonic::Status>
-        {
-            self.inner.ready().await.map_err(|e| {
-                tonic::Status::new(
-                    tonic::Code::Unknown,
-                    format!("Service was not ready: {}", e.into()),
-                )
-            })?;
+        ) -> std::result::Result<
+            tonic::Response<super::GetInstanceResponse>,
+            tonic::Status,
+        > {
+            self.inner
+                .ready()
+                .await
+                .map_err(|e| {
+                    tonic::Status::new(
+                        tonic::Code::Unknown,
+                        format!("Service was not ready: {}", e.into()),
+                    )
+                })?;
             let codec = tonic::codec::ProstCodec::default();
-            let path = http::uri::PathAndQuery::from_static("/TaskHubSidecarService/GetInstance");
+            let path = http::uri::PathAndQuery::from_static(
+                "/TaskHubSidecarService/GetInstance",
+            );
             let mut req = request.into_request();
             req.extensions_mut()
                 .insert(GrpcMethod::new("TaskHubSidecarService", "GetInstance"));
@@ -2059,17 +2068,23 @@ pub mod task_hub_sidecar_service_client {
         pub async fn rewind_instance(
             &mut self,
             request: impl tonic::IntoRequest<super::RewindInstanceRequest>,
-        ) -> std::result::Result<tonic::Response<super::RewindInstanceResponse>, tonic::Status>
-        {
-            self.inner.ready().await.map_err(|e| {
-                tonic::Status::new(
-                    tonic::Code::Unknown,
-                    format!("Service was not ready: {}", e.into()),
-                )
-            })?;
+        ) -> std::result::Result<
+            tonic::Response<super::RewindInstanceResponse>,
+            tonic::Status,
+        > {
+            self.inner
+                .ready()
+                .await
+                .map_err(|e| {
+                    tonic::Status::new(
+                        tonic::Code::Unknown,
+                        format!("Service was not ready: {}", e.into()),
+                    )
+                })?;
             let codec = tonic::codec::ProstCodec::default();
-            let path =
-                http::uri::PathAndQuery::from_static("/TaskHubSidecarService/RewindInstance");
+            let path = http::uri::PathAndQuery::from_static(
+                "/TaskHubSidecarService/RewindInstance",
+            );
             let mut req = request.into_request();
             req.extensions_mut()
                 .insert(GrpcMethod::new("TaskHubSidecarService", "RewindInstance"));
@@ -2079,61 +2094,79 @@ pub mod task_hub_sidecar_service_client {
         pub async fn wait_for_instance_start(
             &mut self,
             request: impl tonic::IntoRequest<super::GetInstanceRequest>,
-        ) -> std::result::Result<tonic::Response<super::GetInstanceResponse>, tonic::Status>
-        {
-            self.inner.ready().await.map_err(|e| {
-                tonic::Status::new(
-                    tonic::Code::Unknown,
-                    format!("Service was not ready: {}", e.into()),
-                )
-            })?;
+        ) -> std::result::Result<
+            tonic::Response<super::GetInstanceResponse>,
+            tonic::Status,
+        > {
+            self.inner
+                .ready()
+                .await
+                .map_err(|e| {
+                    tonic::Status::new(
+                        tonic::Code::Unknown,
+                        format!("Service was not ready: {}", e.into()),
+                    )
+                })?;
             let codec = tonic::codec::ProstCodec::default();
-            let path =
-                http::uri::PathAndQuery::from_static("/TaskHubSidecarService/WaitForInstanceStart");
+            let path = http::uri::PathAndQuery::from_static(
+                "/TaskHubSidecarService/WaitForInstanceStart",
+            );
             let mut req = request.into_request();
-            req.extensions_mut().insert(GrpcMethod::new(
-                "TaskHubSidecarService",
-                "WaitForInstanceStart",
-            ));
+            req.extensions_mut()
+                .insert(
+                    GrpcMethod::new("TaskHubSidecarService", "WaitForInstanceStart"),
+                );
             self.inner.unary(req, path, codec).await
         }
         /// Waits for an orchestration instance to reach a completion state (completed, failed, terminated, etc.).
         pub async fn wait_for_instance_completion(
             &mut self,
             request: impl tonic::IntoRequest<super::GetInstanceRequest>,
-        ) -> std::result::Result<tonic::Response<super::GetInstanceResponse>, tonic::Status>
-        {
-            self.inner.ready().await.map_err(|e| {
-                tonic::Status::new(
-                    tonic::Code::Unknown,
-                    format!("Service was not ready: {}", e.into()),
-                )
-            })?;
+        ) -> std::result::Result<
+            tonic::Response<super::GetInstanceResponse>,
+            tonic::Status,
+        > {
+            self.inner
+                .ready()
+                .await
+                .map_err(|e| {
+                    tonic::Status::new(
+                        tonic::Code::Unknown,
+                        format!("Service was not ready: {}", e.into()),
+                    )
+                })?;
             let codec = tonic::codec::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static(
                 "/TaskHubSidecarService/WaitForInstanceCompletion",
             );
             let mut req = request.into_request();
-            req.extensions_mut().insert(GrpcMethod::new(
-                "TaskHubSidecarService",
-                "WaitForInstanceCompletion",
-            ));
+            req.extensions_mut()
+                .insert(
+                    GrpcMethod::new("TaskHubSidecarService", "WaitForInstanceCompletion"),
+                );
             self.inner.unary(req, path, codec).await
         }
         /// Raises an event to a running orchestration instance.
         pub async fn raise_event(
             &mut self,
             request: impl tonic::IntoRequest<super::RaiseEventRequest>,
-        ) -> std::result::Result<tonic::Response<super::RaiseEventResponse>, tonic::Status>
-        {
-            self.inner.ready().await.map_err(|e| {
-                tonic::Status::new(
-                    tonic::Code::Unknown,
-                    format!("Service was not ready: {}", e.into()),
-                )
-            })?;
+        ) -> std::result::Result<
+            tonic::Response<super::RaiseEventResponse>,
+            tonic::Status,
+        > {
+            self.inner
+                .ready()
+                .await
+                .map_err(|e| {
+                    tonic::Status::new(
+                        tonic::Code::Unknown,
+                        format!("Service was not ready: {}", e.into()),
+                    )
+                })?;
             let codec = tonic::codec::ProstCodec::default();
-            let path = http::uri::PathAndQuery::from_static("/TaskHubSidecarService/RaiseEvent");
+            let path = http::uri::PathAndQuery::from_static(
+                "/TaskHubSidecarService/RaiseEvent",
+            );
             let mut req = request.into_request();
             req.extensions_mut()
                 .insert(GrpcMethod::new("TaskHubSidecarService", "RaiseEvent"));
@@ -2143,37 +2176,49 @@ pub mod task_hub_sidecar_service_client {
         pub async fn terminate_instance(
             &mut self,
             request: impl tonic::IntoRequest<super::TerminateRequest>,
-        ) -> std::result::Result<tonic::Response<super::TerminateResponse>, tonic::Status> {
-            self.inner.ready().await.map_err(|e| {
-                tonic::Status::new(
-                    tonic::Code::Unknown,
-                    format!("Service was not ready: {}", e.into()),
-                )
-            })?;
+        ) -> std::result::Result<
+            tonic::Response<super::TerminateResponse>,
+            tonic::Status,
+        > {
+            self.inner
+                .ready()
+                .await
+                .map_err(|e| {
+                    tonic::Status::new(
+                        tonic::Code::Unknown,
+                        format!("Service was not ready: {}", e.into()),
+                    )
+                })?;
             let codec = tonic::codec::ProstCodec::default();
-            let path =
-                http::uri::PathAndQuery::from_static("/TaskHubSidecarService/TerminateInstance");
+            let path = http::uri::PathAndQuery::from_static(
+                "/TaskHubSidecarService/TerminateInstance",
+            );
             let mut req = request.into_request();
-            req.extensions_mut().insert(GrpcMethod::new(
-                "TaskHubSidecarService",
-                "TerminateInstance",
-            ));
+            req.extensions_mut()
+                .insert(GrpcMethod::new("TaskHubSidecarService", "TerminateInstance"));
             self.inner.unary(req, path, codec).await
         }
         /// Suspends a running orchestration instance.
         pub async fn suspend_instance(
             &mut self,
             request: impl tonic::IntoRequest<super::SuspendRequest>,
-        ) -> std::result::Result<tonic::Response<super::SuspendResponse>, tonic::Status> {
-            self.inner.ready().await.map_err(|e| {
-                tonic::Status::new(
-                    tonic::Code::Unknown,
-                    format!("Service was not ready: {}", e.into()),
-                )
-            })?;
+        ) -> std::result::Result<
+            tonic::Response<super::SuspendResponse>,
+            tonic::Status,
+        > {
+            self.inner
+                .ready()
+                .await
+                .map_err(|e| {
+                    tonic::Status::new(
+                        tonic::Code::Unknown,
+                        format!("Service was not ready: {}", e.into()),
+                    )
+                })?;
             let codec = tonic::codec::ProstCodec::default();
-            let path =
-                http::uri::PathAndQuery::from_static("/TaskHubSidecarService/SuspendInstance");
+            let path = http::uri::PathAndQuery::from_static(
+                "/TaskHubSidecarService/SuspendInstance",
+            );
             let mut req = request.into_request();
             req.extensions_mut()
                 .insert(GrpcMethod::new("TaskHubSidecarService", "SuspendInstance"));
@@ -2184,15 +2229,19 @@ pub mod task_hub_sidecar_service_client {
             &mut self,
             request: impl tonic::IntoRequest<super::ResumeRequest>,
         ) -> std::result::Result<tonic::Response<super::ResumeResponse>, tonic::Status> {
-            self.inner.ready().await.map_err(|e| {
-                tonic::Status::new(
-                    tonic::Code::Unknown,
-                    format!("Service was not ready: {}", e.into()),
-                )
-            })?;
+            self.inner
+                .ready()
+                .await
+                .map_err(|e| {
+                    tonic::Status::new(
+                        tonic::Code::Unknown,
+                        format!("Service was not ready: {}", e.into()),
+                    )
+                })?;
             let codec = tonic::codec::ProstCodec::default();
-            let path =
-                http::uri::PathAndQuery::from_static("/TaskHubSidecarService/ResumeInstance");
+            let path = http::uri::PathAndQuery::from_static(
+                "/TaskHubSidecarService/ResumeInstance",
+            );
             let mut req = request.into_request();
             req.extensions_mut()
                 .insert(GrpcMethod::new("TaskHubSidecarService", "ResumeInstance"));
@@ -2201,17 +2250,23 @@ pub mod task_hub_sidecar_service_client {
         pub async fn query_instances(
             &mut self,
             request: impl tonic::IntoRequest<super::QueryInstancesRequest>,
-        ) -> std::result::Result<tonic::Response<super::QueryInstancesResponse>, tonic::Status>
-        {
-            self.inner.ready().await.map_err(|e| {
-                tonic::Status::new(
-                    tonic::Code::Unknown,
-                    format!("Service was not ready: {}", e.into()),
-                )
-            })?;
+        ) -> std::result::Result<
+            tonic::Response<super::QueryInstancesResponse>,
+            tonic::Status,
+        > {
+            self.inner
+                .ready()
+                .await
+                .map_err(|e| {
+                    tonic::Status::new(
+                        tonic::Code::Unknown,
+                        format!("Service was not ready: {}", e.into()),
+                    )
+                })?;
             let codec = tonic::codec::ProstCodec::default();
-            let path =
-                http::uri::PathAndQuery::from_static("/TaskHubSidecarService/QueryInstances");
+            let path = http::uri::PathAndQuery::from_static(
+                "/TaskHubSidecarService/QueryInstances",
+            );
             let mut req = request.into_request();
             req.extensions_mut()
                 .insert(GrpcMethod::new("TaskHubSidecarService", "QueryInstances"));
@@ -2220,17 +2275,23 @@ pub mod task_hub_sidecar_service_client {
         pub async fn purge_instances(
             &mut self,
             request: impl tonic::IntoRequest<super::PurgeInstancesRequest>,
-        ) -> std::result::Result<tonic::Response<super::PurgeInstancesResponse>, tonic::Status>
-        {
-            self.inner.ready().await.map_err(|e| {
-                tonic::Status::new(
-                    tonic::Code::Unknown,
-                    format!("Service was not ready: {}", e.into()),
-                )
-            })?;
+        ) -> std::result::Result<
+            tonic::Response<super::PurgeInstancesResponse>,
+            tonic::Status,
+        > {
+            self.inner
+                .ready()
+                .await
+                .map_err(|e| {
+                    tonic::Status::new(
+                        tonic::Code::Unknown,
+                        format!("Service was not ready: {}", e.into()),
+                    )
+                })?;
             let codec = tonic::codec::ProstCodec::default();
-            let path =
-                http::uri::PathAndQuery::from_static("/TaskHubSidecarService/PurgeInstances");
+            let path = http::uri::PathAndQuery::from_static(
+                "/TaskHubSidecarService/PurgeInstances",
+            );
             let mut req = request.into_request();
             req.extensions_mut()
                 .insert(GrpcMethod::new("TaskHubSidecarService", "PurgeInstances"));
@@ -2243,14 +2304,19 @@ pub mod task_hub_sidecar_service_client {
             tonic::Response<tonic::codec::Streaming<super::WorkItem>>,
             tonic::Status,
         > {
-            self.inner.ready().await.map_err(|e| {
-                tonic::Status::new(
-                    tonic::Code::Unknown,
-                    format!("Service was not ready: {}", e.into()),
-                )
-            })?;
+            self.inner
+                .ready()
+                .await
+                .map_err(|e| {
+                    tonic::Status::new(
+                        tonic::Code::Unknown,
+                        format!("Service was not ready: {}", e.into()),
+                    )
+                })?;
             let codec = tonic::codec::ProstCodec::default();
-            let path = http::uri::PathAndQuery::from_static("/TaskHubSidecarService/GetWorkItems");
+            let path = http::uri::PathAndQuery::from_static(
+                "/TaskHubSidecarService/GetWorkItems",
+            );
             let mut req = request.into_request();
             req.extensions_mut()
                 .insert(GrpcMethod::new("TaskHubSidecarService", "GetWorkItems"));
@@ -2259,81 +2325,103 @@ pub mod task_hub_sidecar_service_client {
         pub async fn complete_activity_task(
             &mut self,
             request: impl tonic::IntoRequest<super::ActivityResponse>,
-        ) -> std::result::Result<tonic::Response<super::CompleteTaskResponse>, tonic::Status>
-        {
-            self.inner.ready().await.map_err(|e| {
-                tonic::Status::new(
-                    tonic::Code::Unknown,
-                    format!("Service was not ready: {}", e.into()),
-                )
-            })?;
+        ) -> std::result::Result<
+            tonic::Response<super::CompleteTaskResponse>,
+            tonic::Status,
+        > {
+            self.inner
+                .ready()
+                .await
+                .map_err(|e| {
+                    tonic::Status::new(
+                        tonic::Code::Unknown,
+                        format!("Service was not ready: {}", e.into()),
+                    )
+                })?;
             let codec = tonic::codec::ProstCodec::default();
-            let path =
-                http::uri::PathAndQuery::from_static("/TaskHubSidecarService/CompleteActivityTask");
+            let path = http::uri::PathAndQuery::from_static(
+                "/TaskHubSidecarService/CompleteActivityTask",
+            );
             let mut req = request.into_request();
-            req.extensions_mut().insert(GrpcMethod::new(
-                "TaskHubSidecarService",
-                "CompleteActivityTask",
-            ));
+            req.extensions_mut()
+                .insert(
+                    GrpcMethod::new("TaskHubSidecarService", "CompleteActivityTask"),
+                );
             self.inner.unary(req, path, codec).await
         }
         pub async fn complete_orchestrator_task(
             &mut self,
             request: impl tonic::IntoRequest<super::OrchestratorResponse>,
-        ) -> std::result::Result<tonic::Response<super::CompleteTaskResponse>, tonic::Status>
-        {
-            self.inner.ready().await.map_err(|e| {
-                tonic::Status::new(
-                    tonic::Code::Unknown,
-                    format!("Service was not ready: {}", e.into()),
-                )
-            })?;
+        ) -> std::result::Result<
+            tonic::Response<super::CompleteTaskResponse>,
+            tonic::Status,
+        > {
+            self.inner
+                .ready()
+                .await
+                .map_err(|e| {
+                    tonic::Status::new(
+                        tonic::Code::Unknown,
+                        format!("Service was not ready: {}", e.into()),
+                    )
+                })?;
             let codec = tonic::codec::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static(
                 "/TaskHubSidecarService/CompleteOrchestratorTask",
             );
             let mut req = request.into_request();
-            req.extensions_mut().insert(GrpcMethod::new(
-                "TaskHubSidecarService",
-                "CompleteOrchestratorTask",
-            ));
+            req.extensions_mut()
+                .insert(
+                    GrpcMethod::new("TaskHubSidecarService", "CompleteOrchestratorTask"),
+                );
             self.inner.unary(req, path, codec).await
         }
         pub async fn complete_entity_task(
             &mut self,
             request: impl tonic::IntoRequest<super::EntityBatchResult>,
-        ) -> std::result::Result<tonic::Response<super::CompleteTaskResponse>, tonic::Status>
-        {
-            self.inner.ready().await.map_err(|e| {
-                tonic::Status::new(
-                    tonic::Code::Unknown,
-                    format!("Service was not ready: {}", e.into()),
-                )
-            })?;
+        ) -> std::result::Result<
+            tonic::Response<super::CompleteTaskResponse>,
+            tonic::Status,
+        > {
+            self.inner
+                .ready()
+                .await
+                .map_err(|e| {
+                    tonic::Status::new(
+                        tonic::Code::Unknown,
+                        format!("Service was not ready: {}", e.into()),
+                    )
+                })?;
             let codec = tonic::codec::ProstCodec::default();
-            let path =
-                http::uri::PathAndQuery::from_static("/TaskHubSidecarService/CompleteEntityTask");
+            let path = http::uri::PathAndQuery::from_static(
+                "/TaskHubSidecarService/CompleteEntityTask",
+            );
             let mut req = request.into_request();
-            req.extensions_mut().insert(GrpcMethod::new(
-                "TaskHubSidecarService",
-                "CompleteEntityTask",
-            ));
+            req.extensions_mut()
+                .insert(GrpcMethod::new("TaskHubSidecarService", "CompleteEntityTask"));
             self.inner.unary(req, path, codec).await
         }
         /// Deletes and Creates the necessary resources for the orchestration service and the instance store
         pub async fn create_task_hub(
             &mut self,
             request: impl tonic::IntoRequest<super::CreateTaskHubRequest>,
-        ) -> std::result::Result<tonic::Response<super::CreateTaskHubResponse>, tonic::Status>
-        {
-            self.inner.ready().await.map_err(|e| {
-                tonic::Status::new(
-                    tonic::Code::Unknown,
-                    format!("Service was not ready: {}", e.into()),
-                )
-            })?;
+        ) -> std::result::Result<
+            tonic::Response<super::CreateTaskHubResponse>,
+            tonic::Status,
+        > {
+            self.inner
+                .ready()
+                .await
+                .map_err(|e| {
+                    tonic::Status::new(
+                        tonic::Code::Unknown,
+                        format!("Service was not ready: {}", e.into()),
+                    )
+                })?;
             let codec = tonic::codec::ProstCodec::default();
-            let path = http::uri::PathAndQuery::from_static("/TaskHubSidecarService/CreateTaskHub");
+            let path = http::uri::PathAndQuery::from_static(
+                "/TaskHubSidecarService/CreateTaskHub",
+            );
             let mut req = request.into_request();
             req.extensions_mut()
                 .insert(GrpcMethod::new("TaskHubSidecarService", "CreateTaskHub"));
@@ -2343,16 +2431,23 @@ pub mod task_hub_sidecar_service_client {
         pub async fn delete_task_hub(
             &mut self,
             request: impl tonic::IntoRequest<super::DeleteTaskHubRequest>,
-        ) -> std::result::Result<tonic::Response<super::DeleteTaskHubResponse>, tonic::Status>
-        {
-            self.inner.ready().await.map_err(|e| {
-                tonic::Status::new(
-                    tonic::Code::Unknown,
-                    format!("Service was not ready: {}", e.into()),
-                )
-            })?;
+        ) -> std::result::Result<
+            tonic::Response<super::DeleteTaskHubResponse>,
+            tonic::Status,
+        > {
+            self.inner
+                .ready()
+                .await
+                .map_err(|e| {
+                    tonic::Status::new(
+                        tonic::Code::Unknown,
+                        format!("Service was not ready: {}", e.into()),
+                    )
+                })?;
             let codec = tonic::codec::ProstCodec::default();
-            let path = http::uri::PathAndQuery::from_static("/TaskHubSidecarService/DeleteTaskHub");
+            let path = http::uri::PathAndQuery::from_static(
+                "/TaskHubSidecarService/DeleteTaskHub",
+            );
             let mut req = request.into_request();
             req.extensions_mut()
                 .insert(GrpcMethod::new("TaskHubSidecarService", "DeleteTaskHub"));
@@ -2362,16 +2457,23 @@ pub mod task_hub_sidecar_service_client {
         pub async fn signal_entity(
             &mut self,
             request: impl tonic::IntoRequest<super::SignalEntityRequest>,
-        ) -> std::result::Result<tonic::Response<super::SignalEntityResponse>, tonic::Status>
-        {
-            self.inner.ready().await.map_err(|e| {
-                tonic::Status::new(
-                    tonic::Code::Unknown,
-                    format!("Service was not ready: {}", e.into()),
-                )
-            })?;
+        ) -> std::result::Result<
+            tonic::Response<super::SignalEntityResponse>,
+            tonic::Status,
+        > {
+            self.inner
+                .ready()
+                .await
+                .map_err(|e| {
+                    tonic::Status::new(
+                        tonic::Code::Unknown,
+                        format!("Service was not ready: {}", e.into()),
+                    )
+                })?;
             let codec = tonic::codec::ProstCodec::default();
-            let path = http::uri::PathAndQuery::from_static("/TaskHubSidecarService/SignalEntity");
+            let path = http::uri::PathAndQuery::from_static(
+                "/TaskHubSidecarService/SignalEntity",
+            );
             let mut req = request.into_request();
             req.extensions_mut()
                 .insert(GrpcMethod::new("TaskHubSidecarService", "SignalEntity"));
@@ -2381,15 +2483,23 @@ pub mod task_hub_sidecar_service_client {
         pub async fn get_entity(
             &mut self,
             request: impl tonic::IntoRequest<super::GetEntityRequest>,
-        ) -> std::result::Result<tonic::Response<super::GetEntityResponse>, tonic::Status> {
-            self.inner.ready().await.map_err(|e| {
-                tonic::Status::new(
-                    tonic::Code::Unknown,
-                    format!("Service was not ready: {}", e.into()),
-                )
-            })?;
+        ) -> std::result::Result<
+            tonic::Response<super::GetEntityResponse>,
+            tonic::Status,
+        > {
+            self.inner
+                .ready()
+                .await
+                .map_err(|e| {
+                    tonic::Status::new(
+                        tonic::Code::Unknown,
+                        format!("Service was not ready: {}", e.into()),
+                    )
+                })?;
             let codec = tonic::codec::ProstCodec::default();
-            let path = http::uri::PathAndQuery::from_static("/TaskHubSidecarService/GetEntity");
+            let path = http::uri::PathAndQuery::from_static(
+                "/TaskHubSidecarService/GetEntity",
+            );
             let mut req = request.into_request();
             req.extensions_mut()
                 .insert(GrpcMethod::new("TaskHubSidecarService", "GetEntity"));
@@ -2399,16 +2509,23 @@ pub mod task_hub_sidecar_service_client {
         pub async fn query_entities(
             &mut self,
             request: impl tonic::IntoRequest<super::QueryEntitiesRequest>,
-        ) -> std::result::Result<tonic::Response<super::QueryEntitiesResponse>, tonic::Status>
-        {
-            self.inner.ready().await.map_err(|e| {
-                tonic::Status::new(
-                    tonic::Code::Unknown,
-                    format!("Service was not ready: {}", e.into()),
-                )
-            })?;
+        ) -> std::result::Result<
+            tonic::Response<super::QueryEntitiesResponse>,
+            tonic::Status,
+        > {
+            self.inner
+                .ready()
+                .await
+                .map_err(|e| {
+                    tonic::Status::new(
+                        tonic::Code::Unknown,
+                        format!("Service was not ready: {}", e.into()),
+                    )
+                })?;
             let codec = tonic::codec::ProstCodec::default();
-            let path = http::uri::PathAndQuery::from_static("/TaskHubSidecarService/QueryEntities");
+            let path = http::uri::PathAndQuery::from_static(
+                "/TaskHubSidecarService/QueryEntities",
+            );
             let mut req = request.into_request();
             req.extensions_mut()
                 .insert(GrpcMethod::new("TaskHubSidecarService", "QueryEntities"));
@@ -2418,22 +2535,26 @@ pub mod task_hub_sidecar_service_client {
         pub async fn clean_entity_storage(
             &mut self,
             request: impl tonic::IntoRequest<super::CleanEntityStorageRequest>,
-        ) -> std::result::Result<tonic::Response<super::CleanEntityStorageResponse>, tonic::Status>
-        {
-            self.inner.ready().await.map_err(|e| {
-                tonic::Status::new(
-                    tonic::Code::Unknown,
-                    format!("Service was not ready: {}", e.into()),
-                )
-            })?;
+        ) -> std::result::Result<
+            tonic::Response<super::CleanEntityStorageResponse>,
+            tonic::Status,
+        > {
+            self.inner
+                .ready()
+                .await
+                .map_err(|e| {
+                    tonic::Status::new(
+                        tonic::Code::Unknown,
+                        format!("Service was not ready: {}", e.into()),
+                    )
+                })?;
             let codec = tonic::codec::ProstCodec::default();
-            let path =
-                http::uri::PathAndQuery::from_static("/TaskHubSidecarService/CleanEntityStorage");
+            let path = http::uri::PathAndQuery::from_static(
+                "/TaskHubSidecarService/CleanEntityStorage",
+            );
             let mut req = request.into_request();
-            req.extensions_mut().insert(GrpcMethod::new(
-                "TaskHubSidecarService",
-                "CleanEntityStorage",
-            ));
+            req.extensions_mut()
+                .insert(GrpcMethod::new("TaskHubSidecarService", "CleanEntityStorage"));
             self.inner.unary(req, path, codec).await
         }
     }
@@ -2454,37 +2575,58 @@ pub mod task_hub_sidecar_service_server {
         async fn start_instance(
             &self,
             request: tonic::Request<super::CreateInstanceRequest>,
-        ) -> std::result::Result<tonic::Response<super::CreateInstanceResponse>, tonic::Status>;
+        ) -> std::result::Result<
+            tonic::Response<super::CreateInstanceResponse>,
+            tonic::Status,
+        >;
         /// Gets the status of an existing orchestration instance.
         async fn get_instance(
             &self,
             request: tonic::Request<super::GetInstanceRequest>,
-        ) -> std::result::Result<tonic::Response<super::GetInstanceResponse>, tonic::Status>;
+        ) -> std::result::Result<
+            tonic::Response<super::GetInstanceResponse>,
+            tonic::Status,
+        >;
         /// Rewinds an orchestration instance to last known good state and replays from there.
         async fn rewind_instance(
             &self,
             request: tonic::Request<super::RewindInstanceRequest>,
-        ) -> std::result::Result<tonic::Response<super::RewindInstanceResponse>, tonic::Status>;
+        ) -> std::result::Result<
+            tonic::Response<super::RewindInstanceResponse>,
+            tonic::Status,
+        >;
         /// Waits for an orchestration instance to reach a running or completion state.
         async fn wait_for_instance_start(
             &self,
             request: tonic::Request<super::GetInstanceRequest>,
-        ) -> std::result::Result<tonic::Response<super::GetInstanceResponse>, tonic::Status>;
+        ) -> std::result::Result<
+            tonic::Response<super::GetInstanceResponse>,
+            tonic::Status,
+        >;
         /// Waits for an orchestration instance to reach a completion state (completed, failed, terminated, etc.).
         async fn wait_for_instance_completion(
             &self,
             request: tonic::Request<super::GetInstanceRequest>,
-        ) -> std::result::Result<tonic::Response<super::GetInstanceResponse>, tonic::Status>;
+        ) -> std::result::Result<
+            tonic::Response<super::GetInstanceResponse>,
+            tonic::Status,
+        >;
         /// Raises an event to a running orchestration instance.
         async fn raise_event(
             &self,
             request: tonic::Request<super::RaiseEventRequest>,
-        ) -> std::result::Result<tonic::Response<super::RaiseEventResponse>, tonic::Status>;
+        ) -> std::result::Result<
+            tonic::Response<super::RaiseEventResponse>,
+            tonic::Status,
+        >;
         /// Terminates a running orchestration instance.
         async fn terminate_instance(
             &self,
             request: tonic::Request<super::TerminateRequest>,
-        ) -> std::result::Result<tonic::Response<super::TerminateResponse>, tonic::Status>;
+        ) -> std::result::Result<
+            tonic::Response<super::TerminateResponse>,
+            tonic::Status,
+        >;
         /// Suspends a running orchestration instance.
         async fn suspend_instance(
             &self,
@@ -2498,62 +2640,99 @@ pub mod task_hub_sidecar_service_server {
         async fn query_instances(
             &self,
             request: tonic::Request<super::QueryInstancesRequest>,
-        ) -> std::result::Result<tonic::Response<super::QueryInstancesResponse>, tonic::Status>;
+        ) -> std::result::Result<
+            tonic::Response<super::QueryInstancesResponse>,
+            tonic::Status,
+        >;
         async fn purge_instances(
             &self,
             request: tonic::Request<super::PurgeInstancesRequest>,
-        ) -> std::result::Result<tonic::Response<super::PurgeInstancesResponse>, tonic::Status>;
+        ) -> std::result::Result<
+            tonic::Response<super::PurgeInstancesResponse>,
+            tonic::Status,
+        >;
         /// Server streaming response type for the GetWorkItems method.
         type GetWorkItemsStream: tonic::codegen::tokio_stream::Stream<
                 Item = std::result::Result<super::WorkItem, tonic::Status>,
-            > + Send
+            >
+            + Send
             + 'static;
         async fn get_work_items(
             &self,
             request: tonic::Request<super::GetWorkItemsRequest>,
-        ) -> std::result::Result<tonic::Response<Self::GetWorkItemsStream>, tonic::Status>;
+        ) -> std::result::Result<
+            tonic::Response<Self::GetWorkItemsStream>,
+            tonic::Status,
+        >;
         async fn complete_activity_task(
             &self,
             request: tonic::Request<super::ActivityResponse>,
-        ) -> std::result::Result<tonic::Response<super::CompleteTaskResponse>, tonic::Status>;
+        ) -> std::result::Result<
+            tonic::Response<super::CompleteTaskResponse>,
+            tonic::Status,
+        >;
         async fn complete_orchestrator_task(
             &self,
             request: tonic::Request<super::OrchestratorResponse>,
-        ) -> std::result::Result<tonic::Response<super::CompleteTaskResponse>, tonic::Status>;
+        ) -> std::result::Result<
+            tonic::Response<super::CompleteTaskResponse>,
+            tonic::Status,
+        >;
         async fn complete_entity_task(
             &self,
             request: tonic::Request<super::EntityBatchResult>,
-        ) -> std::result::Result<tonic::Response<super::CompleteTaskResponse>, tonic::Status>;
+        ) -> std::result::Result<
+            tonic::Response<super::CompleteTaskResponse>,
+            tonic::Status,
+        >;
         /// Deletes and Creates the necessary resources for the orchestration service and the instance store
         async fn create_task_hub(
             &self,
             request: tonic::Request<super::CreateTaskHubRequest>,
-        ) -> std::result::Result<tonic::Response<super::CreateTaskHubResponse>, tonic::Status>;
+        ) -> std::result::Result<
+            tonic::Response<super::CreateTaskHubResponse>,
+            tonic::Status,
+        >;
         /// Deletes the resources for the orchestration service and optionally the instance store
         async fn delete_task_hub(
             &self,
             request: tonic::Request<super::DeleteTaskHubRequest>,
-        ) -> std::result::Result<tonic::Response<super::DeleteTaskHubResponse>, tonic::Status>;
+        ) -> std::result::Result<
+            tonic::Response<super::DeleteTaskHubResponse>,
+            tonic::Status,
+        >;
         /// sends a signal to an entity
         async fn signal_entity(
             &self,
             request: tonic::Request<super::SignalEntityRequest>,
-        ) -> std::result::Result<tonic::Response<super::SignalEntityResponse>, tonic::Status>;
+        ) -> std::result::Result<
+            tonic::Response<super::SignalEntityResponse>,
+            tonic::Status,
+        >;
         /// get information about a specific entity
         async fn get_entity(
             &self,
             request: tonic::Request<super::GetEntityRequest>,
-        ) -> std::result::Result<tonic::Response<super::GetEntityResponse>, tonic::Status>;
+        ) -> std::result::Result<
+            tonic::Response<super::GetEntityResponse>,
+            tonic::Status,
+        >;
         /// query entities
         async fn query_entities(
             &self,
             request: tonic::Request<super::QueryEntitiesRequest>,
-        ) -> std::result::Result<tonic::Response<super::QueryEntitiesResponse>, tonic::Status>;
+        ) -> std::result::Result<
+            tonic::Response<super::QueryEntitiesResponse>,
+            tonic::Status,
+        >;
         /// clean entity storage
         async fn clean_entity_storage(
             &self,
             request: tonic::Request<super::CleanEntityStorageRequest>,
-        ) -> std::result::Result<tonic::Response<super::CleanEntityStorageResponse>, tonic::Status>;
+        ) -> std::result::Result<
+            tonic::Response<super::CleanEntityStorageResponse>,
+            tonic::Status,
+        >;
     }
     #[derive(Debug)]
     pub struct TaskHubSidecarServiceServer<T: TaskHubSidecarService> {
@@ -2578,7 +2757,10 @@ pub mod task_hub_sidecar_service_server {
                 max_encoding_message_size: None,
             }
         }
-        pub fn with_interceptor<F>(inner: T, interceptor: F) -> InterceptedService<Self, F>
+        pub fn with_interceptor<F>(
+            inner: T,
+            interceptor: F,
+        ) -> InterceptedService<Self, F>
         where
             F: tonic::service::Interceptor,
         {
@@ -2613,7 +2795,8 @@ pub mod task_hub_sidecar_service_server {
             self
         }
     }
-    impl<T, B> tonic::codegen::Service<http::Request<B>> for TaskHubSidecarServiceServer<T>
+    impl<T, B> tonic::codegen::Service<http::Request<B>>
+    for TaskHubSidecarServiceServer<T>
     where
         T: TaskHubSidecarService,
         B: Body + Send + 'static,
@@ -2634,9 +2817,13 @@ pub mod task_hub_sidecar_service_server {
                 "/TaskHubSidecarService/Hello" => {
                     #[allow(non_camel_case_types)]
                     struct HelloSvc<T: TaskHubSidecarService>(pub Arc<T>);
-                    impl<T: TaskHubSidecarService> tonic::server::UnaryService<()> for HelloSvc<T> {
+                    impl<T: TaskHubSidecarService> tonic::server::UnaryService<()>
+                    for HelloSvc<T> {
                         type Response = ();
-                        type Future = BoxFuture<tonic::Response<Self::Response>, tonic::Status>;
+                        type Future = BoxFuture<
+                            tonic::Response<Self::Response>,
+                            tonic::Status,
+                        >;
                         fn call(&mut self, request: tonic::Request<()>) -> Self::Future {
                             let inner = Arc::clone(&self.0);
                             let fut = async move {
@@ -2671,19 +2858,26 @@ pub mod task_hub_sidecar_service_server {
                 "/TaskHubSidecarService/StartInstance" => {
                     #[allow(non_camel_case_types)]
                     struct StartInstanceSvc<T: TaskHubSidecarService>(pub Arc<T>);
-                    impl<T: TaskHubSidecarService>
-                        tonic::server::UnaryService<super::CreateInstanceRequest>
-                        for StartInstanceSvc<T>
-                    {
+                    impl<
+                        T: TaskHubSidecarService,
+                    > tonic::server::UnaryService<super::CreateInstanceRequest>
+                    for StartInstanceSvc<T> {
                         type Response = super::CreateInstanceResponse;
-                        type Future = BoxFuture<tonic::Response<Self::Response>, tonic::Status>;
+                        type Future = BoxFuture<
+                            tonic::Response<Self::Response>,
+                            tonic::Status,
+                        >;
                         fn call(
                             &mut self,
                             request: tonic::Request<super::CreateInstanceRequest>,
                         ) -> Self::Future {
                             let inner = Arc::clone(&self.0);
                             let fut = async move {
-                                <T as TaskHubSidecarService>::start_instance(&inner, request).await
+                                <T as TaskHubSidecarService>::start_instance(
+                                        &inner,
+                                        request,
+                                    )
+                                    .await
                             };
                             Box::pin(fut)
                         }
@@ -2714,19 +2908,23 @@ pub mod task_hub_sidecar_service_server {
                 "/TaskHubSidecarService/GetInstance" => {
                     #[allow(non_camel_case_types)]
                     struct GetInstanceSvc<T: TaskHubSidecarService>(pub Arc<T>);
-                    impl<T: TaskHubSidecarService>
-                        tonic::server::UnaryService<super::GetInstanceRequest>
-                        for GetInstanceSvc<T>
-                    {
+                    impl<
+                        T: TaskHubSidecarService,
+                    > tonic::server::UnaryService<super::GetInstanceRequest>
+                    for GetInstanceSvc<T> {
                         type Response = super::GetInstanceResponse;
-                        type Future = BoxFuture<tonic::Response<Self::Response>, tonic::Status>;
+                        type Future = BoxFuture<
+                            tonic::Response<Self::Response>,
+                            tonic::Status,
+                        >;
                         fn call(
                             &mut self,
                             request: tonic::Request<super::GetInstanceRequest>,
                         ) -> Self::Future {
                             let inner = Arc::clone(&self.0);
                             let fut = async move {
-                                <T as TaskHubSidecarService>::get_instance(&inner, request).await
+                                <T as TaskHubSidecarService>::get_instance(&inner, request)
+                                    .await
                             };
                             Box::pin(fut)
                         }
@@ -2757,19 +2955,26 @@ pub mod task_hub_sidecar_service_server {
                 "/TaskHubSidecarService/RewindInstance" => {
                     #[allow(non_camel_case_types)]
                     struct RewindInstanceSvc<T: TaskHubSidecarService>(pub Arc<T>);
-                    impl<T: TaskHubSidecarService>
-                        tonic::server::UnaryService<super::RewindInstanceRequest>
-                        for RewindInstanceSvc<T>
-                    {
+                    impl<
+                        T: TaskHubSidecarService,
+                    > tonic::server::UnaryService<super::RewindInstanceRequest>
+                    for RewindInstanceSvc<T> {
                         type Response = super::RewindInstanceResponse;
-                        type Future = BoxFuture<tonic::Response<Self::Response>, tonic::Status>;
+                        type Future = BoxFuture<
+                            tonic::Response<Self::Response>,
+                            tonic::Status,
+                        >;
                         fn call(
                             &mut self,
                             request: tonic::Request<super::RewindInstanceRequest>,
                         ) -> Self::Future {
                             let inner = Arc::clone(&self.0);
                             let fut = async move {
-                                <T as TaskHubSidecarService>::rewind_instance(&inner, request).await
+                                <T as TaskHubSidecarService>::rewind_instance(
+                                        &inner,
+                                        request,
+                                    )
+                                    .await
                             };
                             Box::pin(fut)
                         }
@@ -2800,12 +3005,15 @@ pub mod task_hub_sidecar_service_server {
                 "/TaskHubSidecarService/WaitForInstanceStart" => {
                     #[allow(non_camel_case_types)]
                     struct WaitForInstanceStartSvc<T: TaskHubSidecarService>(pub Arc<T>);
-                    impl<T: TaskHubSidecarService>
-                        tonic::server::UnaryService<super::GetInstanceRequest>
-                        for WaitForInstanceStartSvc<T>
-                    {
+                    impl<
+                        T: TaskHubSidecarService,
+                    > tonic::server::UnaryService<super::GetInstanceRequest>
+                    for WaitForInstanceStartSvc<T> {
                         type Response = super::GetInstanceResponse;
-                        type Future = BoxFuture<tonic::Response<Self::Response>, tonic::Status>;
+                        type Future = BoxFuture<
+                            tonic::Response<Self::Response>,
+                            tonic::Status,
+                        >;
                         fn call(
                             &mut self,
                             request: tonic::Request<super::GetInstanceRequest>,
@@ -2813,9 +3021,10 @@ pub mod task_hub_sidecar_service_server {
                             let inner = Arc::clone(&self.0);
                             let fut = async move {
                                 <T as TaskHubSidecarService>::wait_for_instance_start(
-                                    &inner, request,
-                                )
-                                .await
+                                        &inner,
+                                        request,
+                                    )
+                                    .await
                             };
                             Box::pin(fut)
                         }
@@ -2845,13 +3054,18 @@ pub mod task_hub_sidecar_service_server {
                 }
                 "/TaskHubSidecarService/WaitForInstanceCompletion" => {
                     #[allow(non_camel_case_types)]
-                    struct WaitForInstanceCompletionSvc<T: TaskHubSidecarService>(pub Arc<T>);
-                    impl<T: TaskHubSidecarService>
-                        tonic::server::UnaryService<super::GetInstanceRequest>
-                        for WaitForInstanceCompletionSvc<T>
-                    {
+                    struct WaitForInstanceCompletionSvc<T: TaskHubSidecarService>(
+                        pub Arc<T>,
+                    );
+                    impl<
+                        T: TaskHubSidecarService,
+                    > tonic::server::UnaryService<super::GetInstanceRequest>
+                    for WaitForInstanceCompletionSvc<T> {
                         type Response = super::GetInstanceResponse;
-                        type Future = BoxFuture<tonic::Response<Self::Response>, tonic::Status>;
+                        type Future = BoxFuture<
+                            tonic::Response<Self::Response>,
+                            tonic::Status,
+                        >;
                         fn call(
                             &mut self,
                             request: tonic::Request<super::GetInstanceRequest>,
@@ -2859,9 +3073,10 @@ pub mod task_hub_sidecar_service_server {
                             let inner = Arc::clone(&self.0);
                             let fut = async move {
                                 <T as TaskHubSidecarService>::wait_for_instance_completion(
-                                    &inner, request,
-                                )
-                                .await
+                                        &inner,
+                                        request,
+                                    )
+                                    .await
                             };
                             Box::pin(fut)
                         }
@@ -2892,18 +3107,23 @@ pub mod task_hub_sidecar_service_server {
                 "/TaskHubSidecarService/RaiseEvent" => {
                     #[allow(non_camel_case_types)]
                     struct RaiseEventSvc<T: TaskHubSidecarService>(pub Arc<T>);
-                    impl<T: TaskHubSidecarService>
-                        tonic::server::UnaryService<super::RaiseEventRequest> for RaiseEventSvc<T>
-                    {
+                    impl<
+                        T: TaskHubSidecarService,
+                    > tonic::server::UnaryService<super::RaiseEventRequest>
+                    for RaiseEventSvc<T> {
                         type Response = super::RaiseEventResponse;
-                        type Future = BoxFuture<tonic::Response<Self::Response>, tonic::Status>;
+                        type Future = BoxFuture<
+                            tonic::Response<Self::Response>,
+                            tonic::Status,
+                        >;
                         fn call(
                             &mut self,
                             request: tonic::Request<super::RaiseEventRequest>,
                         ) -> Self::Future {
                             let inner = Arc::clone(&self.0);
                             let fut = async move {
-                                <T as TaskHubSidecarService>::raise_event(&inner, request).await
+                                <T as TaskHubSidecarService>::raise_event(&inner, request)
+                                    .await
                             };
                             Box::pin(fut)
                         }
@@ -2934,19 +3154,25 @@ pub mod task_hub_sidecar_service_server {
                 "/TaskHubSidecarService/TerminateInstance" => {
                     #[allow(non_camel_case_types)]
                     struct TerminateInstanceSvc<T: TaskHubSidecarService>(pub Arc<T>);
-                    impl<T: TaskHubSidecarService>
-                        tonic::server::UnaryService<super::TerminateRequest>
-                        for TerminateInstanceSvc<T>
-                    {
+                    impl<
+                        T: TaskHubSidecarService,
+                    > tonic::server::UnaryService<super::TerminateRequest>
+                    for TerminateInstanceSvc<T> {
                         type Response = super::TerminateResponse;
-                        type Future = BoxFuture<tonic::Response<Self::Response>, tonic::Status>;
+                        type Future = BoxFuture<
+                            tonic::Response<Self::Response>,
+                            tonic::Status,
+                        >;
                         fn call(
                             &mut self,
                             request: tonic::Request<super::TerminateRequest>,
                         ) -> Self::Future {
                             let inner = Arc::clone(&self.0);
                             let fut = async move {
-                                <T as TaskHubSidecarService>::terminate_instance(&inner, request)
+                                <T as TaskHubSidecarService>::terminate_instance(
+                                        &inner,
+                                        request,
+                                    )
                                     .await
                             };
                             Box::pin(fut)
@@ -2978,19 +3204,25 @@ pub mod task_hub_sidecar_service_server {
                 "/TaskHubSidecarService/SuspendInstance" => {
                     #[allow(non_camel_case_types)]
                     struct SuspendInstanceSvc<T: TaskHubSidecarService>(pub Arc<T>);
-                    impl<T: TaskHubSidecarService>
-                        tonic::server::UnaryService<super::SuspendRequest>
-                        for SuspendInstanceSvc<T>
-                    {
+                    impl<
+                        T: TaskHubSidecarService,
+                    > tonic::server::UnaryService<super::SuspendRequest>
+                    for SuspendInstanceSvc<T> {
                         type Response = super::SuspendResponse;
-                        type Future = BoxFuture<tonic::Response<Self::Response>, tonic::Status>;
+                        type Future = BoxFuture<
+                            tonic::Response<Self::Response>,
+                            tonic::Status,
+                        >;
                         fn call(
                             &mut self,
                             request: tonic::Request<super::SuspendRequest>,
                         ) -> Self::Future {
                             let inner = Arc::clone(&self.0);
                             let fut = async move {
-                                <T as TaskHubSidecarService>::suspend_instance(&inner, request)
+                                <T as TaskHubSidecarService>::suspend_instance(
+                                        &inner,
+                                        request,
+                                    )
                                     .await
                             };
                             Box::pin(fut)
@@ -3022,18 +3254,26 @@ pub mod task_hub_sidecar_service_server {
                 "/TaskHubSidecarService/ResumeInstance" => {
                     #[allow(non_camel_case_types)]
                     struct ResumeInstanceSvc<T: TaskHubSidecarService>(pub Arc<T>);
-                    impl<T: TaskHubSidecarService> tonic::server::UnaryService<super::ResumeRequest>
-                        for ResumeInstanceSvc<T>
-                    {
+                    impl<
+                        T: TaskHubSidecarService,
+                    > tonic::server::UnaryService<super::ResumeRequest>
+                    for ResumeInstanceSvc<T> {
                         type Response = super::ResumeResponse;
-                        type Future = BoxFuture<tonic::Response<Self::Response>, tonic::Status>;
+                        type Future = BoxFuture<
+                            tonic::Response<Self::Response>,
+                            tonic::Status,
+                        >;
                         fn call(
                             &mut self,
                             request: tonic::Request<super::ResumeRequest>,
                         ) -> Self::Future {
                             let inner = Arc::clone(&self.0);
                             let fut = async move {
-                                <T as TaskHubSidecarService>::resume_instance(&inner, request).await
+                                <T as TaskHubSidecarService>::resume_instance(
+                                        &inner,
+                                        request,
+                                    )
+                                    .await
                             };
                             Box::pin(fut)
                         }
@@ -3064,19 +3304,26 @@ pub mod task_hub_sidecar_service_server {
                 "/TaskHubSidecarService/QueryInstances" => {
                     #[allow(non_camel_case_types)]
                     struct QueryInstancesSvc<T: TaskHubSidecarService>(pub Arc<T>);
-                    impl<T: TaskHubSidecarService>
-                        tonic::server::UnaryService<super::QueryInstancesRequest>
-                        for QueryInstancesSvc<T>
-                    {
+                    impl<
+                        T: TaskHubSidecarService,
+                    > tonic::server::UnaryService<super::QueryInstancesRequest>
+                    for QueryInstancesSvc<T> {
                         type Response = super::QueryInstancesResponse;
-                        type Future = BoxFuture<tonic::Response<Self::Response>, tonic::Status>;
+                        type Future = BoxFuture<
+                            tonic::Response<Self::Response>,
+                            tonic::Status,
+                        >;
                         fn call(
                             &mut self,
                             request: tonic::Request<super::QueryInstancesRequest>,
                         ) -> Self::Future {
                             let inner = Arc::clone(&self.0);
                             let fut = async move {
-                                <T as TaskHubSidecarService>::query_instances(&inner, request).await
+                                <T as TaskHubSidecarService>::query_instances(
+                                        &inner,
+                                        request,
+                                    )
+                                    .await
                             };
                             Box::pin(fut)
                         }
@@ -3107,19 +3354,26 @@ pub mod task_hub_sidecar_service_server {
                 "/TaskHubSidecarService/PurgeInstances" => {
                     #[allow(non_camel_case_types)]
                     struct PurgeInstancesSvc<T: TaskHubSidecarService>(pub Arc<T>);
-                    impl<T: TaskHubSidecarService>
-                        tonic::server::UnaryService<super::PurgeInstancesRequest>
-                        for PurgeInstancesSvc<T>
-                    {
+                    impl<
+                        T: TaskHubSidecarService,
+                    > tonic::server::UnaryService<super::PurgeInstancesRequest>
+                    for PurgeInstancesSvc<T> {
                         type Response = super::PurgeInstancesResponse;
-                        type Future = BoxFuture<tonic::Response<Self::Response>, tonic::Status>;
+                        type Future = BoxFuture<
+                            tonic::Response<Self::Response>,
+                            tonic::Status,
+                        >;
                         fn call(
                             &mut self,
                             request: tonic::Request<super::PurgeInstancesRequest>,
                         ) -> Self::Future {
                             let inner = Arc::clone(&self.0);
                             let fut = async move {
-                                <T as TaskHubSidecarService>::purge_instances(&inner, request).await
+                                <T as TaskHubSidecarService>::purge_instances(
+                                        &inner,
+                                        request,
+                                    )
+                                    .await
                             };
                             Box::pin(fut)
                         }
@@ -3150,21 +3404,27 @@ pub mod task_hub_sidecar_service_server {
                 "/TaskHubSidecarService/GetWorkItems" => {
                     #[allow(non_camel_case_types)]
                     struct GetWorkItemsSvc<T: TaskHubSidecarService>(pub Arc<T>);
-                    impl<T: TaskHubSidecarService>
-                        tonic::server::ServerStreamingService<super::GetWorkItemsRequest>
-                        for GetWorkItemsSvc<T>
-                    {
+                    impl<
+                        T: TaskHubSidecarService,
+                    > tonic::server::ServerStreamingService<super::GetWorkItemsRequest>
+                    for GetWorkItemsSvc<T> {
                         type Response = super::WorkItem;
                         type ResponseStream = T::GetWorkItemsStream;
-                        type Future =
-                            BoxFuture<tonic::Response<Self::ResponseStream>, tonic::Status>;
+                        type Future = BoxFuture<
+                            tonic::Response<Self::ResponseStream>,
+                            tonic::Status,
+                        >;
                         fn call(
                             &mut self,
                             request: tonic::Request<super::GetWorkItemsRequest>,
                         ) -> Self::Future {
                             let inner = Arc::clone(&self.0);
                             let fut = async move {
-                                <T as TaskHubSidecarService>::get_work_items(&inner, request).await
+                                <T as TaskHubSidecarService>::get_work_items(
+                                        &inner,
+                                        request,
+                                    )
+                                    .await
                             };
                             Box::pin(fut)
                         }
@@ -3195,12 +3455,15 @@ pub mod task_hub_sidecar_service_server {
                 "/TaskHubSidecarService/CompleteActivityTask" => {
                     #[allow(non_camel_case_types)]
                     struct CompleteActivityTaskSvc<T: TaskHubSidecarService>(pub Arc<T>);
-                    impl<T: TaskHubSidecarService>
-                        tonic::server::UnaryService<super::ActivityResponse>
-                        for CompleteActivityTaskSvc<T>
-                    {
+                    impl<
+                        T: TaskHubSidecarService,
+                    > tonic::server::UnaryService<super::ActivityResponse>
+                    for CompleteActivityTaskSvc<T> {
                         type Response = super::CompleteTaskResponse;
-                        type Future = BoxFuture<tonic::Response<Self::Response>, tonic::Status>;
+                        type Future = BoxFuture<
+                            tonic::Response<Self::Response>,
+                            tonic::Status,
+                        >;
                         fn call(
                             &mut self,
                             request: tonic::Request<super::ActivityResponse>,
@@ -3208,9 +3471,10 @@ pub mod task_hub_sidecar_service_server {
                             let inner = Arc::clone(&self.0);
                             let fut = async move {
                                 <T as TaskHubSidecarService>::complete_activity_task(
-                                    &inner, request,
-                                )
-                                .await
+                                        &inner,
+                                        request,
+                                    )
+                                    .await
                             };
                             Box::pin(fut)
                         }
@@ -3240,13 +3504,18 @@ pub mod task_hub_sidecar_service_server {
                 }
                 "/TaskHubSidecarService/CompleteOrchestratorTask" => {
                     #[allow(non_camel_case_types)]
-                    struct CompleteOrchestratorTaskSvc<T: TaskHubSidecarService>(pub Arc<T>);
-                    impl<T: TaskHubSidecarService>
-                        tonic::server::UnaryService<super::OrchestratorResponse>
-                        for CompleteOrchestratorTaskSvc<T>
-                    {
+                    struct CompleteOrchestratorTaskSvc<T: TaskHubSidecarService>(
+                        pub Arc<T>,
+                    );
+                    impl<
+                        T: TaskHubSidecarService,
+                    > tonic::server::UnaryService<super::OrchestratorResponse>
+                    for CompleteOrchestratorTaskSvc<T> {
                         type Response = super::CompleteTaskResponse;
-                        type Future = BoxFuture<tonic::Response<Self::Response>, tonic::Status>;
+                        type Future = BoxFuture<
+                            tonic::Response<Self::Response>,
+                            tonic::Status,
+                        >;
                         fn call(
                             &mut self,
                             request: tonic::Request<super::OrchestratorResponse>,
@@ -3254,9 +3523,10 @@ pub mod task_hub_sidecar_service_server {
                             let inner = Arc::clone(&self.0);
                             let fut = async move {
                                 <T as TaskHubSidecarService>::complete_orchestrator_task(
-                                    &inner, request,
-                                )
-                                .await
+                                        &inner,
+                                        request,
+                                    )
+                                    .await
                             };
                             Box::pin(fut)
                         }
@@ -3287,19 +3557,25 @@ pub mod task_hub_sidecar_service_server {
                 "/TaskHubSidecarService/CompleteEntityTask" => {
                     #[allow(non_camel_case_types)]
                     struct CompleteEntityTaskSvc<T: TaskHubSidecarService>(pub Arc<T>);
-                    impl<T: TaskHubSidecarService>
-                        tonic::server::UnaryService<super::EntityBatchResult>
-                        for CompleteEntityTaskSvc<T>
-                    {
+                    impl<
+                        T: TaskHubSidecarService,
+                    > tonic::server::UnaryService<super::EntityBatchResult>
+                    for CompleteEntityTaskSvc<T> {
                         type Response = super::CompleteTaskResponse;
-                        type Future = BoxFuture<tonic::Response<Self::Response>, tonic::Status>;
+                        type Future = BoxFuture<
+                            tonic::Response<Self::Response>,
+                            tonic::Status,
+                        >;
                         fn call(
                             &mut self,
                             request: tonic::Request<super::EntityBatchResult>,
                         ) -> Self::Future {
                             let inner = Arc::clone(&self.0);
                             let fut = async move {
-                                <T as TaskHubSidecarService>::complete_entity_task(&inner, request)
+                                <T as TaskHubSidecarService>::complete_entity_task(
+                                        &inner,
+                                        request,
+                                    )
                                     .await
                             };
                             Box::pin(fut)
@@ -3331,19 +3607,26 @@ pub mod task_hub_sidecar_service_server {
                 "/TaskHubSidecarService/CreateTaskHub" => {
                     #[allow(non_camel_case_types)]
                     struct CreateTaskHubSvc<T: TaskHubSidecarService>(pub Arc<T>);
-                    impl<T: TaskHubSidecarService>
-                        tonic::server::UnaryService<super::CreateTaskHubRequest>
-                        for CreateTaskHubSvc<T>
-                    {
+                    impl<
+                        T: TaskHubSidecarService,
+                    > tonic::server::UnaryService<super::CreateTaskHubRequest>
+                    for CreateTaskHubSvc<T> {
                         type Response = super::CreateTaskHubResponse;
-                        type Future = BoxFuture<tonic::Response<Self::Response>, tonic::Status>;
+                        type Future = BoxFuture<
+                            tonic::Response<Self::Response>,
+                            tonic::Status,
+                        >;
                         fn call(
                             &mut self,
                             request: tonic::Request<super::CreateTaskHubRequest>,
                         ) -> Self::Future {
                             let inner = Arc::clone(&self.0);
                             let fut = async move {
-                                <T as TaskHubSidecarService>::create_task_hub(&inner, request).await
+                                <T as TaskHubSidecarService>::create_task_hub(
+                                        &inner,
+                                        request,
+                                    )
+                                    .await
                             };
                             Box::pin(fut)
                         }
@@ -3374,19 +3657,26 @@ pub mod task_hub_sidecar_service_server {
                 "/TaskHubSidecarService/DeleteTaskHub" => {
                     #[allow(non_camel_case_types)]
                     struct DeleteTaskHubSvc<T: TaskHubSidecarService>(pub Arc<T>);
-                    impl<T: TaskHubSidecarService>
-                        tonic::server::UnaryService<super::DeleteTaskHubRequest>
-                        for DeleteTaskHubSvc<T>
-                    {
+                    impl<
+                        T: TaskHubSidecarService,
+                    > tonic::server::UnaryService<super::DeleteTaskHubRequest>
+                    for DeleteTaskHubSvc<T> {
                         type Response = super::DeleteTaskHubResponse;
-                        type Future = BoxFuture<tonic::Response<Self::Response>, tonic::Status>;
+                        type Future = BoxFuture<
+                            tonic::Response<Self::Response>,
+                            tonic::Status,
+                        >;
                         fn call(
                             &mut self,
                             request: tonic::Request<super::DeleteTaskHubRequest>,
                         ) -> Self::Future {
                             let inner = Arc::clone(&self.0);
                             let fut = async move {
-                                <T as TaskHubSidecarService>::delete_task_hub(&inner, request).await
+                                <T as TaskHubSidecarService>::delete_task_hub(
+                                        &inner,
+                                        request,
+                                    )
+                                    .await
                             };
                             Box::pin(fut)
                         }
@@ -3417,19 +3707,23 @@ pub mod task_hub_sidecar_service_server {
                 "/TaskHubSidecarService/SignalEntity" => {
                     #[allow(non_camel_case_types)]
                     struct SignalEntitySvc<T: TaskHubSidecarService>(pub Arc<T>);
-                    impl<T: TaskHubSidecarService>
-                        tonic::server::UnaryService<super::SignalEntityRequest>
-                        for SignalEntitySvc<T>
-                    {
+                    impl<
+                        T: TaskHubSidecarService,
+                    > tonic::server::UnaryService<super::SignalEntityRequest>
+                    for SignalEntitySvc<T> {
                         type Response = super::SignalEntityResponse;
-                        type Future = BoxFuture<tonic::Response<Self::Response>, tonic::Status>;
+                        type Future = BoxFuture<
+                            tonic::Response<Self::Response>,
+                            tonic::Status,
+                        >;
                         fn call(
                             &mut self,
                             request: tonic::Request<super::SignalEntityRequest>,
                         ) -> Self::Future {
                             let inner = Arc::clone(&self.0);
                             let fut = async move {
-                                <T as TaskHubSidecarService>::signal_entity(&inner, request).await
+                                <T as TaskHubSidecarService>::signal_entity(&inner, request)
+                                    .await
                             };
                             Box::pin(fut)
                         }
@@ -3460,18 +3754,23 @@ pub mod task_hub_sidecar_service_server {
                 "/TaskHubSidecarService/GetEntity" => {
                     #[allow(non_camel_case_types)]
                     struct GetEntitySvc<T: TaskHubSidecarService>(pub Arc<T>);
-                    impl<T: TaskHubSidecarService>
-                        tonic::server::UnaryService<super::GetEntityRequest> for GetEntitySvc<T>
-                    {
+                    impl<
+                        T: TaskHubSidecarService,
+                    > tonic::server::UnaryService<super::GetEntityRequest>
+                    for GetEntitySvc<T> {
                         type Response = super::GetEntityResponse;
-                        type Future = BoxFuture<tonic::Response<Self::Response>, tonic::Status>;
+                        type Future = BoxFuture<
+                            tonic::Response<Self::Response>,
+                            tonic::Status,
+                        >;
                         fn call(
                             &mut self,
                             request: tonic::Request<super::GetEntityRequest>,
                         ) -> Self::Future {
                             let inner = Arc::clone(&self.0);
                             let fut = async move {
-                                <T as TaskHubSidecarService>::get_entity(&inner, request).await
+                                <T as TaskHubSidecarService>::get_entity(&inner, request)
+                                    .await
                             };
                             Box::pin(fut)
                         }
@@ -3502,19 +3801,26 @@ pub mod task_hub_sidecar_service_server {
                 "/TaskHubSidecarService/QueryEntities" => {
                     #[allow(non_camel_case_types)]
                     struct QueryEntitiesSvc<T: TaskHubSidecarService>(pub Arc<T>);
-                    impl<T: TaskHubSidecarService>
-                        tonic::server::UnaryService<super::QueryEntitiesRequest>
-                        for QueryEntitiesSvc<T>
-                    {
+                    impl<
+                        T: TaskHubSidecarService,
+                    > tonic::server::UnaryService<super::QueryEntitiesRequest>
+                    for QueryEntitiesSvc<T> {
                         type Response = super::QueryEntitiesResponse;
-                        type Future = BoxFuture<tonic::Response<Self::Response>, tonic::Status>;
+                        type Future = BoxFuture<
+                            tonic::Response<Self::Response>,
+                            tonic::Status,
+                        >;
                         fn call(
                             &mut self,
                             request: tonic::Request<super::QueryEntitiesRequest>,
                         ) -> Self::Future {
                             let inner = Arc::clone(&self.0);
                             let fut = async move {
-                                <T as TaskHubSidecarService>::query_entities(&inner, request).await
+                                <T as TaskHubSidecarService>::query_entities(
+                                        &inner,
+                                        request,
+                                    )
+                                    .await
                             };
                             Box::pin(fut)
                         }
@@ -3545,19 +3851,25 @@ pub mod task_hub_sidecar_service_server {
                 "/TaskHubSidecarService/CleanEntityStorage" => {
                     #[allow(non_camel_case_types)]
                     struct CleanEntityStorageSvc<T: TaskHubSidecarService>(pub Arc<T>);
-                    impl<T: TaskHubSidecarService>
-                        tonic::server::UnaryService<super::CleanEntityStorageRequest>
-                        for CleanEntityStorageSvc<T>
-                    {
+                    impl<
+                        T: TaskHubSidecarService,
+                    > tonic::server::UnaryService<super::CleanEntityStorageRequest>
+                    for CleanEntityStorageSvc<T> {
                         type Response = super::CleanEntityStorageResponse;
-                        type Future = BoxFuture<tonic::Response<Self::Response>, tonic::Status>;
+                        type Future = BoxFuture<
+                            tonic::Response<Self::Response>,
+                            tonic::Status,
+                        >;
                         fn call(
                             &mut self,
                             request: tonic::Request<super::CleanEntityStorageRequest>,
                         ) -> Self::Future {
                             let inner = Arc::clone(&self.0);
                             let fut = async move {
-                                <T as TaskHubSidecarService>::clean_entity_storage(&inner, request)
+                                <T as TaskHubSidecarService>::clean_entity_storage(
+                                        &inner,
+                                        request,
+                                    )
                                     .await
                             };
                             Box::pin(fut)
@@ -3586,14 +3898,18 @@ pub mod task_hub_sidecar_service_server {
                     };
                     Box::pin(fut)
                 }
-                _ => Box::pin(async move {
-                    Ok(http::Response::builder()
-                        .status(200)
-                        .header("grpc-status", "12")
-                        .header("content-type", "application/grpc")
-                        .body(empty_body())
-                        .unwrap())
-                }),
+                _ => {
+                    Box::pin(async move {
+                        Ok(
+                            http::Response::builder()
+                                .status(200)
+                                .header("grpc-status", "12")
+                                .header("content-type", "application/grpc")
+                                .body(empty_body())
+                                .unwrap(),
+                        )
+                    })
+                }
             }
         }
     }
@@ -3619,7 +3935,8 @@ pub mod task_hub_sidecar_service_server {
             write!(f, "{:?}", self.0)
         }
     }
-    impl<T: TaskHubSidecarService> tonic::server::NamedService for TaskHubSidecarServiceServer<T> {
+    impl<T: TaskHubSidecarService> tonic::server::NamedService
+    for TaskHubSidecarServiceServer<T> {
         const NAME: &'static str = "TaskHubSidecarService";
     }
 }
