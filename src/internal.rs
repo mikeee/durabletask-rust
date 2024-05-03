@@ -1,3 +1,4 @@
+#![allow(dead_code)] // TODO: remove before publishing crate
 use gethostname::gethostname;
 use opentelemetry::{
     global::{self, BoxedSpan},
@@ -21,7 +22,7 @@ use crate::durabletask_pb::{
     TaskFailedEvent, TaskFailureDetails, TaskScheduledEvent, TerminateOrchestrationAction,
     TimerCreatedEvent, TimerFiredEvent, TraceContext,
 };
-use prost_types::Timestamp;
+use prost_wkt_types::Timestamp;
 
 pub(crate) fn new_execution_started_event(
     name: &str,

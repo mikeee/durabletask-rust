@@ -1,20 +1,21 @@
-fn main() {
-    #[cfg(feature = "generate")]
-    {
-        let config = prost_build::Config::new();
-        generate(config, "src/genproto/");
-    }
-}
+fn main() -> Result<(), Box<dyn std::error::Error>> {
+    let mut config = prost_build::Config::new();
+    config
+        .default_package_filename("microsoft.durabletask.implementation.protobuf") // TODO: remove override for non-existent package name
+        .enable_type_names();
 
-#[cfg(feature = "generate")]
-fn generate(config: prost_build::Config, out_dir: impl AsRef<std::path::Path>) {
     tonic_build::configure()
+        .build_client(true)
         .build_server(true)
-        .out_dir(out_dir) // you can change the generated code's location
+        .build_transport(true)
+        .type_attribute(".", "#[derive(serde::Serialize, serde::Deserialize)]")
+        .extern_path(".google.protobuf.Duration", "::prost_wkt_types::Duration")
+        .extern_path(".google.protobuf.Timestamp", "::prost_wkt_types::Timestamp")
+        .out_dir("src/genproto") // you can change the generated code's location
         .compile_with_config(
             config,
             &["submodules/durabletask-protobuf/protos/orchestrator_service.proto"],
-            &["durabletask-protobuf"], // specify the root location to search proto dependencies
-        )
-        .unwrap();
+            &["submodules/durabletask-protobuf/"], // specify the root location to search proto dependencies
+        )?;
+    Ok(())
 }
