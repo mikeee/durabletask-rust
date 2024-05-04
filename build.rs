@@ -1,4 +1,5 @@
-fn main() -> Result<(), Box<dyn std::error::Error>> {
+#[cfg(feature = "genproto")]
+fn genproto() -> Result<(), Box<dyn std::error::Error>> {
     let mut config = prost_build::Config::new();
     config
         .default_package_filename("microsoft.durabletask.implementation.protobuf") // TODO: remove override for non-existent package name
@@ -18,4 +19,19 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
             &["submodules/durabletask-protobuf/"], // specify the root location to search proto dependencies
         )?;
     Ok(())
+}
+
+fn main() {
+    #[cfg(feature = "genproto")]
+    {
+        println!("compiling protos");
+        match genproto() {
+            Ok(_) => {
+                println!("compiled protos")
+            }
+            Err(e) => {
+                panic!("{:?}", e)
+            }
+        };
+    }
 }
