@@ -2,11 +2,11 @@
 name = "durabletask"
 authors = ["Mike Nguyen<hey@mike.ee>"]
 version = "0.0.1"
-rust-version = "1.56"
+rust-version = "1.74"
 description = "An implementation of the Durable Task Framework in Rust"
 edition = "2021"
 license = "Apache-2.0"
-repository = "https://github.com/mikeee/durabletask-rust"
+repository = "https://github.com/mikeee/durabletask-rust.git"
 readme = "README.md"
 homepage = "https://github.com/mikeee/durabletask-rust"
 documentation = "https://docs.rs/durabletask"
