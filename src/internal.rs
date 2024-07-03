@@ -1,4 +1,22 @@
-#![allow(dead_code)] // TODO: remove before publishing crate
+/*
+  Copyright 2024 Mike Nguyen (mikeee) <hey@mike.ee>
+
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+*/
+#![allow(dead_code)]
+use std::{any::type_name, borrow::BorrowMut, fmt::Display, str::FromStr, time::SystemTime};
+
+// TODO: remove before publishing crate
 use gethostname::gethostname;
 use opentelemetry::{
     global::{self, BoxedSpan},
@@ -8,8 +26,7 @@ use opentelemetry::{
     },
     Context, KeyValue,
 };
-
-use std::{any::type_name, borrow::BorrowMut, fmt::Display, str::FromStr, time::SystemTime};
+use prost_wkt_types::Timestamp;
 use uuid::Uuid;
 
 use crate::durabletask_pb::{
@@ -22,7 +39,6 @@ use crate::durabletask_pb::{
     TaskFailedEvent, TaskFailureDetails, TaskScheduledEvent, TerminateOrchestrationAction,
     TimerCreatedEvent, TimerFiredEvent, TraceContext,
 };
-use prost_wkt_types::Timestamp;
 
 pub(crate) fn new_execution_started_event(
     name: &str,
@@ -736,8 +752,9 @@ pub(crate) fn get_default_worker_name() -> String {
 
 #[cfg(test)]
 mod tests {
-    use crate::internal::get_default_worker_name;
     use uuid::Uuid;
+
+    use crate::internal::get_default_worker_name;
 
     use super::get_task_function_name;
 
