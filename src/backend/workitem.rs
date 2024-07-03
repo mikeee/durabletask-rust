@@ -1,12 +1,32 @@
+/*
+  Copyright 2024 Mike Nguyen (mikeee) <hey@mike.ee>
+
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+*/
 use std::fmt;
 
 use crate::durabletask_pb::{history_event::EventType, HistoryEvent};
 
 use super::runtimestate::OrchestrationRuntimeState;
 
+pub trait WorkItem {
+    fn is_work_item(&self) -> bool;
+}
+
 #[allow(dead_code)] // TODO: revisit dead fields
+#[derive(Default)]
 pub struct OrchestrationWorkItem {
-    instance_id: String,
+    pub instance_id: String,
     new_events: Vec<HistoryEvent>,
     locked_by: String,
     retry_count: i32,
@@ -25,11 +45,13 @@ impl fmt::Display for OrchestrationWorkItem {
     }
 }
 
-impl OrchestrationWorkItem {
-    pub fn is_work_item(&self) -> bool {
+impl WorkItem for OrchestrationWorkItem {
+    fn is_work_item(&self) -> bool {
         true
     }
+}
 
+impl OrchestrationWorkItem {
     pub fn get_abandon_delay(&self) -> std::time::Duration {
         match self.retry_count {
             0 => std::time::Duration::from_secs(0), // no delay
@@ -60,8 +82,8 @@ impl fmt::Display for ActivityWorkItem {
     }
 }
 
-impl ActivityWorkItem {
-    pub fn is_work_item(&self) -> bool {
+impl WorkItem for ActivityWorkItem {
+    fn is_work_item(&self) -> bool {
         true
     }
 }
