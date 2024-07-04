@@ -13,6 +13,8 @@
   See the License for the specific language governing permissions and
   limitations under the License.
 */
+use std::fmt;
+
 use prost_wkt_types::Timestamp;
 use serde::{Deserialize, Serialize};
 
@@ -37,6 +39,18 @@ pub type OrchestrationIdReusePolicy = crate::durabletask_pb::OrchestrationIdReus
 
 #[derive(Default, Debug, PartialEq, Eq, Hash, Clone, Serialize, Deserialize)]
 pub struct InstanceID(pub String);
+
+impl fmt::Display for InstanceID {
+    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
+        write!(f, "{}", self.0)
+    }
+}
+
+impl From<&InstanceID> for InstanceID {
+    fn from(value: &InstanceID) -> Self {
+        InstanceID(value.to_string())
+    }
+}
 
 #[derive(Default, Debug, PartialEq)]
 pub struct NewOrchestrationBuilder {

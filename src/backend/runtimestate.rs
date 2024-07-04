@@ -38,8 +38,8 @@ pub struct OrchestratorMessage {
 #[derive(Debug, Serialize, Deserialize, Default)]
 pub struct OrchestrationRuntimeState {
     instance_id: api::InstanceID,
-    new_events: Vec<HistoryEvent>,
-    old_events: Vec<HistoryEvent>,
+    pub(crate) new_events: Vec<HistoryEvent>,
+    pub(crate) old_events: Vec<HistoryEvent>,
     pending_tasks: Vec<HistoryEvent>,
     pending_timers: Vec<HistoryEvent>,
     pending_messages: Vec<OrchestratorMessage>,

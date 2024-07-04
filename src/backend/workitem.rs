@@ -13,66 +13,77 @@
   See the License for the specific language governing permissions and
   limitations under the License.
 */
+use std::collections::HashMap;
+use std::error::Error;
 use std::fmt;
+use std::time::Duration;
 
-use crate::durabletask_pb::{history_event::EventType, HistoryEvent};
+use crate::api::InstanceID;
+use crate::backend::runtimestate::OrchestrationRuntimeState;
+use crate::durabletask_pb::history_event::EventType;
+use crate::durabletask_pb::HistoryEvent;
 
-use super::runtimestate::OrchestrationRuntimeState;
+#[allow(dead_code)] // TODO: Remove
+#[derive(Debug)]
+struct NoWorkItemsError;
 
-pub trait WorkItem {
-    fn is_work_item(&self) -> bool;
-}
-
-#[allow(dead_code)] // TODO: revisit dead fields
-#[derive(Default)]
-pub struct OrchestrationWorkItem {
-    pub instance_id: String,
-    new_events: Vec<HistoryEvent>,
-    locked_by: String,
-    retry_count: i32,
-    state: OrchestrationRuntimeState,
-    properties: std::collections::HashMap<String, Box<dyn std::any::Any>>,
-}
-
-impl fmt::Display for OrchestrationWorkItem {
-    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
-        write!(
-            f,
-            "{} ({} event(s))",
-            self.instance_id,
-            self.new_events.len()
-        )
+impl fmt::Display for NoWorkItemsError {
+    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
+        write!(f, "no work items were found")
     }
 }
 
-impl WorkItem for OrchestrationWorkItem {
+impl Error for NoWorkItemsError {}
+
+#[allow(dead_code)] // TODO: Remove
+trait WorkItem: fmt::Display {
     fn is_work_item(&self) -> bool {
         true
     }
 }
 
+#[allow(dead_code)] // TODO: Remove
+#[derive(Default)]
+pub(crate) struct OrchestrationWorkItem {
+    pub instance_id: InstanceID,
+    pub new_events: Vec<HistoryEvent>,
+    pub locked_by: String,
+    pub retry_count: i32,
+    pub state: OrchestrationRuntimeState,
+    pub properties: HashMap<String, Box<dyn std::any::Any>>,
+}
+
+impl fmt::Display for OrchestrationWorkItem {
+    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
+        write!(f, "{} ({})", self.instance_id, self.new_events.len())
+    }
+}
+
+impl WorkItem for OrchestrationWorkItem {}
+
+#[allow(dead_code)] // TODO: Remove
 impl OrchestrationWorkItem {
-    pub fn get_abandon_delay(&self) -> std::time::Duration {
+    fn abandon_delay(&self) -> Duration {
         match self.retry_count {
-            0 => std::time::Duration::from_secs(0), // no delay
-            n if n > 100 => std::time::Duration::from_secs(300), // max delay
-            n => std::time::Duration::from_secs(n as u64), // linear backoff
+            0 => Duration::from_secs(0),
+            retry_count if retry_count > 100 => Duration::from_secs(5 * 60),
+            retry_count => Duration::from_secs(retry_count as u64),
         }
     }
 }
 
-#[allow(dead_code)] // TODO: Revisit dead fields
-pub struct ActivityWorkItem {
-    sequence_number: i64,
-    instance_id: String,
-    new_event: HistoryEvent,
-    result: Option<HistoryEvent>,
-    locked_by: String,
-    properties: std::collections::HashMap<String, Box<dyn std::any::Any>>,
+#[allow(dead_code)] // TODO: Remove
+pub(crate) struct ActivityWorkItem {
+    pub sequence_number: i64,
+    pub instance_id: InstanceID,
+    pub new_event: HistoryEvent,
+    pub result: Option<HistoryEvent>,
+    pub locked_by: String,
+    pub properties: HashMap<String, Box<dyn std::any::Any>>,
 }
 
 impl fmt::Display for ActivityWorkItem {
-    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         let name = match &self.new_event.event_type {
             Some(EventType::TaskScheduled(scheduled_task)) => &scheduled_task.name,
             _ => todo!("handle other event cases"),
@@ -82,8 +93,4 @@ impl fmt::Display for ActivityWorkItem {
     }
 }
 
-impl WorkItem for ActivityWorkItem {
-    fn is_work_item(&self) -> bool {
-        true
-    }
-}
+impl WorkItem for ActivityWorkItem {}

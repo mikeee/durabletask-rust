@@ -15,15 +15,20 @@ keywords = ["durable", "task", "framework"]
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
+backon = "0.4.4"
 gethostname = "0.4.3"
 opentelemetry = "0.23.0"
 prost = "0.12.4"
 prost-types = "0.12.4"
 prost-wkt-types = "0.5.1"
+scopeguard = "1.2.0"
 serde = { version = "1.0.199", features = ["derive"] }
 serde_json = "1.0.116"
+tokio = "1.37.0"
 tonic = { version = "0.11.0", features = ["tls", "prost", "gzip"] }
 uuid = { version = "1.8.0", features = ["v4", "fast-rng"] }
+async-trait = "0.1.80"
+futures = "0.3.30"
 
 [build-dependencies]
 prost-build = { version = "0.12.4", optional = true }
