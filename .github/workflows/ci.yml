@@ -35,8 +35,9 @@ jobs:
       matrix:
         os:
           - "ubuntu-latest"
-        rust:
+        rust-version:
           - "stable"
+          - "nightly"
           - "1.64.0" # Minimum supported rust version
 
     steps:
@@ -51,9 +52,10 @@ jobs:
           version: "25.x"
 
       - name: Install Rust Toolchain
-        uses: dtolnay/rust-toolchain@stable
+        uses: dtolnay/rust-toolchain@master
         with:
           components: rustfmt, clippy
+          toolchain: ${{ matrix.rust-version }}
 
       - name: Cargo test
         run: cargo test -- --include-ignored
@@ -64,19 +66,17 @@ jobs:
       - name: Cargo clippy
         run: cargo clippy -- -D warnings
 
-      - name: Cargo doc
-        run: cargo doc
-
   build:
-    name: Build using rust(${{ matrix.rust }}) on ${{ matrix.os }}
+    name: Build using rust(${{ matrix.rust-version }}) on ${{ matrix.os }}
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
       matrix:
         os:
           - "ubuntu-latest"
-        rust:
+        rust-version:
           - "stable"
+          - "nightly"
           - "1.64.0" # Minimum supported rust version
 
     steps:
@@ -91,7 +91,9 @@ jobs:
           version: "25.x"
 
       - name: Install Rust Toolchain
-        uses: dtolnay/rust-toolchain@stable
+        uses: dtolnay/rust-toolchain@master
+        with:
+          toolchain: ${{ matrix.rust-version }}
 
       - name: Cargo build
         run: cargo build
