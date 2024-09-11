@@ -27,7 +27,7 @@ jobs:
 
 
   lint:
-    name: Lint using rust(${{ matrix.rust }}) on ${{ matrix.os }}
+    name: Lint using rust(${{ matrix.rust-version }}) on ${{ matrix.os }}
     runs-on: ${{ matrix.os }}
 
     strategy:
