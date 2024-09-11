@@ -37,8 +37,9 @@ jobs:
           - "ubuntu-latest"
         rust-version:
           - "stable"
+          - "beta"
           - "nightly"
-          - "1.64.0" # Minimum supported rust version
+          - "1.70.0" # Minimum supported rust version
 
     steps:
       - name: Checkout
@@ -77,8 +78,9 @@ jobs:
           - "ubuntu-latest"
         rust-version:
           - "stable"
+          - "beta"
           - "nightly"
-          - "1.64.0" # Minimum supported rust version
+          - "1.70.0" # Minimum supported rust version
 
     steps:
       - name: Checkout
