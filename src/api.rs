@@ -52,7 +52,7 @@ impl From<&InstanceID> for InstanceID {
     }
 }
 
-#[derive(Default, Debug, PartialEq)]
+#[derive(Default, PartialEq)]
 pub struct NewOrchestrationBuilder {
     instance_id: Option<InstanceID>,
     orchestration_id_reuse_policy: Option<OrchestrationIdReusePolicy>,
@@ -211,7 +211,7 @@ impl PurgeBuilder {
     }
 }
 
-#[derive(Default, Debug, Serialize, Deserialize)]
+#[derive(Default, Serialize, Deserialize)]
 pub struct OrchestrationMetadata {
     #[serde(rename = "id")]
     pub instance_id: InstanceID,
