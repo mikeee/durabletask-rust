@@ -108,13 +108,7 @@ impl OrchestrationRuntimeState {
     }
 
     pub fn is_valid(&self) -> bool {
-        if (self.old_events.is_empty() && self.new_events.is_empty()) || self.start_event.is_some()
-        {
-            // Orchestration history has a start event
-            true
-        } else {
-            false
-        }
+        (self.old_events.is_empty() && self.new_events.is_empty()) || self.start_event.is_some()
     }
 
     pub fn apply_actions(
