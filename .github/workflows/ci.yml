@@ -111,6 +111,12 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Install Protoc
+        uses: arduino/setup-protoc@v3
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          version: "25.x"
+
       - name: Install Rust Toolchain (Nightly)
         uses: dtolnay/rust-toolchain@nightly
 
