@@ -78,10 +78,7 @@ impl NewOrchestrationBuilder {
     }
 
     pub fn input<T: Serialize>(mut self, input: &T) -> Self {
-        let bytes = match serde_json::to_vec(input) {
-            Ok(b) => b,
-            Err(_) => vec![],
-        };
+        let bytes = serde_json::to_vec(input).unwrap_or_else(|_| vec![]);
 
         self.input = Some(String::from_utf8(bytes).unwrap());
         self
@@ -149,10 +146,7 @@ impl RaiseEventBuilder {
     }
 
     pub fn event_payload<T: Serialize>(mut self, payload: &T) -> Self {
-        let bytes = match serde_json::to_vec(payload) {
-            Ok(b) => b,
-            Err(_) => vec![],
-        };
+        let bytes = serde_json::to_vec(payload).unwrap_or_else(|_| vec![]);
 
         self.input = Some(String::from_utf8(bytes).unwrap());
         self
@@ -180,10 +174,7 @@ impl TerminateBuilder {
     }
 
     pub fn output<T: Serialize>(mut self, data: &T) -> Self {
-        let bytes = match serde_json::to_vec(data) {
-            Ok(b) => b,
-            Err(_) => vec![],
-        };
+        let bytes = serde_json::to_vec(data).unwrap_or_else(|_| vec![]);
 
         self.output = Some(String::from_utf8(bytes).unwrap());
         self
