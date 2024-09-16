@@ -15,7 +15,7 @@ keywords = ["durable", "task", "framework"]
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-backon = "0.4.4"
+backon = "0.5.0"
 gethostname = "0.5.0"
 opentelemetry = "0.23.0"
 prost = "0.12.4"
