@@ -18,7 +18,7 @@ use std::fmt;
 use prost_wkt_types::Timestamp;
 use serde::{Deserialize, Serialize};
 
-use crate::durabletask_pb::{OrchestrationStatus, TaskFailureDetails};
+use crate::durabletask_pb::{CreateOrchestrationAction, OrchestrationStatus, TaskFailureDetails};
 
 pub static ERR_INSTANCE_NOT_FOUND: &str = "no such instance exists";
 pub static ERR_NOT_STARTED: &str = "orchestration has not started";
@@ -26,6 +26,21 @@ pub static ERR_NOT_COMPLETED: &str = "orchestration has not yet completed";
 pub static ERR_NO_FAILURES: &str = "orchestration did not report failure details";
 pub static ERR_DUPLICATE_INSTANCE: &str = "orchestration instance already exists";
 pub static ERR_IGNORE_INSTANCE: &str = "ignore creating orchestration instance";
+
+pub static REUSE_ID_ACTION_ERROR: CreateOrchestrationAction = CreateOrchestrationAction::Error;
+pub static REUSE_ID_ACTION_IGNORE: CreateOrchestrationAction = CreateOrchestrationAction::Ignore;
+pub static REUSE_ID_ACTION_TERMINATE: CreateOrchestrationAction =
+    CreateOrchestrationAction::Terminate;
+
+pub static RUNTIME_STATUS_RUNNING: OrchestrationStatus = OrchestrationStatus::Running;
+pub static RUNTIME_STATUS_COMPLETED: OrchestrationStatus = OrchestrationStatus::Completed;
+pub static RUNTIME_STATUS_CONTINUED_AS_NEW: OrchestrationStatus =
+    OrchestrationStatus::ContinuedAsNew;
+pub static RUNTIME_STATUS_FAILED: OrchestrationStatus = OrchestrationStatus::Failed;
+pub static RUNTIME_STATUS_CANCELED: OrchestrationStatus = OrchestrationStatus::Canceled;
+pub static RUNTIME_STATUS_TERMINATED: OrchestrationStatus = OrchestrationStatus::Terminated;
+pub static RUNTIME_STATUS_PENDING: OrchestrationStatus = OrchestrationStatus::Pending;
+pub static RUNTIME_STATUS_SUSPENDED: OrchestrationStatus = OrchestrationStatus::Suspended;
 
 pub type NewOrchestration = crate::durabletask_pb::CreateInstanceRequest;
 
