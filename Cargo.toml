@@ -18,8 +18,8 @@ keywords = ["durable", "task", "framework"]
 backon = "0.4.4"
 gethostname = "0.5.0"
 opentelemetry = "0.23.0"
-prost = "0.12.4"
-prost-types = "0.12.4"
+prost = "0.13.0"
+prost-types = "0.13.0"
 prost-wkt-types = "0.5.1"
 scopeguard = "1.2.0"
 serde = { version = "1.0.199", features = ["derive"] }
@@ -31,7 +31,7 @@ async-trait = "0.1.80"
 futures = "0.3.30"
 
 [build-dependencies]
-prost-build = { version = "0.12.4", optional = true }
+prost-build = { version = "0.13.0", optional = true }
 tonic-build = { version = "0.11.0", optional = true }
 
 [features]
