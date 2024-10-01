@@ -17,7 +17,7 @@ keywords = ["durable", "task", "framework"]
 [dependencies]
 backon = "0.4.4"
 gethostname = "0.5.0"
-opentelemetry = "0.23.0"
+opentelemetry = "0.26.0"
 prost = "0.12.4"
 prost-types = "0.12.4"
 prost-wkt-types = "0.5.1"
