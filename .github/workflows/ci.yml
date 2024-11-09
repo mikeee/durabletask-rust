@@ -114,7 +114,6 @@ jobs:
         crate:
           - "durabletask"
           - "durabletask-proto"
-          - "proto-gen"
 
     env:
       RUSTDOCFLAGS: -Dwarnings

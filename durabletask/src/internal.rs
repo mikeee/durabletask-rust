@@ -425,9 +425,7 @@ pub(crate) fn get_task_id(e: &HistoryEvent) -> i32 {
     }
 }
 
-pub(crate) fn to_runtime_status_string(
-    status: OrchestrationStatus,
-) -> String {
+pub(crate) fn to_runtime_status_string(status: OrchestrationStatus) -> String {
     status.as_str_name()[21..].to_string()
 }
 
