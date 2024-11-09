@@ -1,0 +1,20 @@
+[package]
+name = "durabletask-proto"
+authors.workspace = true
+license.workspace = true
+edition.workspace = true
+publish = true
+repository.workspace = true
+version.workspace = true
+description = "Compiled protos for the durabletask framework"
+readme = "README.md"
+keywords = ["durabletask"]
+rust-version.workspace = true
+
+[dependencies]
+tonic-build = { workspace = true }
+prost = { workspace = true }
+prost-types = { workspace = true }
+prost-wkt-types = { workspace = true }
+serde = { version = "1.0.214", features = ["derive"] }
+tonic = { workspace = true }

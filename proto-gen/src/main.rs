@@ -1,4 +1,3 @@
-#[cfg(feature = "genproto")]
 fn genproto() -> Result<(), Box<dyn std::error::Error>> {
     let mut config = prost_build::Config::new();
     config
@@ -12,17 +11,16 @@ fn genproto() -> Result<(), Box<dyn std::error::Error>> {
         .type_attribute(".", "#[derive(serde::Serialize, serde::Deserialize)]")
         .extern_path(".google.protobuf.Duration", "::prost_wkt_types::Duration")
         .extern_path(".google.protobuf.Timestamp", "::prost_wkt_types::Timestamp")
-        .out_dir("src/genproto") // you can change the generated code's location
-        .compile_with_config(
+        .out_dir("./durabletask-proto/src/") // you can change the generated code's location
+        .compile_protos_with_config(
             config,
-            &["submodules/durabletask-protobuf/protos/orchestrator_service.proto"],
-            &["submodules/durabletask-protobuf/"], // specify the root location to search proto dependencies
+            &["./submodules/durabletask-protobuf/protos/orchestrator_service.proto"],
+            &["./submodules/durabletask-protobuf/"], // specify the root location to search proto dependencies
         )?;
     Ok(())
 }
 
 fn main() {
-    #[cfg(feature = "genproto")]
     {
         println!("compiling protos");
         match genproto() {

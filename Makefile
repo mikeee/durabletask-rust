@@ -2,6 +2,6 @@ generate-protos:
 	@echo "**Updating microsoft/durabletask-protobuf**"
 	git submodule update --remote --merge --force
 	@echo "**Compiling protos to src/genproto**"
-	cargo build --features genproto
+	cargo run --bin proto-gen
 	@echo "**Running fmt on generated protos**"
-	rustfmt ./src/genproto/microsoft.durabletask.implementation.protobuf.rs
+	rustfmt ./durabletask-proto/src/microsoft.durabletask.implementation.protobuf.rs

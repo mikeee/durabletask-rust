@@ -1,38 +1,31 @@
-[package]
-name = "durabletask"
-authors = ["Mike Nguyen<hey@mike.ee>"]
-version = "0.0.1"
-rust-version = "1.70"
-description = "An implementation of the Durable Task Framework in Rust"
+[workspace]
+members = [
+    "durabletask",
+    "durabletask-proto",
+    "proto-gen",
+]
+resolver = "2"
+
+[workspace.dependencies]
+async-trait = "0.1"
+
+durabletask-proto = { version = "0.0.1-alpha", path = "./durabletask-proto" }
+
+prost = "0.13.1"
+prost-build = "0.13.1"
+prost-types = "0.13.1"
+prost-wkt-types = "0.6.0"
+
+tonic = "0.12.1"
+tonic-build = "0.12.1"
+
+[workspace.package]
+version = "0.0.1-alpha"
+authors = [
+    "Mike Nguyen <hey@mike.ee>",
+]
 edition = "2021"
 license = "Apache-2.0"
-repository = "https://github.com/mikeee/durabletask-rust.git"
-readme = "README.md"
-homepage = "https://github.com/mikeee/durabletask-rust"
-documentation = "https://docs.rs/durabletask"
-keywords = ["durable", "task", "framework"]
+repository = "https://github.com/mikeee/durabletask-rust"
 
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
-
-[dependencies]
-backon = "0.4.4"
-gethostname = "0.5.0"
-opentelemetry = "0.23.0"
-prost = "0.12.4"
-prost-types = "0.12.4"
-prost-wkt-types = "0.5.1"
-scopeguard = "1.2.0"
-serde = { version = "1.0.199", features = ["derive"] }
-serde_json = "1.0.116"
-tokio = "1.37.0"
-tonic = { version = "0.11.0", features = ["tls", "prost", "gzip"] }
-uuid = { version = "1.8.0", features = ["v4", "fast-rng"] }
-async-trait = "0.1.80"
-futures = "0.3.30"
-
-[build-dependencies]
-prost-build = { version = "0.12.4", optional = true }
-tonic-build = { version = "0.11.0", optional = true }
-
-[features]
-genproto = ["dep:tonic-build", "dep:prost-build"]
+rust-version = "1.78.0" # MSRV

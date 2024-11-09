@@ -1,0 +1,13 @@
+[package]
+name = "proto-gen"
+authors.workspace = true
+license.workspace = true
+edition.workspace = true
+publish = false
+repository.workspace = true
+version.workspace = true
+rust-version.workspace = true
+
+[dependencies]
+tonic-build = { workspace = true }
+prost-build = { workspace = true }

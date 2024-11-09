@@ -1,0 +1,19 @@
+[package]
+name = "durabletask"
+authors = ["Mike Nguyen<hey@mike.ee>"]
+license.workspace = true
+edition.workspace = true
+publish = true
+repository.workspace = true
+version.workspace = true
+description = "An implementation of the Durable Task Framework in Rust"
+readme = "README.md"
+homepage = "https://github.com/mikeee/durabletask-rust"
+documentation = "https://docs.rs/durabletask"
+keywords = ["durable", "task", "framework"]
+rust-version.workspace = true
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+durabletask-proto.workspace = true
