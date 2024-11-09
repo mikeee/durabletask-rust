@@ -41,7 +41,7 @@ jobs:
           - "stable"
           - "beta"
           - "nightly"
-          - "1.70.0" # Minimum supported rust version
+          - "1.78.0" # Minimum supported rust version
 
     steps:
       - name: Checkout
@@ -82,7 +82,7 @@ jobs:
           - "stable"
           - "beta"
           - "nightly"
-          - "1.70.0" # Minimum supported rust version
+          - "1.78.0" # Minimum supported rust version
 
     steps:
       - name: Checkout
@@ -105,8 +105,17 @@ jobs:
         run: cargo build
 
   docs:
-    name: Docs-rs test
+    name: Docs-rs crate - ${{ matrix.crate }}
     runs-on: ubuntu-latest
+
+    strategy:
+      fail-fast: false
+      matrix:
+        crate:
+          - "durabletask"
+          - "durabletask-proto"
+          - "proto-gen"
+
     env:
       RUSTDOCFLAGS: -Dwarnings
     steps:
@@ -126,4 +135,4 @@ jobs:
         uses: dtolnay/install@cargo-docs-rs
 
       - name: Run cargo rustdoc with docs.rs options
-        run: cargo docs-rs
+        run: cargo docs-rs -p ${{ matrix.crate }}
