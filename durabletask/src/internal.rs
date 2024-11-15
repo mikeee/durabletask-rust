@@ -15,7 +15,6 @@
 */
 #![allow(dead_code)]
 use std::{any::type_name, borrow::BorrowMut, fmt::Display, str::FromStr, time::SystemTime};
-
 // TODO: remove before publishing crate
 use gethostname::gethostname;
 use opentelemetry::{
@@ -162,7 +161,7 @@ pub(crate) fn new_timer_created_event(event_id: i32, fire_at: &Timestamp) -> His
         event_id,
         timestamp: Some(Timestamp::from(SystemTime::now())),
         event_type: Some(EventType::TimerCreated(TimerCreatedEvent {
-            fire_at: Some(fire_at.clone()),
+            fire_at: Some(*fire_at),
         })),
     }
 }
@@ -173,7 +172,7 @@ pub(crate) fn new_timer_fired_event(timer_id: i32, fire_at: &Timestamp) -> Histo
         timestamp: Some(Timestamp::from(SystemTime::now())),
         event_type: Some(EventType::TimerFired(TimerFiredEvent {
             timer_id,
-            fire_at: Some(fire_at.clone()),
+            fire_at: Some(*fire_at),
         })),
     }
 }
@@ -269,7 +268,7 @@ pub(crate) fn new_create_timer_action(task_id: i32, fire_at: &Timestamp) -> Orch
     OrchestratorAction {
         id: task_id,
         orchestrator_action_type: Some(OrchestratorActionType::CreateTimer(CreateTimerAction {
-            fire_at: Some(fire_at.clone()),
+            fire_at: Some(*fire_at),
         })),
     }
 }
