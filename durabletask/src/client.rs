@@ -118,10 +118,9 @@ pub struct TaskHubGrpcClient {
 }
 
 async fn new_client(
+    address: String,
 ) -> Result<durabletask_proto::task_hub_sidecar_service_client::TaskHubSidecarServiceClient<Channel>>
 {
-    let address: &str = "url";
-
     Ok(
         durabletask_proto::task_hub_sidecar_service_client::TaskHubSidecarServiceClient::connect(
             address,
@@ -131,8 +130,8 @@ async fn new_client(
 }
 
 impl TaskHubGrpcClient {
-    pub async fn connect(_address: String) -> Result<Self> {
-        let client = new_client().await?;
+    pub async fn connect(address: String) -> Result<Self> {
+        let client = new_client(address).await?;
         Ok(Self { client })
     }
     pub async fn start_instance(
