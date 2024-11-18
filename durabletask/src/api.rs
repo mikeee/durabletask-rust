@@ -262,6 +262,25 @@ impl Default for OrchestrationMetadataBuilder {
     }
 }
 
+impl From<durabletask_proto::GetInstanceResponse> for OrchestrationMetadataBuilder {
+    fn from(value: durabletask_proto::GetInstanceResponse) -> Self {
+        let orchestration_state = value.orchestration_state.unwrap();
+        OrchestrationMetadataBuilder {
+            instance_id: Some(InstanceID(orchestration_state.instance_id)),
+            name: Some(orchestration_state.name),
+            status: Some(
+                OrchestrationStatus::try_from(orchestration_state.orchestration_status).unwrap(),
+            ),
+            created_at: orchestration_state.created_timestamp,
+            last_updated_at: orchestration_state.last_updated_timestamp,
+            serialized_input: orchestration_state.input,
+            serialized_output: orchestration_state.output,
+            serialized_custom_status: orchestration_state.custom_status,
+            failure_details: orchestration_state.failure_details,
+        }
+    }
+}
+
 impl OrchestrationMetadataBuilder {
     pub fn new() -> Self {
         OrchestrationMetadataBuilder {
@@ -365,9 +384,9 @@ impl OrchestrationMetadata {
 
 #[cfg(test)]
 mod tests {
-    use prost_wkt_types::Timestamp;
-
     use super::*;
+    use durabletask_proto::{GetInstanceResponse, OrchestrationState};
+    use prost_wkt_types::Timestamp;
 
     #[test]
     fn test_new_orchestration_builder() {
@@ -396,6 +415,64 @@ mod tests {
         let builder = FetchOrchestrationMetadataBuilder::new().fetch_payloads(true);
 
         assert_eq!(builder.get_inputs_and_outputs, Some(true));
+    }
+
+    #[test]
+    fn test_orchestration_metadata_builder_from_orchestration_state() {
+        let resp = GetInstanceResponse {
+            exists: false,
+            orchestration_state: Option::from(OrchestrationState {
+                instance_id: "".to_string(),
+                name: "test-orchestration".to_string(),
+                version: None,
+                orchestration_status: 1,
+                input: None,
+                output: None,
+                custom_status: None,
+                created_timestamp: None,
+                last_updated_timestamp: None,
+                failure_details: None,
+                execution_id: None,
+                completed_timestamp: None,
+                scheduled_start_timestamp: None,
+                parent_instance_id: None,
+            }),
+        };
+
+        let builder: OrchestrationMetadataBuilder = resp.into();
+        assert_eq!(builder.instance_id.unwrap().0, "");
+    }
+
+    #[test]
+    fn test_orchestration_metadata_builder_timestamps_from_orchestration_state() {
+        let now = Timestamp {
+            seconds: 1634567890,
+            nanos: 123456789,
+        };
+
+        let resp = GetInstanceResponse {
+            exists: false,
+            orchestration_state: Option::from(OrchestrationState {
+                instance_id: "test-instance".to_string(),
+                name: "test-orchestration".to_string(),
+                version: None,
+                orchestration_status: 1,
+                input: None,
+                output: None,
+                custom_status: None,
+                created_timestamp: Some(now.clone()),
+                last_updated_timestamp: Some(now.clone()),
+                failure_details: None,
+                execution_id: None,
+                completed_timestamp: None,
+                scheduled_start_timestamp: None,
+                parent_instance_id: None,
+            }),
+        };
+
+        let builder: OrchestrationMetadataBuilder = resp.into();
+        assert_eq!(builder.created_at.unwrap(), now);
+        assert_eq!(builder.last_updated_at.unwrap(), now);
     }
 
     #[test]
