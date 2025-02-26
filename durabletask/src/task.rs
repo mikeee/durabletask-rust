@@ -9,6 +9,12 @@ where
     //failed_tasks: usize, // TODO: Check unused?
 }
 
+impl<T: Clone> Default for CompositeTask<T> {
+    fn default() -> Self {
+        Self::new()
+    }
+}
+
 impl<T: Clone> CompositeTask<T> {
     pub fn new() -> Self {
         let mut composite = Self {
@@ -36,6 +42,12 @@ where
     T: Clone,
 {
     base: Task<T>,
+}
+
+impl<T: Clone> Default for CompletableTask<T> {
+    fn default() -> Self {
+        Self::new()
+    }
 }
 
 impl<T: Clone> CompletableTask<T> {
@@ -76,6 +88,12 @@ where
     exception: Option<durabletask_proto::TaskFailureDetails>,
     parent: Option<Box<CompositeTask<T>>>,
     is_complete: bool,
+}
+
+impl<T: Clone> Default for Task<T> {
+    fn default() -> Self {
+        Self::new()
+    }
 }
 
 impl<T: Clone> Task<T> {
