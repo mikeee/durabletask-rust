@@ -17,4 +17,5 @@ pub mod api;
 pub mod client;
 mod internal;
 
+pub mod orchestration;
 pub mod task;
