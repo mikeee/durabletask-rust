@@ -11,7 +11,7 @@ async-trait = "0.1"
 
 durabletask-proto = { version = "0.0.1-alpha", path = "./durabletask-proto" }
 
-prost = "0.13.1"
+prost = "0.14.0"
 prost-build = "0.13.1"
 prost-types = "0.13.1"
 prost-wkt-types = "0.6.0"
