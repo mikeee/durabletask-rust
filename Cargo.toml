@@ -16,7 +16,7 @@ prost-build = "0.13.1"
 prost-types = "0.13.1"
 prost-wkt-types = "0.6.0"
 
-tonic = "0.12.1"
+tonic = "0.14.0"
 tonic-build = "0.12.1"
 
 [workspace.package]
